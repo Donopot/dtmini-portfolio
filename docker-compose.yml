@@ -1,0 +1,18 @@
+services:
+  portfolio:
+    build: .
+    container_name: dtmini-portfolio
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3100:3100"
+    environment:
+      - NODE_ENV=production
+      - PORT=3100
+      - CONTACT_EMAIL=${CONTACT_EMAIL:-donovan.beaulavon@gmail.com}
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3100/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    labels:
+      - "traefik.enable=false"
