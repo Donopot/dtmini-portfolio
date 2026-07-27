@@ -1,36 +1,145 @@
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+/* ============================================
+   DESIGN TOKENS — Palette duale Light/Dark
+   ============================================ */
 
-  /* Brand color scale — full palette */
-  --color-brand-50: #f0fdfa;
-  --color-brand-100: #ccfbf1;
-  --color-brand-200: #99f6e4;
-  --color-brand-300: #5eead4;
-  --color-brand-400: #2dd4bf;
-  --color-brand-500: #14b8a6;
-  --color-brand-600: #0d9488;
-  --color-brand-700: #0f766e;
-  --color-brand-800: #115e59;
-  --color-brand-900: #134e4a;
+@theme {
+  /* Typography */
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* === LIGHT MODE (default) === */
+  --color-light-bg: #F5F2EC;
+  --color-light-bg-alt: #F3EFE8;
+  --color-light-card: #FAFAF7;
+  --color-light-text: #231F20;
+  --color-light-text-secondary: #6E6660;
+  --color-light-accent: #B8884D;
+  --color-light-accent-light: #C89B67;
+  --color-light-border: #E6E1D8;
+
+  /* === DARK MODE === */
+  --color-dark-bg: #060B0E;
+  --color-dark-bg-alt: #081317;
+  --color-dark-card: #081317;
+  --color-dark-text: #E0F2FE;
+  --color-dark-text-secondary: #5A7C7D;
+  --color-dark-accent: #22D3EE;
+  --color-dark-accent-light: #38BDF8;
+  --color-dark-accent-green: #4ADE80;
+  --color-dark-accent-mint: #72F29A;
+  --color-dark-border: #132F35;
+
+  /* Outer canvas (top banner) */
+  --color-outer-bg: #181316;
+  --color-outer-gold: #C89B67;
+
+  /* Spacing */
+  --section-gap: 6rem;
+
+  /* === BACKWARD COMPAT — old brand scale (routed to light/dark) === */
+  --color-brand-50: #F5F2EC;
+  --color-brand-100: #E6E1D8;
+  --color-brand-200: #C89B67;
+  --color-brand-300: #B8884D;
+  --color-brand-400: #6E6660;
+  --color-brand-500: #231F20;
+  --color-brand-600: #B8884D;
+  --color-brand-700: #A67A3F;
+  --color-brand-800: #2D2420;
+  --color-brand-900: #0D1411;
   --color-brand-950: #042f2e;
 }
 
-:root {
-  --color-brand: #0f766e;
-}
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
-body {
-  @apply bg-brand-50 text-brand-950 antialiased transition-colors duration-300;
+:root {
+  --mode-transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-::selection {
-  background-color: #0d9488;
-  color: white;
+body {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  transition: background-color var(--mode-transition), color var(--mode-transition);
+  -webkit-font-smoothing: antialiased;
 }
+
+.dark body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+::selection {
+  background-color: var(--color-light-accent);
+  color: var(--color-light-bg);
+}
+
+.dark ::selection {
+  background-color: var(--color-dark-accent);
+  color: var(--color-dark-bg);
+}
+
+/* ============================================
+   SCANLINES (dark only)
+   ============================================ */
+.scanlines {
+  display: none;
+}
+.dark .scanlines {
+  display: block;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* ============================================
+   CURSOR BLINK ANIMATION
+   ============================================ */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background: var(--color-dark-accent-green);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.light-only { display: block; }
+.dark-only { display: none; }
+.dark .light-only { display: none; }
+.dark .dark-only { display: block; }
+
+.light-only-inline { display: inline; }
+.dark-only-inline { display: none; }
+.dark .light-only-inline { display: none; }
+.dark .dark-only-inline { display: inline; }
+
+.light-only-grid { display: grid; }
+.dark-only-grid { display: none; }
+.dark .light-only-grid { display: none; }
+.dark .dark-only-grid { display: grid; }

@@ -1,39 +1,55 @@
 import type { Metadata } from "next";
+import { Inter, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { ModeBanner } from "@/components/layout/ModeBanner";
+import { GeoGrid } from "@/components/layout/GeoGrid";
+import { Scanlines } from "@/components/layout/Scanlines";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-cormorant",
+  display: "swap",
+  style: ["normal", "italic"],
+});
+
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Donovan Beaulavon — Automation, Full-stack & AI Systems",
+  title: "Donovan Beaulavon — Tool & IT Coordinator",
   description:
-    "Tool & IT Coordinator avec 2 ans d'expérience chez ChangeNOW. Automatisation des processus métier, intégration IA, développement Python, React, FastAPI, RAG et systèmes agentiques.",
+    "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier — du tableur au déploiement, avec ou sans IA.",
   metadataBase: new URL("https://dtmini.com"),
-  alternates: {
-    canonical: "https://dtmini.com",
-  },
+  alternates: { canonical: "https://dtmini.com" },
   openGraph: {
-    title: "Donovan Beaulavon — Automation, Full-stack & AI Systems",
+    title: "Donovan Beaulavon — Tool & IT Coordinator",
     description:
-      "Tool & IT Coordinator avec 2 ans chez ChangeNOW. Automatisation, IA, développement full-stack et systèmes agentiques.",
+      "Automatisation, IA, développement full-stack et systèmes agentiques.",
     url: "https://dtmini.com",
     siteName: "Donovan Beaulavon",
     type: "profile",
     locale: "fr_FR",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Donovan Beaulavon — Automation, Full-stack & AI Systems",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Donovan Beaulavon — Automation, Full-stack & AI Systems",
+    title: "Donovan Beaulavon — Tool & IT Coordinator",
     description:
-      "Tool & IT Coordinator avec 2 ans chez ChangeNOW. Automatisation, IA, développement full-stack et systèmes agentiques.",
+      "Automatisation, IA, développement full-stack et systèmes agentiques.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -43,42 +59,20 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Donovan Beaulavon",
-  givenName: "Donovan",
-  familyName: "Beaulavon",
-  jobTitle: "Tool & IT Coordinator — Automatisation, Full-stack & IA",
+  jobTitle: "Tool & IT Coordinator",
   description:
-    "Tool & IT Coordinator avec 2 ans d'expérience chez ChangeNOW. Je transforme les processus métier en systèmes automatisés et intelligents.",
+    "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier.",
   url: "https://dtmini.com",
-  email: "donovan.beaulavon@gmail.com",
-  telephone: "+336****5041",
   sameAs: ["https://github.com/Donopot"],
   knowsAbout: [
     "Automatisation",
     "Intelligence Artificielle",
-    "Développement Full-stack",
     "Python",
     "TypeScript",
-    "React",
-    "FastAPI",
+    "Docker",
+    "Airtable",
     "RAG",
-    "LangChain",
-    "No-code",
   ],
-  alumniOf: [
-    { "@type": "EducationalOrganization", name: "Oreegami Academy" },
-    { "@type": "EducationalOrganization", name: "DataScientest — Mines Paris - PSL" },
-  ],
-  worksFor: {
-    "@type": "Organization",
-    name: "DTMini",
-    url: "https://dtmini.com",
-  },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Antony",
-    addressRegion: "Île-de-France",
-    addressCountry: "FR",
-  },
 };
 
 export default function RootLayout({
@@ -87,15 +81,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html
+      lang="fr"
+      suppressHydrationWarning
+      className={`${inter.variable} ${cormorant.variable} ${jetbrains.variable}`}
+    >
       <head>
-        {/* Inter font */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
         {/* Prevent FOUC for dark mode */}
         <script
           dangerouslySetInnerHTML={{
@@ -111,15 +102,17 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* JSON-LD structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-brand-50 dark:bg-brand-950 text-brand-950 dark:text-brand-50 antialiased transition-colors font-sans">
+      <body className="min-h-screen antialiased font-sans">
         <ThemeProvider>
-          <Header />
+          <Scanlines />
+          <GeoGrid />
+          <ModeBanner />
+          <Nav />
           <main className="pt-14">{children}</main>
           <Footer />
         </ThemeProvider>
