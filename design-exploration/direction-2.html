@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTMini — Tech &amp; Data</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        mono: ['"JetBrains Mono"', '"Fira Code"', '"IBM Plex Mono"', 'Menlo', 'monospace'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        matrix:   { 50:'#ecfdf5', 100:'#d1fae5', 200:'#a7f3d0', 300:'#6ee7b7', 400:'#34d399', 500:'#10b981', 600:'#059669', 700:'#047857', 800:'#065f46', 900:'#064e3b' },
+        teal:     { 50:'#f0fdfa', 100:'#ccfbf1', 200:'#99f6e4', 300:'#5eead4', 400:'#2dd4bf', 500:'#14b8a6', 600:'#0d9488', 700:'#0f766e', 800:'#115e59', 900:'#134e4a' },
+        void:     { 50:'#f8fafc', 100:'#f1f5f9', 200:'#e2e8f0', 300:'#cbd5e1', 400:'#94a3b8', 500:'#64748b', 600:'#475569', 700:'#334155', 800:'#1e293b', 900:'#0f172a', 950:'#020617' },
+        neon:     { cyan: '#22d3ee', green: '#4ade80', amber: '#fbbf24', pink: '#f472b6' },
+      },
+      animation: {
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'scan-line': 'scan 6s linear infinite',
+        'terminal-blink': 'blink 1s step-end infinite',
+      },
+      keyframes: {
+        scan: { '0%,100%': { top: '0%' }, '50%': { top: '100%' } },
+        blink: { '0%,100%': { opacity: '1' }, '50%': { opacity: '0' } },
+      }
+    }
+  }
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  /* ═══════════════════════════════════════════════
+     PALETTE — Direction 2 : Tech & Data
+     ═══════════════════════════════════════════════
+     Light mode :
+       Fond principal     → void-50    (#f8fafc)
+       Fond secondaire    → void-100   (#f1f5f9)
+       Texte principal    → void-950   (#020617)
+       Texte secondaire   → void-500   (#64748b)
+       Accent primaire    → teal-700   (#0f766e)
+       Accent secondaire  → matrix-500 (#10b981)
+       Bordures           → void-200   (#e2e8f0)
+
+     Dark mode (par défaut, ambiance terminal) :
+       Fond principal     → void-950   (#020617)
+       Fond secondaire    → void-900   (#0f172a)
+       Texte principal    → matrix-200 (#a7f3d0)
+       Texte secondaire   → matrix-500 (#10b981)
+       Accent primaire    → teal-400   (#2dd4bf)
+       Accent secondaire  → neon-cyan  (#22d3ee)
+       Bordures           → void-700   (#334155)
+
+     Data viz palette :
+       Barres → [teal-500, matrix-400, neon-cyan, neon-green, teal-300]
+     ═══════════════════════════════════════════════ */
+
+  /* Terminal chrome */
+  .terminal-frame {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(14,203,146,0.08), 0 0 120px rgba(45,212,191,0.04);
+  }
+  .terminal-dots { display: flex; gap: 8px; padding: 12px 16px; background: #161b22; border-bottom: 1px solid #21262d; }
+  .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .terminal-dot.red    { background: #ff5f56; }
+  .terminal-dot.yellow { background: #ffbd2e; }
+  .terminal-dot.green  { background: #27c93f; }
+
+  /* Scanlines overlay */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.015) 2px, rgba(0,255,0,0.015) 4px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Glitch hover */
+  .glitch-hover {
+    position: relative;
+  }
+  .glitch-hover:hover::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    text-shadow: -1px 0 #ff00c1;
+    top: 0;
+    color: #0f172a;
+    background: #f8fafc;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: glitch-anim 0.3s infinite linear alternate-reverse;
+    opacity: 0.8;
+  }
+  @keyframes glitch-anim {
+    0% { clip: rect(42px, 9999px, 44px, 0); }
+    100% { clip: rect(12px, 9999px, 18px, 0); }
+  }
+
+  /* Data viz bars */
+  .data-bar {
+    background: linear-gradient(90deg, #0f766e 0%, #2dd4bf 60%, #22d3ee 100%);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 20px rgba(45,212,191,0.3);
+  }
+
+  /* Matrix rain bg */
+  .matrix-bg {
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(15,118,110,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(34,211,238,0.08) 0%, transparent 50%),
+      #020617;
+  }
+</style>
+</head>
+<body class="bg-void-950 text-matrix-200 font-mono antialiased">
+
+<!-- ═══════════════════════════ TERMINAL NAV ═══════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-void-950/90 backdrop-blur-md border-b border-void-700">
+  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-teal-400 text-lg">❯</span>
+      <span class="text-sm text-matrix-300">~/dtmini <span class="text-matrix-500">on</span> <span class="text-teal-400">⎇ main</span></span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-xs text-void-400">
+      <a href="#" class="hover:text-matrix-300 transition-colors flex items-center gap-1"><span class="text-matrix-500">└─</span> projects/</a>
+      <a href="#" class="hover:text-matrix-300 transition-colors flex items-center gap-1"><span class="text-matrix-500">└─</span> services/</a>
+      <a href="#" class="hover:text-matrix-300 transition-colors flex items-center gap-1"><span class="text-matrix-500">└─</span> about.md</a>
+      <a href="#" class="hover:text-matrix-300 transition-colors flex items-center gap-1"><span class="text-matrix-500">└─</span> contact.sh</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<header class="relative min-h-screen matrix-bg scanlines flex flex-col justify-center overflow-hidden">
+  <!-- Background data grid -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #22d3ee 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+  <!-- Floating data viz elements -->
+  <div class="absolute top-20 right-10 opacity-20 hidden lg:block">
+    <svg width="200" height="120" viewBox="0 0 200 120">
+      <polyline points="0,100 40,70 80,80 120,30 160,50 200,10" fill="none" stroke="#2dd4bf" stroke-width="1.5"/>
+      <circle cx="40" cy="70" r="3" fill="#22d3ee"/><circle cx="80" cy="80" r="3" fill="#22d3ee"/>
+      <circle cx="120" cy="30" r="3" fill="#22d3ee"/><circle cx="160" cy="50" r="3" fill="#22d3ee"/>
+    </svg>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto px-6 py-24">
+    <!-- Terminal prompt intro -->
+    <div class="mb-8 font-mono text-sm">
+      <span class="text-teal-400">❯</span>
+      <span class="text-matrix-500 ml-2">cat</span>
+      <span class="text-matrix-300 ml-2">/dtmini/hero.json</span>
+      <span class="inline-block w-2 h-4 bg-teal-400 ml-1 animate-terminal-blink align-middle"></span>
+    </div>
+
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+      <span class="text-matrix-200">{</span><br>
+      <span class="text-teal-400 ml-4 md:ml-8">"name"</span><span class="text-matrix-500">:</span>
+      <span class="text-matrix-100"> "Donovan Beaulavon"</span><span class="text-matrix-500">,</span><br>
+      <span class="text-teal-400 ml-4 md:ml-8">"role"</span><span class="text-matrix-500">:</span>
+      <span class="text-matrix-100"> "Tool & IT Coordinator"</span><span class="text-matrix-500">,</span><br>
+      <span class="text-teal-400 ml-4 md:ml-8">"stack"</span><span class="text-matrix-500">:</span>
+      <span class="text-matrix-100"> ["automation"</span><span class="text-matrix-500">,</span>
+      <span class="text-matrix-100"> "fullstack"</span><span class="text-matrix-500">,</span>
+      <span class="text-matrix-100"> "AI"]</span><br>
+      <span class="text-matrix-200">}</span>
+    </h1>
+
+    <p class="text-void-400 md:text-lg max-w-xl ml-4 mb-10 font-sans leading-relaxed">
+      <span class="text-matrix-500">//</span> Infrastructure engineering &middot; CI/CD pipelines &middot; LLM integrations.<br>
+      <span class="text-matrix-500">//</span> Chaque ligne de code est un levier. Chaque automatisation, une pièce d'horlogerie.
+    </p>
+
+    <div class="flex flex-wrap gap-4 ml-4">
+      <a href="#projects" class="group inline-flex items-center gap-2 bg-teal-700/20 hover:bg-teal-700/40 border border-teal-700/50 hover:border-teal-500 text-teal-300 px-6 py-3 font-mono text-sm transition-all duration-300">
+        <span class="text-teal-400">$</span> ./run --projects
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+      <a href="#" class="group inline-flex items-center gap-2 border border-void-600 hover:border-teal-700 text-void-400 hover:text-matrix-300 px-6 py-3 font-mono text-sm transition-all duration-300">
+        <span class="text-matrix-500">$</span> ssh contact@dtmini.com
+      </a>
+    </div>
+  </div>
+
+  <!-- Scanline animée -->
+  <div class="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-400/30 to-transparent animate-scan-line pointer-events-none z-10"></div>
+</header>
+
+<!-- ═══════════════════════════ PROJET ═══════════════════════════ -->
+<section id="projects" class="py-24 md:py-36 px-6 bg-void-900 relative">
+  <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(circle, #22d3ee 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+  <div class="max-w-7xl mx-auto relative">
+    <!-- Section header -->
+    <div class="terminal-frame mb-16 max-w-sm">
+      <div class="terminal-dots">
+        <div class="terminal-dot red"></div>
+        <div class="terminal-dot yellow"></div>
+        <div class="terminal-dot green"></div>
+      </div>
+      <div class="px-5 py-3 text-xs text-void-400">
+        <span class="text-matrix-500">~/dtmini/projects</span> <span class="text-teal-400">❯</span> ls -la --sort=recent
+      </div>
+    </div>
+
+    <!-- Project card -->
+    <div class="grid md:grid-cols-5 gap-8 md:gap-12">
+      <!-- Data viz column -->
+      <div class="md:col-span-2 space-y-6">
+        <div class="terminal-frame p-6">
+          <p class="text-[10px] uppercase tracking-[0.2em] text-void-500 mb-6 font-sans">Performance metrics</p>
+          <!-- Bar chart -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-[10px] mb-1 font-sans"><span class="text-void-400">Deployment frequency</span><span class="text-teal-400">+340%</span></div>
+              <div class="h-2 bg-void-800 rounded-full overflow-hidden"><div class="data-bar h-full rounded-full" style="width:92%"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[10px] mb-1 font-sans"><span class="text-void-400">Manual tasks reduced</span><span class="text-matrix-400">−73%</span></div>
+              <div class="h-2 bg-void-800 rounded-full overflow-hidden"><div class="data-bar h-full rounded-full" style="width:73%; background: linear-gradient(90deg, #0f766e, #34d399, #4ade80);"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[10px] mb-1 font-sans"><span class="text-void-400">Error rate</span><span class="text-neon-pink">−62%</span></div>
+              <div class="h-2 bg-void-800 rounded-full overflow-hidden"><div class="data-bar h-full rounded-full" style="width:62%; background: linear-gradient(90deg, #0f766e, #f472b6, #22d3ee);"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[10px] mb-1 font-sans"><span class="text-void-400">Uptime SLA</span><span class="text-teal-400">99.97%</span></div>
+              <div class="h-2 bg-void-800 rounded-full overflow-hidden"><div class="data-bar h-full rounded-full" style="width:99.97%; background: linear-gradient(90deg, #0f766e, #2dd4bf);"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stack tags -->
+        <div class="flex flex-wrap gap-2">
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">.py</span>
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">.ts</span>
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">Dockerfile</span>
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">.github/</span>
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">openai</span>
+          <span class="text-[10px] font-sans bg-teal-900/40 text-teal-300 border border-teal-800/50 px-3 py-1.5 rounded font-mono">k8s</span>
+        </div>
+      </div>
+
+      <!-- Project details -->
+      <div class="md:col-span-3">
+        <div class="terminal-frame">
+          <div class="terminal-dots">
+            <div class="terminal-dot red"></div>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+          </div>
+          <div class="p-6 font-mono text-sm leading-relaxed">
+            <p><span class="text-teal-400">❯</span> <span class="text-matrix-500">cat</span> project_autopilot.md</p>
+            <div class="mt-4 space-y-3">
+              <p><span class="text-teal-400">##</span> <span class="text-matrix-200 font-bold">Pipeline d'automatisation intelligente</span></p>
+              <p class="text-void-400 font-sans">
+                Orchestration de workflows complexes mêlant intégration continue, déploiement automatisé et agents IA pour une PME en hyper-croissance.
+              </p>
+              <div class="bg-void-950 rounded p-4 border border-void-700 font-mono text-xs leading-6">
+                <span class="text-void-500"> 1</span> <span class="text-matrix-500">│</span> <span class="text-teal-400">const</span> <span class="text-matrix-300">pipeline</span> <span class="text-matrix-500">=</span> <span class="text-matrix-100">{</span><br>
+                <span class="text-void-500"> 2</span> <span class="text-matrix-500">│</span>   <span class="text-matrix-300">trigger</span><span class="text-matrix-500">:</span> <span class="text-neon-amber">"git_push"</span><span class="text-matrix-500">,</span><br>
+                <span class="text-void-500"> 3</span> <span class="text-matrix-500">│</span>   <span class="text-matrix-300">steps</span><span class="text-matrix-500">:</span> <span class="text-matrix-100">[</span><span class="text-neon-amber">"lint"</span><span class="text-matrix-500">,</span> <span class="text-neon-amber">"test"</span><span class="text-matrix-500">,</span><span class="text-neon-amber">"build"</span><span class="text-matrix-500">,</span> <span class="text-neon-amber">"deploy"</span><span class="text-matrix-100">]</span><span class="text-matrix-500">,</span><br>
+                <span class="text-void-500"> 4</span> <span class="text-matrix-500">│</span>   <span class="text-matrix-300">ai_review</span><span class="text-matrix-500">:</span> <span class="text-neon-cyan">true</span><span class="text-matrix-500">,</span><br>
+                <span class="text-void-500"> 5</span> <span class="text-matrix-500">│</span>   <span class="text-matrix-300">auto_rollback</span><span class="text-matrix-500">:</span> <span class="text-neon-cyan">true</span><br>
+                <span class="text-void-500"> 6</span> <span class="text-matrix-500">│</span> <span class="text-matrix-100">};</span><br>
+                <span class="text-void-500"> 7</span> <span class="text-matrix-500">│</span> <span class="text-void-600 italic">// −73% manual ops · 99.97% uptime</span>
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 transition-colors text-xs font-sans mt-2">
+                read more <span class="text-matrix-500">→</span> case-study.log
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="border-t border-void-700 py-12 px-6 bg-void-950">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 text-xs">
+    <div class="font-mono text-void-500">
+      <span class="text-teal-400">❯</span> echo <span class="text-matrix-300">"© 2026 DTMini — Donovan Beaulavon"</span>
+    </div>
+    <div class="flex gap-6 text-void-500">
+      <span class="text-[10px] font-sans">Direction 2 : Tech &amp; Data</span>
+      <span class="text-void-700">│</span>
+      <span class="text-[10px] font-sans">latency: <span class="text-matrix-400">12ms</span></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

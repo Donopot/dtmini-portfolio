@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTMini — Artisan &amp; Sur-mesure</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        hand: ['"Caveat"', '"Kalam"', 'cursive'],
+        slab: ['"Josefin Slab"', '"Nunito"', 'Georgia', 'serif'],
+        body: ['"Nunito"', '"Inter"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        clay:  { 50:'#fdf8f5', 100:'#faf0e8', 200:'#f2d9c5', 300:'#e6b894', 400:'#d69264', 500:'#c4713e', 600:'#a55830', 700:'#8a4629', 800:'#733c26', 900:'#603322' },
+        sage:  { 50:'#f6f7f4', 100:'#eaede4', 200:'#d6ddcb', 300:'#b8c7a5', 400:'#97ad7c', 500:'#79935e', 600:'#5f7648', 700:'#4a5c3a', 800:'#3d4b31', 900:'#343f2b' },
+        ink:   { 50:'#f5f5f5', 100:'#e5e0dc', 200:'#cbc3bc', 300:'#ada097', 400:'#8c7b70', 500:'#736158', 600:'#5c4c44', 700:'#4a3d36', 800:'#322a25', 900:'#1f1916' },
+        wheat: { 50:'#fefce8', 100:'#fef9c3', 200:'#fef08a', 300:'#fde047', 400:'#facc15', 500:'#eab308', 600:'#ca8a04', 700:'#a16207', 800:'#854d0e', 900:'#713f12' },
+      },
+      backgroundImage: {
+        'paper': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")",
+        'kraft': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E\")",
+      },
+    }
+  }
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Josefin+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+  /* ═══════════════════════════════════════════════
+     PALETTE — Direction 3 : Artisan & Sur-mesure
+     ═══════════════════════════════════════════════
+     Light mode :
+       Fond principal     → clay-50    (#fdf8f5)
+       Fond secondaire    → clay-100   (#faf0e8)
+       Fond carte         → clay-50    avec texture papier
+       Texte principal    → ink-900    (#1f1916)
+       Texte secondaire   → ink-500    (#736158)
+       Accent primaire    → clay-500   (#c4713e) — terre cuite
+       Accent secondaire  → sage-700   (#4a5c3a) — vert artisanal
+       Survol/boutons     → clay-600   (#a55830)
+       Bordures           → ink-200    (#cbc3bc)
+
+     Dark mode :
+       Fond principal     → ink-900    (#1f1916)
+       Fond secondaire    → ink-800    (#322a25)
+       Fond carte         → ink-800    avec texture kraft
+       Texte principal    → clay-100   (#faf0e8)
+       Texte secondaire   → clay-300   (#e6b894)
+       Accent primaire    → clay-400   (#d69264)
+       Accent secondaire  → sage-300   (#b8c7a5)
+       Survol/boutons     → clay-500   (#c4713e)
+       Bordures           → ink-600    (#5c4c44)
+
+     Accents illustratifs :
+       Pointillés, tampons, soulignés manuscrits
+       Teal brand (#0f766e) en rappel discret : pont possible via sage-500
+     ═══════════════════════════════════════════════ */
+
+  body { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); }
+
+  /* Stitched border */
+  .stitch-border {
+    border: 2px dashed #cbc3bc;
+    border-radius: 4px;
+    position: relative;
+  }
+  .dark .stitch-border { border-color: #5c4c44; }
+
+  /* Hand-drawn underline */
+  .hand-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .hand-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 3px;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2,2 Q25,0 50,2 T98,2' stroke='%23c4713e' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+    background-size: 100px 4px;
+    opacity: 0.6;
+  }
+  .dark .hand-underline::after {
+    background: url("data:image/svg+xml,%3Csvg width='100' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2,2 Q25,0 50,2 T98,2' stroke='%23d69264' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+  }
+
+  /* Stamp effect */
+  .stamp {
+    display: inline-block;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border: 3px solid #c4713e;
+    color: #c4713e;
+    padding: 6px 18px;
+    transform: rotate(-3deg);
+    opacity: 0.7;
+    font-size: 12px;
+    background: rgba(196,113,62,0.05);
+  }
+  .dark .stamp { border-color: #d69264; color: #d69264; background: rgba(214,146,100,0.08); }
+
+  /* Craft card */
+  .craft-card {
+    background: #fdf8f5;
+    border: 1px solid #cbc3bc;
+    border-radius: 6px;
+    position: relative;
+    box-shadow:
+      4px 4px 0 rgba(196,113,62,0.1),
+      inset 0 0 80px rgba(196,113,62,0.03);
+  }
+  .dark .craft-card {
+    background: #322a25;
+    border-color: #5c4c44;
+    box-shadow:
+      4px 4px 0 rgba(214,146,100,0.1),
+      inset 0 0 80px rgba(214,146,100,0.03);
+  }
+
+  /* Thread stitch decoration */
+  .thread-stitch {
+    width: 100%;
+    height: 12px;
+    background: repeating-linear-gradient(90deg,
+      transparent 0px, transparent 8px,
+      #c4713e 8px, #c4713e 9px,
+      transparent 9px, transparent 16px);
+    margin: 12px 0;
+  }
+  .dark .thread-stitch {
+    background: repeating-linear-gradient(90deg,
+      transparent 0px, transparent 8px,
+      #d69264 8px, #d69264 9px,
+      transparent 9px, transparent 16px);
+  }
+
+  /* SVG Illustration stamp */
+  .illustration-stamp {
+    transition: transform 0.3s ease;
+  }
+  .illustration-stamp:hover {
+    transform: rotate(2deg) scale(1.02);
+  }
+
+  /* Rough edge hero divider */
+  .rough-divider {
+    height: 24px;
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 6px, #cbc3bc 6px, #cbc3bc 7px),
+      repeating-linear-gradient(45deg, transparent, transparent 6px, #cbc3bc 6px, #cbc3bc 7px);
+    opacity: 0.3;
+  }
+  .dark .rough-divider {
+    background:
+      repeating-linear-gradient(135deg, transparent, transparent 6px, #5c4c44 6px, #5c4c44 7px),
+      repeating-linear-gradient(45deg, transparent, transparent 6px, #5c4c44 6px, #5c4c44 7px);
+  }
+</style>
+</head>
+<body class="bg-clay-50 text-ink-900 dark:bg-ink-900 dark:text-clay-100 font-body antialiased transition-colors duration-500">
+
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="sticky top-0 z-50 bg-clay-50/90 dark:bg-ink-900/90 backdrop-blur-sm border-b border-ink-200 dark:border-ink-600">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo manuscrit -->
+    <a href="#" class="font-hand text-3xl text-clay-500 dark:text-clay-400 tracking-wide hover:text-clay-600 dark:hover:text-clay-300 transition-colors">
+      DTMini
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-slab tracking-wide text-ink-500 dark:text-clay-300">
+      <a href="#" class="hover:text-clay-500 dark:hover:text-clay-400 transition-colors">Projets</a>
+      <a href="#" class="hover:text-clay-500 dark:hover:text-clay-400 transition-colors">Savoir-faire</a>
+      <a href="#" class="hover:text-clay-500 dark:hover:text-clay-400 transition-colors">Histoire</a>
+      <a href="#" class="hover:text-clay-500 dark:hover:text-clay-400 transition-colors">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<header class="min-h-screen flex flex-col justify-center relative overflow-hidden">
+  <!-- Background craft texture -->
+  <div class="absolute inset-0 opacity-30 dark:opacity-15" style="background:
+    radial-gradient(circle at 10% 20%, rgba(196,113,62,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(121,147,94,0.1) 0%, transparent 50%),
+    url(\"data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E\");
+  "></div>
+
+  <div class="relative max-w-4xl mx-auto px-6 py-32">
+    <!-- Stamp intro -->
+    <div class="flex items-center gap-4 mb-8">
+      <span class="stamp">Tool &amp; IT Coordinator</span>
+      <span class="hidden sm:inline text-xs text-ink-400 dark:text-clay-400 font-slab tracking-widest">— Automation · Fullstack · IA</span>
+    </div>
+
+    <!-- SVG-hand-drawn illustration -->
+    <div class="absolute top-16 right-6 w-32 h-32 md:w-48 md:h-48 opacity-40 dark:opacity-25 illustration-stamp hidden md:block">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Gear/craft icon -->
+        <circle cx="60" cy="60" r="50" stroke="#c4713e" stroke-width="2" stroke-dasharray="6 4" fill="none" opacity="0.7"/>
+        <circle cx="60" cy="60" r="32" stroke="#79935e" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.6"/>
+        <circle cx="60" cy="60" r="14" stroke="#c4713e" stroke-width="2" fill="none" opacity="0.5"/>
+        <circle cx="60" cy="60" r="5" fill="#c4713e" opacity="0.4"/>
+        <!-- Hand-drawn spokes -->
+        <line x1="60" y1="28" x2="60" y2="46" stroke="#c4713e" stroke-width="2" opacity="0.6"/>
+        <line x1="60" y1="74" x2="60" y2="92" stroke="#c4713e" stroke-width="2" opacity="0.6"/>
+        <line x1="28" y1="60" x2="46" y2="60" stroke="#c4713e" stroke-width="2" opacity="0.6"/>
+        <line x1="74" y1="60" x2="92" y2="60" stroke="#c4713e" stroke-width="2" opacity="0.6"/>
+      </svg>
+    </div>
+
+    <h1 class="font-slab text-5xl md:text-7xl lg:text-8xl font-light leading-[1.08] mb-6 text-ink-900 dark:text-clay-100">
+      Donovan<br>
+      <span class="font-hand text-6xl md:text-8xl text-clay-500 dark:text-clay-400">Beaulavon</span>
+    </h1>
+
+    <p class="font-body text-lg md:text-xl text-ink-600 dark:text-clay-300 max-w-xl leading-relaxed mb-3">
+      Je <span class="hand-underline">fabrique</span> des outils numériques sur-mesure,<br>
+      comme un artisan façonne ses pièces une à une.
+    </p>
+    <p class="font-body text-sm text-ink-400 dark:text-clay-500 max-w-lg mb-12 italic">
+      Chaque ligne de code est pensée, chaque automatisation est <span class="not-italic font-semibold text-clay-600 dark:text-clay-400">cousue main</span> pour s'adapter parfaitement à votre contexte.
+    </p>
+
+    <div class="flex flex-wrap gap-6">
+      <a href="#" class="group inline-flex items-center gap-3 bg-clay-500 hover:bg-clay-600 dark:bg-clay-400 dark:hover:bg-clay-500 text-white dark:text-ink-900 px-8 py-4 font-slab text-sm tracking-wide transition-all duration-300 shadow-md hover:shadow-lg">
+        Voir l'atelier
+        <span class="text-xl group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+      <a href="#" class="group inline-flex items-center gap-3 border-2 border-ink-300 dark:border-clay-500 text-ink-600 dark:text-clay-400 hover:border-clay-500 dark:hover:border-clay-400 hover:text-clay-600 dark:hover:text-clay-300 px-8 py-4 font-slab text-sm tracking-wide transition-all duration-300">
+        Parlons de votre projet
+      </a>
+    </div>
+
+    <!-- Craft tagline -->
+    <div class="mt-16 flex items-center gap-3">
+      <div class="thread-stitch w-24"></div>
+      <span class="font-hand text-xl text-ink-400 dark:text-clay-500 whitespace-nowrap">Fait main, pensé juste.</span>
+      <div class="thread-stitch w-24"></div>
+    </div>
+  </div>
+
+  <div class="rough-divider"></div>
+</header>
+
+<!-- ═══════════════════════════ PROJET ═══════════════════════════ -->
+<section class="py-24 md:py-36 px-6 bg-clay-50/50 dark:bg-ink-900/50 relative">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="flex items-center gap-4 mb-16">
+      <span class="font-hand text-3xl text-clay-500 dark:text-clay-400">Pièce maîtresse</span>
+      <div class="thread-stitch flex-1 max-w-32"></div>
+    </div>
+
+    <!-- Craft project card -->
+    <div class="craft-card p-8 md:p-12">
+      <div class="grid md:grid-cols-5 gap-8 md:gap-12">
+        <!-- Illustration / visual -->
+        <div class="md:col-span-2 flex items-center justify-center">
+          <div class="relative w-full aspect-square max-w-xs">
+            <!-- SVG craft illustration -->
+            <svg viewBox="0 0 200 200" class="w-full h-full">
+              <!-- Background craft pattern -->
+              <rect width="200" height="200" rx="8" fill="none" stroke="#cbc3bc" stroke-width="1" stroke-dasharray="8 4" class="dark:stroke-ink-600"/>
+              <!-- Gears interlocking -->
+              <circle cx="85" cy="90" r="45" fill="none" stroke="#c4713e" stroke-width="3" stroke-dasharray="10 5" opacity="0.7"/>
+              <circle cx="85" cy="90" r="20" fill="none" stroke="#c4713e" stroke-width="2" opacity="0.5"/>
+              <circle cx="125" cy="120" r="35" fill="none" stroke="#79935e" stroke-width="3" stroke-dasharray="8 4" opacity="0.7"/>
+              <circle cx="125" cy="120" r="15" fill="none" stroke="#79935e" stroke-width="2" opacity="0.5"/>
+              <!-- Connection lines -->
+              <line x1="85" y1="90" x2="125" y2="120" stroke="#736158" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+              <!-- Data nodes -->
+              <circle cx="60" cy="50" r="6" fill="#facc15" opacity="0.6"/><circle cx="150" cy="70" r="5" fill="#facc15" opacity="0.5"/>
+              <circle cx="40" cy="140" r="4" fill="#facc15" opacity="0.4"/><circle cx="170" cy="150" r="5" fill="#facc15" opacity="0.5"/>
+              <!-- Craft labels -->
+              <text x="100" y="185" text-anchor="middle" font-family="Caveat, cursive" font-size="14" fill="#736158" class="dark:fill-clay-400">automatisation sur-mesure</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="md:col-span-3">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="stamp text-[10px]">Fullstack + IA</span>
+          </div>
+          <h3 class="font-slab text-3xl md:text-4xl font-medium mb-4 text-ink-900 dark:text-clay-100">
+            Pipeline d'automatisation intelligente
+          </h3>
+          <p class="text-ink-500 dark:text-clay-300 leading-relaxed mb-6">
+            Un workflow d'orchestration <span class="font-semibold text-ink-700 dark:text-clay-200">taillé à la main</span> pour une PME en croissance rapide. CI/CD, agents IA, et déploiements automatisés — le tout <span class="hand-underline">pensé pour durer</span>.
+          </p>
+
+          <!-- Craft tags -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="font-hand text-lg text-clay-600 dark:text-clay-400 bg-clay-100 dark:bg-ink-700 px-4 py-1 rounded-full border border-clay-300 dark:border-ink-500">Python</span>
+            <span class="font-hand text-lg text-clay-600 dark:text-clay-400 bg-clay-100 dark:bg-ink-700 px-4 py-1 rounded-full border border-clay-300 dark:border-ink-500">Docker</span>
+            <span class="font-hand text-lg text-clay-600 dark:text-clay-400 bg-clay-100 dark:bg-ink-700 px-4 py-1 rounded-full border border-clay-300 dark:border-ink-500">CI/CD</span>
+            <span class="font-hand text-lg text-clay-600 dark:text-clay-400 bg-clay-100 dark:bg-ink-700 px-4 py-1 rounded-full border border-clay-300 dark:border-ink-500">LLMs</span>
+          </div>
+
+          <!-- Metric highlights -->
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="text-center">
+              <span class="font-slab text-2xl font-bold text-clay-500 dark:text-clay-400">−73%</span>
+              <p class="text-xs text-ink-400 dark:text-clay-500 mt-1">tâches manuelles</p>
+            </div>
+            <div class="text-center border-l border-r border-ink-200 dark:border-ink-600">
+              <span class="font-slab text-2xl font-bold text-clay-500 dark:text-clay-400">8 sem.</span>
+              <p class="text-xs text-ink-400 dark:text-clay-500 mt-1">de chantier</p>
+            </div>
+            <div class="text-center">
+              <span class="font-slab text-2xl font-bold text-clay-500 dark:text-clay-400">99.9%</span>
+              <p class="text-xs text-ink-400 dark:text-clay-500 mt-1">uptime</p>
+            </div>
+          </div>
+
+          <a href="#" class="group inline-flex items-center gap-2 font-slab text-sm text-clay-600 dark:text-clay-400 hover:text-clay-500 dark:hover:text-clay-300 transition-colors">
+            Lire le carnet de bord
+            <span class="font-hand text-xl group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Thread footer -->
+      <div class="thread-stitch mt-10"></div>
+
+      <!-- Handwritten note -->
+      <p class="font-hand text-lg text-ink-400 dark:text-clay-500 mt-3 text-center italic">
+        « Fait avec soin, livré avec fierté. »
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="border-t border-ink-200 dark:border-ink-600 py-12 px-6 bg-clay-100/60 dark:bg-ink-800/60">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="font-slab text-sm text-ink-400 dark:text-clay-500">
+      © 2026 <span class="font-hand text-xl text-clay-500 dark:text-clay-400">DTMini</span> — Donovan Beaulavon
+    </p>
+    <div class="flex items-center gap-4">
+      <span class="font-hand text-lg text-ink-300 dark:text-clay-600">Direction 3 : Artisan &amp; Sur-mesure</span>
+      <div class="thread-stitch w-12"></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
