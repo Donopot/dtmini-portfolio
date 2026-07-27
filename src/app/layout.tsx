@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     siteName: "Donovan Beaulavon",
     type: "profile",
     locale: "fr_FR",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Donovan Beaulavon — Tool & IT Coordinator",
     description:
       "Automatisation, IA, développement full-stack et systèmes agentiques.",
-    images: ["/og-image.png"],
+    images: ["/og-image.svg"],
   },
   robots: { index: true, follow: true },
 };
