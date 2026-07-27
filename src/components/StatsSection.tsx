@@ -55,7 +55,7 @@ function AnimatedCounter({ value, suffix, prefix = "" }: { value: number; suffix
 
 export default function StatsSection() {
   return (
-    <section className="py-16 sm:py-20 bg-white dark:bg-gray-800 border-y border-gray-100 dark:border-gray-800">
+    <section className="py-16 sm:py-20 bg-brand-50 dark:bg-brand-900 border-y border-brand-100 dark:border-brand-900">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, i) => (
@@ -68,7 +68,7 @@ export default function StatsSection() {
               className="text-center"
             >
               <AnimatedCounter value={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
-              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 font-medium">
+              <p className="mt-2 text-sm text-brand-700 dark:text-brand-500 font-medium">
                 {stat.label}
               </p>
             </motion.div>

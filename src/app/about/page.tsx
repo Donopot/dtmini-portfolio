@@ -13,10 +13,10 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-50 to-white px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
+          <h1 className="text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-5xl">
             À propos de moi
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-brand-700 dark:text-brand-400">
             Le parcours d&apos;un passionné qui a transformé sa curiosité tech
             en expertise professionnelle.
           </p>
@@ -28,18 +28,18 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start">
             {/* Photo placeholder */}
-            <div className="flex h-48 w-48 flex-shrink-0 items-center justify-center rounded-2xl bg-gray-200 text-sm text-gray-500">
+            <div className="flex h-48 w-48 flex-shrink-0 items-center justify-center rounded-2xl bg-brand-200 text-sm text-brand-700">
               [Photo Donovan Beaulavon]
             </div>
 
             <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">
                 Donovan Beaulavon
               </h2>
               <p className="mt-1 text-brand-700 font-medium">
                 Automatisation & IA · Full-stack & IA agentique
               </p>
-              <p className="mt-1 text-sm text-gray-500">
+              <p className="mt-1 text-sm text-brand-700">
                 Paris, France · Disponible en freelance ou CDI
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
@@ -47,7 +47,7 @@ export default function AboutPage() {
                   href="https://github.com/Donopot"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-gray-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-gray-700"
+                  className="rounded-full bg-brand-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-800"
                 >
                   GitHub ↗
                 </a>
@@ -55,7 +55,7 @@ export default function AboutPage() {
                   href="https://www.linkedin.com/in/donovan-beaulavon"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-gray-300 px-4 py-2 text-xs font-semibold text-gray-700 dark:text-gray-200 transition hover:bg-gray-50 dark:bg-gray-800"
+                  className="rounded-full border border-brand-300 px-4 py-2 text-xs font-semibold text-brand-800 dark:text-brand-200 transition hover:bg-brand-100 dark:bg-brand-900"
                 >
                   LinkedIn ↗
                 </a>
@@ -66,10 +66,10 @@ export default function AboutPage() {
       </section>
 
       {/* Narration */}
-      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16">
+      <section className="bg-brand-100 dark:bg-brand-900 px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Mon parcours</h2>
-          <div className="mt-6 space-y-6 text-gray-700 dark:text-gray-200 leading-relaxed">
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">Mon parcours</h2>
+          <div className="mt-6 space-y-6 text-brand-800 dark:text-brand-200 leading-relaxed">
             <div>
               <h3 className="text-lg font-semibold text-brand-700">
                 🎓 Du commerce à la data
@@ -127,7 +127,7 @@ export default function AboutPage() {
       {/* Valeurs */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Ce qui me motive</h2>
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">Ce qui me motive</h2>
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
               {
@@ -148,11 +148,11 @@ export default function AboutPage() {
             ].map((v) => (
               <div
                 key={v.title}
-                className="rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6 text-center"
+                className="rounded-xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6 text-center"
               >
                 <div className="text-3xl">{v.emoji}</div>
-                <h3 className="mt-3 font-semibold text-gray-900 dark:text-white">{v.title}</h3>
-                <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{v.desc}</p>
+                <h3 className="mt-3 font-semibold text-brand-950 dark:text-brand-50">{v.title}</h3>
+                <p className="mt-1 text-sm text-brand-700 dark:text-brand-400">{v.desc}</p>
               </div>
             ))}
           </div>
@@ -160,7 +160,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-700 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-white">
         <h2 className="text-2xl font-bold sm:text-3xl">Travaillons ensemble</h2>
         <p className="mx-auto mt-2 max-w-lg text-brand-100">
           Vous avez un projet d&apos;automatisation, de développement ou d&apos;IA ?
@@ -169,13 +169,13 @@ export default function AboutPage() {
         <div className="mt-6 flex justify-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-white dark:bg-gray-900 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-gray-100 dark:bg-gray-800"
+            className="rounded-full bg-brand-50 dark:bg-brand-950 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-200 dark:bg-brand-900"
           >
             Me contacter
           </Link>
           <Link
             href="/"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
           >
             Accueil
           </Link>
@@ -183,7 +183,7 @@ export default function AboutPage() {
       </section>
 
       <div className="text-center pb-8">
-        <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
+        <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
           ← Retour à l&apos;accueil
         </Link>
       </div>

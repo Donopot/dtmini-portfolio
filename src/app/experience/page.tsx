@@ -70,10 +70,10 @@ export default function ExperiencePage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-50 to-white px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
+          <h1 className="text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-5xl">
             Mon expérience
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-brand-700 dark:text-brand-400">
             3 ans à transformer les processus chez ChangeNOW, le sommet mondial
             de l&apos;innovation pour la planète.
           </p>
@@ -83,8 +83,8 @@ export default function ExperiencePage() {
       {/* Expériences */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">ChangeNOW</h2>
-          <p className="mt-1 text-sm text-gray-500">
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">ChangeNOW</h2>
+          <p className="mt-1 text-sm text-brand-700">
             Sommet international — 30 000+ participants — Paris
           </p>
 
@@ -97,8 +97,8 @@ export default function ExperiencePage() {
                 <span className="text-xs font-semibold uppercase tracking-wide text-brand-700">
                   {exp.period}
                 </span>
-                <h3 className="mt-1 text-xl font-bold text-gray-900 dark:text-white">{exp.title}</h3>
-                <p className="text-sm text-gray-500">
+                <h3 className="mt-1 text-xl font-bold text-brand-950 dark:text-brand-50">{exp.title}</h3>
+                <p className="text-sm text-brand-700">
                   {exp.company} ·{" "}
                   <span
                     className={`inline-block rounded-full px-2 py-0.5 text-xs font-semibold ${
@@ -115,7 +115,7 @@ export default function ExperiencePage() {
                   {exp.description.map((desc, j) => (
                     <li key={j} className="flex items-start gap-2">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-400" />
-                      <span className="text-sm text-gray-700 dark:text-gray-200">{desc}</span>
+                      <span className="text-sm text-brand-800 dark:text-brand-200">{desc}</span>
                     </li>
                   ))}
                 </ul>
@@ -137,21 +137,21 @@ export default function ExperiencePage() {
       </section>
 
       {/* Formations */}
-      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16">
+      <section className="bg-brand-100 dark:bg-brand-900 px-6 py-16">
         <div className="mx-auto max-w-4xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Formation</h2>
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">Formation</h2>
           <div className="mt-8 space-y-8">
             {formations.map((f, i) => (
               <div
                 key={i}
-                className="rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6"
+                className="rounded-xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6"
               >
                 <span className="text-xs font-semibold uppercase tracking-wide text-brand-700">
                   {f.period}
                 </span>
-                <h3 className="mt-1 font-bold text-gray-900 dark:text-white">{f.title}</h3>
-                <p className="text-sm text-gray-500">{f.school}</p>
-                <p className="mt-2 text-sm text-gray-700 dark:text-gray-200">{f.description}</p>
+                <h3 className="mt-1 font-bold text-brand-950 dark:text-brand-50">{f.title}</h3>
+                <p className="text-sm text-brand-700">{f.school}</p>
+                <p className="mt-2 text-sm text-brand-800 dark:text-brand-200">{f.description}</p>
               </div>
             ))}
           </div>
@@ -162,14 +162,14 @@ export default function ExperiencePage() {
       <section className="px-6 py-16 text-center">
         <Link
           href="/about"
-          className="rounded-full bg-brand-700 px-8 py-3 text-sm font-semibold text-white shadow transition hover:bg-brand-700"
+          className="rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow transition hover:bg-brand-600"
         >
           En savoir plus sur mon parcours
         </Link>
       </section>
 
       <div className="text-center pb-8">
-        <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
+        <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
           ← Retour à l&apos;accueil
         </Link>
       </div>

@@ -68,10 +68,10 @@ export default function AutomationPage() {
           <span className="inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700">
             Parcours 1
           </span>
-          <h1 className="mt-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-5xl">
             Automatisation & IA métier
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-brand-700 dark:text-brand-400">
             Je conçois des workflows intelligents qui connectent vos outils, exploitent
             l&apos;IA générative et libèrent vos équipes des tâches répétitives.
           </p>
@@ -81,8 +81,8 @@ export default function AutomationPage() {
       {/* Intro */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Ma philosophie</h2>
-          <div className="mt-4 space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">Ma philosophie</h2>
+          <div className="mt-4 space-y-4 text-brand-700 dark:text-brand-400 leading-relaxed">
             <p>
               L&apos;automatisation n&apos;est pas une fin en soi — c&apos;est un levier.
               Mon approche consiste à <strong>identifier les goulots d&apos;étranglement</strong>,
@@ -100,14 +100,14 @@ export default function AutomationPage() {
       </section>
 
       {/* Compétences */}
-      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16">
+      <section className="bg-brand-100 dark:bg-brand-900 px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-white">Compétences</h2>
+          <h2 className="text-center text-2xl font-bold text-brand-950 dark:text-brand-50">Compétences</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {skills.map((group) => (
               <div
                 key={group.category}
-                className="rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6"
+                className="rounded-xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6"
               >
                 <h3 className="font-semibold text-brand-700">{group.category}</h3>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -129,27 +129,27 @@ export default function AutomationPage() {
       {/* Études de cas */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+          <h2 className="text-center text-2xl font-bold text-brand-950 dark:text-brand-50 sm:text-3xl">
             Études de cas
           </h2>
-          <p className="mt-2 text-center text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-center text-brand-700 dark:text-brand-400">
             Trois projets concrets déployés chez ChangeNOW
           </p>
           <div className="mt-12 space-y-12">
             {caseStudies.map((cs, i) => (
               <article
                 key={cs.title}
-                className="rounded-2xl border border-gray-200 bg-white dark:bg-gray-900 p-6 shadow-sm sm:p-10"
+                className="rounded-2xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6 shadow-sm sm:p-10"
               >
                 <div className="flex items-start justify-between flex-wrap gap-4">
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-wider text-brand-700">
                       Étude de cas #{i + 1}
                     </span>
-                    <h3 className="mt-1 text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
+                    <h3 className="mt-1 text-xl font-bold text-brand-950 dark:text-brand-50 sm:text-2xl">
                       {cs.title}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">{cs.subtitle}</p>
+                    <p className="mt-1 text-sm text-brand-700">{cs.subtitle}</p>
                   </div>
                 </div>
 
@@ -158,7 +158,7 @@ export default function AutomationPage() {
                     <h4 className="text-sm font-semibold uppercase tracking-wide text-red-600">
                       Problème
                     </h4>
-                    <p className="mt-1 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                    <p className="mt-1 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
                       {cs.problem}
                     </p>
                   </div>
@@ -166,21 +166,21 @@ export default function AutomationPage() {
                     <h4 className="text-sm font-semibold uppercase tracking-wide text-green-600">
                       Solution
                     </h4>
-                    <p className="mt-1 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                    <p className="mt-1 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
                       {cs.solution}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-6">
-                  <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-500">
+                  <h4 className="text-sm font-semibold uppercase tracking-wide text-brand-700">
                     Stack technique
                   </h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {cs.stack.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200"
+                        className="rounded-full bg-brand-200 dark:bg-brand-900 px-3 py-1 text-xs font-medium text-brand-800 dark:text-brand-200"
                       >
                         {t}
                       </span>
@@ -201,7 +201,7 @@ export default function AutomationPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-700 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-white">
         <h2 className="text-2xl font-bold sm:text-3xl">
           Un processus à automatiser ?
         </h2>
@@ -211,13 +211,13 @@ export default function AutomationPage() {
         <div className="mt-6 flex justify-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-white dark:bg-gray-900 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-gray-100 dark:bg-gray-800"
+            className="rounded-full bg-brand-50 dark:bg-brand-950 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-200 dark:bg-brand-900"
           >
             Me contacter
           </Link>
           <Link
             href="/cv/automation"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
           >
             Voir mon CV
           </Link>
@@ -225,7 +225,7 @@ export default function AutomationPage() {
       </section>
 
       <div className="text-center py-8">
-        <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
+        <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
           ← Retour à l&apos;accueil
         </Link>
       </div>

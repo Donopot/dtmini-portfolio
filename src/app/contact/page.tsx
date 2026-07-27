@@ -12,10 +12,10 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gradient-to-br from-brand-50 to-white">
       <div className="mx-auto max-w-2xl px-6 py-16 sm:py-24">
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-4xl">
             Me contacter
           </h1>
-          <p className="mt-3 text-gray-600 dark:text-gray-300">
+          <p className="mt-3 text-brand-700 dark:text-brand-400">
             Vous avez un projet d&apos;automatisation, de développement ou d&apos;IA ?
             Remplissez ce formulaire, je vous réponds sous 48h.
           </p>
@@ -24,7 +24,7 @@ export default function ContactPage() {
         <form
           action="https://formspree.io/f/your-form-id"
           method="POST"
-          className="mt-10 space-y-6 rounded-2xl bg-white dark:bg-gray-900 p-8 shadow-sm"
+          className="mt-10 space-y-6 rounded-2xl bg-brand-50 dark:bg-brand-950 p-8 shadow-sm"
         >
           {/* Honeypot */}
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
@@ -34,7 +34,7 @@ export default function ContactPage() {
 
           {/* Nom */}
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <label htmlFor="name" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Nom <span className="text-red-500">*</span>
             </label>
             <input
@@ -43,28 +43,28 @@ export default function ContactPage() {
               name="name"
               required
               minLength={2}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               placeholder="Votre nom"
             />
           </div>
 
           {/* Entreprise */}
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <label htmlFor="company" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Entreprise
             </label>
             <input
               type="text"
               id="company"
               name="company"
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               placeholder="Nom de votre entreprise (optionnel)"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <label htmlFor="email" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -72,21 +72,21 @@ export default function ContactPage() {
               id="email"
               name="email"
               required
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
               placeholder="vous@entreprise.com"
             />
           </div>
 
           {/* Type de demande */}
           <div>
-            <label htmlFor="type" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <label htmlFor="type" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Type de demande <span className="text-red-500">*</span>
             </label>
             <select
               id="type"
               name="type"
               required
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
             >
               <option value="">— Sélectionnez —</option>
               <option value="recrutement">Recrutement (CDI / Freelance)</option>
@@ -99,7 +99,7 @@ export default function ContactPage() {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            <label htmlFor="message" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Message <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -108,7 +108,7 @@ export default function ContactPage() {
               required
               minLength={20}
               rows={5}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 resize-y"
+              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 resize-y"
               placeholder="Décrivez votre projet ou votre besoin…"
             />
           </div>
@@ -120,9 +120,9 @@ export default function ContactPage() {
               id="consent"
               name="consent"
               required
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-700 accent-brand-600"
+              className="mt-1 h-4 w-4 rounded border-brand-300 text-brand-700 accent-brand-600"
             />
-            <label htmlFor="consent" className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
+            <label htmlFor="consent" className="text-xs text-brand-700 dark:text-brand-400 leading-relaxed">
               J&apos;accepte que mes données personnelles soient collectées et traitées
               conformément à la{" "}
               <Link
@@ -140,11 +140,11 @@ export default function ContactPage() {
           <div>
             <button
               type="submit"
-              className="w-full rounded-full bg-brand-700 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer"
+              className="w-full rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer"
             >
               Envoyer le message
             </button>
-            <p className="mt-2 text-center text-xs text-gray-500">
+            <p className="mt-2 text-center text-xs text-brand-700">
               Réponse sous 48h ouvrées. Aucun spam.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function ContactPage() {
 
         {/* Alternative */}
         <div className="mt-10 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-brand-700">
             Vous pouvez aussi me contacter directement par email :{" "}
             <a
               href="mailto:donovan@dtmini.com"
@@ -164,7 +164,7 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
+          <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
             ← Retour à l&apos;accueil
           </Link>
         </div>

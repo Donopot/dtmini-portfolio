@@ -70,10 +70,10 @@ export default function DevelopmentPage() {
           <span className="inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-700">
             Parcours 2
           </span>
-          <h1 className="mt-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-5xl">
             Full-stack & IA agentique
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-brand-700 dark:text-brand-400">
             Je construis des applications web modernes et des systèmes IA autonomes,
             du frontend React au backend Python, du prototype au déploiement.
           </p>
@@ -83,8 +83,8 @@ export default function DevelopmentPage() {
       {/* Intro */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Mon approche</h2>
-          <div className="mt-4 space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+          <h2 className="text-2xl font-bold text-brand-950 dark:text-brand-50">Mon approche</h2>
+          <div className="mt-4 space-y-4 text-brand-700 dark:text-brand-400 leading-relaxed">
             <p>
               Développeur full-stack orienté <strong>produit</strong>, je construis des
               applications de bout en bout : design de l&apos;API, modélisation de la base
@@ -101,14 +101,14 @@ export default function DevelopmentPage() {
       </section>
 
       {/* Compétences */}
-      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16">
+      <section className="bg-brand-100 dark:bg-brand-900 px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-white">Compétences</h2>
+          <h2 className="text-center text-2xl font-bold text-brand-950 dark:text-brand-50">Compétences</h2>
           <div className="mt-8 grid gap-6 sm:grid-cols-2">
             {skills.map((group) => (
               <div
                 key={group.category}
-                className="rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6"
+                className="rounded-xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6"
               >
                 <h3 className="font-semibold text-brand-700">{group.category}</h3>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -130,24 +130,24 @@ export default function DevelopmentPage() {
       {/* Projets */}
       <section className="px-6 py-20">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+          <h2 className="text-center text-2xl font-bold text-brand-950 dark:text-brand-50 sm:text-3xl">
             Projets open-source
           </h2>
-          <p className="mt-2 text-center text-gray-600 dark:text-gray-300">
+          <p className="mt-2 text-center text-brand-700 dark:text-brand-400">
             Code public, démos disponibles, contributions bienvenues
           </p>
           <div className="mt-12 space-y-10">
             {projects.map((proj) => (
               <article
                 key={proj.title}
-                className="rounded-2xl border border-gray-200 bg-white dark:bg-gray-900 p-6 shadow-sm sm:p-10"
+                className="rounded-2xl border border-brand-200 bg-brand-50 dark:bg-brand-950 p-6 shadow-sm sm:p-10"
               >
                 <div className="flex items-start justify-between flex-wrap gap-4">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
+                    <h3 className="text-xl font-bold text-brand-950 dark:text-brand-50 sm:text-2xl">
                       {proj.title}
                     </h3>
-                    <p className="mt-1 text-sm text-gray-500">{proj.summary}</p>
+                    <p className="mt-1 text-sm text-brand-700">{proj.summary}</p>
                   </div>
                   <span
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
@@ -160,24 +160,24 @@ export default function DevelopmentPage() {
                   </span>
                 </div>
 
-                <p className="mt-4 text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                <p className="mt-4 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
                   {proj.description}
                 </p>
 
                 {/* Placeholder image */}
-                <div className="mt-6 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 h-48 text-sm text-gray-500">
+                <div className="mt-6 flex items-center justify-center rounded-lg bg-brand-200 dark:bg-brand-900 h-48 text-sm text-brand-700">
                   [Capture d&apos;écran — {proj.title}]
                 </div>
 
                 <div className="mt-4">
-                  <h4 className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  <h4 className="text-xs font-semibold uppercase tracking-wide text-brand-700">
                     Stack
                   </h4>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {proj.stack.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200"
+                        className="rounded-full bg-brand-200 dark:bg-brand-900 px-3 py-1 text-xs font-medium text-brand-800 dark:text-brand-200"
                       >
                         {t}
                       </span>
@@ -190,14 +190,14 @@ export default function DevelopmentPage() {
                     href={proj.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2 text-xs font-semibold text-white transition hover:bg-gray-700"
+                    className="inline-flex items-center gap-2 rounded-full bg-brand-950 px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand-800"
                   >
                     <span>GitHub</span>
                     <span>↗</span>
                   </a>
                   <Link
                     href={proj.route}
-                    className="rounded-full border border-gray-300 px-4 py-2 text-xs font-semibold text-gray-700 dark:text-gray-200 transition hover:bg-gray-50 dark:bg-gray-800"
+                    className="rounded-full border border-brand-300 px-4 py-2 text-xs font-semibold text-brand-800 dark:text-brand-200 transition hover:bg-brand-100 dark:bg-brand-900"
                   >
                     Voir le détail →
                   </Link>
@@ -209,7 +209,7 @@ export default function DevelopmentPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-700 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-white">
         <h2 className="text-2xl font-bold sm:text-3xl">
           Un projet de développement ?
         </h2>
@@ -219,13 +219,13 @@ export default function DevelopmentPage() {
         <div className="mt-6 flex justify-center gap-4">
           <Link
             href="/contact"
-            className="rounded-full bg-white dark:bg-gray-900 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-gray-100 dark:bg-gray-800"
+            className="rounded-full bg-brand-50 dark:bg-brand-950 px-8 py-3 text-sm font-semibold text-brand-700 transition hover:bg-brand-200 dark:bg-brand-900"
           >
             Me contacter
           </Link>
           <Link
             href="/cv/development"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
+            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
           >
             Voir mon CV
           </Link>
@@ -233,7 +233,7 @@ export default function DevelopmentPage() {
       </section>
 
       <div className="text-center py-8">
-        <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
+        <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
           ← Retour à l&apos;accueil
         </Link>
       </div>

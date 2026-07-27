@@ -15,7 +15,7 @@ interface CTASectionProps {
 
 export default function CTASection({ title, description, buttons }: CTASectionProps) {
   return (
-    <section className="py-16 sm:py-20 bg-brand-700">
+    <section className="py-16 sm:py-20 bg-brand-600">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-4">
           {title}
@@ -34,7 +34,7 @@ export default function CTASection({ title, description, buttons }: CTASectionPr
                 <Link
                   key={btn.label}
                   href={btn.href}
-                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white dark:bg-gray-900 hover:text-brand-700 transition-colors"
+                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 text-sm font-semibold text-white hover:bg-brand-50 dark:bg-brand-950 hover:text-brand-700 transition-colors"
                 >
                   {btn.label}
                 </Link>
@@ -42,7 +42,7 @@ export default function CTASection({ title, description, buttons }: CTASectionPr
                 <Link
                   key={btn.label}
                   href={btn.href}
-                  className="inline-flex items-center rounded-lg bg-white dark:bg-gray-900 px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors shadow-sm"
+                  className="inline-flex items-center rounded-lg bg-brand-50 dark:bg-brand-950 px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors shadow-sm"
                 >
                   {btn.label}
                 </Link>

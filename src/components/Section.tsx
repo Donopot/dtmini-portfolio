@@ -18,7 +18,7 @@ export default function Section({ id, title, className = "", children }: Section
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {title && (
-          <h2 className="mb-10 text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h2 className="mb-10 text-3xl sm:text-4xl font-bold tracking-tight text-brand-950 dark:text-brand-50">
             {title}
           </h2>
         )}
