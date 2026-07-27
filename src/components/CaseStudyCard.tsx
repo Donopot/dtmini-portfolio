@@ -16,10 +16,10 @@ export default function CaseStudyCard({
   resultat,
 }: CaseStudyCardProps) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-200 motion-reduce:transition-none">
-      <h3 className="text-xl font-semibold text-gray-900 mb-5">{title}</h3>
+    <div className="rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-200 motion-reduce:transition-none">
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-5">{title}</h3>
 
-      <div className="space-y-4 text-sm text-gray-600">
+      <div className="space-y-4 text-sm text-gray-600 dark:text-gray-300">
         {/* Contexte */}
         <div className="flex gap-3">
           <span className="mt-0.5 flex-shrink-0 rounded-full bg-brand-100 p-1 text-brand-700">
@@ -28,7 +28,7 @@ export default function CaseStudyCard({
             </svg>
           </span>
           <div>
-            <p className="font-semibold text-gray-800 mb-0.5">Contexte</p>
+            <p className="font-semibold text-gray-800 dark:text-gray-100 mb-0.5">Contexte</p>
             <p className="leading-relaxed">{contexte}</p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function CaseStudyCard({
             </svg>
           </span>
           <div>
-            <p className="font-semibold text-gray-800 mb-0.5">Intervention</p>
+            <p className="font-semibold text-gray-800 dark:text-gray-100 mb-0.5">Intervention</p>
             <p className="leading-relaxed">{intervention}</p>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function CaseStudyCard({
             </svg>
           </span>
           <div>
-            <p className="font-semibold text-gray-800 mb-0.5">Résultat</p>
+            <p className="font-semibold text-gray-800 dark:text-gray-100 mb-0.5">Résultat</p>
             <p className="leading-relaxed">{resultat}</p>
           </div>
         </div>

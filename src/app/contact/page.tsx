@@ -12,10 +12,10 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gradient-to-br from-brand-50 to-white">
       <div className="mx-auto max-w-2xl px-6 py-16 sm:py-24">
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
             Me contacter
           </h1>
-          <p className="mt-3 text-gray-600">
+          <p className="mt-3 text-gray-600 dark:text-gray-300">
             Vous avez un projet d&apos;automatisation, de développement ou d&apos;IA ?
             Remplissez ce formulaire, je vous réponds sous 48h.
           </p>
@@ -24,7 +24,7 @@ export default function ContactPage() {
         <form
           action="https://formspree.io/f/your-form-id"
           method="POST"
-          className="mt-10 space-y-6 rounded-2xl bg-white p-8 shadow-sm"
+          className="mt-10 space-y-6 rounded-2xl bg-white dark:bg-gray-900 p-8 shadow-sm"
         >
           {/* Honeypot */}
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
@@ -34,7 +34,7 @@ export default function ContactPage() {
 
           {/* Nom */}
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-gray-700">
+            <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
               Nom <span className="text-red-500">*</span>
             </label>
             <input
@@ -50,7 +50,7 @@ export default function ContactPage() {
 
           {/* Entreprise */}
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold text-gray-700">
+            <label htmlFor="company" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
               Entreprise
             </label>
             <input
@@ -64,7 +64,7 @@ export default function ContactPage() {
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-700">
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
               Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -79,7 +79,7 @@ export default function ContactPage() {
 
           {/* Type de demande */}
           <div>
-            <label htmlFor="type" className="block text-sm font-semibold text-gray-700">
+            <label htmlFor="type" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
               Type de demande <span className="text-red-500">*</span>
             </label>
             <select
@@ -99,7 +99,7 @@ export default function ContactPage() {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-gray-700">
+            <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
               Message <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -120,14 +120,14 @@ export default function ContactPage() {
               id="consent"
               name="consent"
               required
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-600 accent-brand-600"
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-brand-700 accent-brand-600"
             />
-            <label htmlFor="consent" className="text-xs text-gray-600 leading-relaxed">
+            <label htmlFor="consent" className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
               J&apos;accepte que mes données personnelles soient collectées et traitées
               conformément à la{" "}
               <Link
                 href="/legal/privacy"
-                className="text-brand-600 underline hover:text-brand-800"
+                className="text-brand-700 underline hover:text-brand-800"
               >
                 politique de confidentialité
               </Link>
@@ -140,11 +140,11 @@ export default function ContactPage() {
           <div>
             <button
               type="submit"
-              className="w-full rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer"
+              className="w-full rounded-full bg-brand-700 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer"
             >
               Envoyer le message
             </button>
-            <p className="mt-2 text-center text-xs text-gray-400">
+            <p className="mt-2 text-center text-xs text-gray-500">
               Réponse sous 48h ouvrées. Aucun spam.
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
             Vous pouvez aussi me contacter directement par email :{" "}
             <a
               href="mailto:donovan@dtmini.com"
-              className="font-medium text-brand-600 hover:text-brand-800 underline"
+              className="font-medium text-brand-700 hover:text-brand-800 underline"
             >
               donovan@dtmini.com
             </a>
@@ -164,7 +164,7 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-sm text-gray-500 hover:text-brand-600 underline">
+          <Link href="/" className="text-sm text-gray-500 hover:text-brand-700 underline">
             ← Retour à l&apos;accueil
           </Link>
         </div>

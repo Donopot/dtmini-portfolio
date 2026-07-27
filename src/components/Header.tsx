@@ -37,12 +37,12 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-100">
       <nav className="mx-auto max-w-6xl flex items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-brand-700 hover:text-brand-600 transition-colors"
+          className="text-lg font-bold tracking-tight text-brand-700 hover:text-brand-700 transition-colors"
         >
           Donovan Beaulavon
         </Link>
@@ -53,7 +53,7 @@ export default function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="px-3 py-2 rounded-md text-gray-700 hover:text-brand-700 hover:bg-brand-50 transition-colors"
+                className="px-3 py-2 rounded-md text-gray-700 dark:text-gray-200 hover:text-brand-700 hover:bg-brand-50 transition-colors"
               >
                 {link.label}
               </Link>
@@ -65,7 +65,7 @@ export default function Header() {
         <button
           type="button"
           onClick={toggle}
-          className="md:hidden p-2 rounded-md text-gray-700 hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-colors"
+          className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-colors"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
         >
@@ -104,13 +104,13 @@ export default function Header() {
           ...(prefersReducedMotion() && { transition: "none" }),
         }}
       >
-        <ul className="flex flex-col gap-1 px-4 pb-4 pt-1 bg-white border-t border-gray-100 text-sm font-medium">
+        <ul className="flex flex-col gap-1 px-4 pb-4 pt-1 bg-white dark:bg-gray-900 border-t border-gray-100 text-sm font-medium">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={close}
-                className="block px-3 py-2.5 rounded-md text-gray-700 hover:text-brand-700 hover:bg-brand-50 transition-colors"
+                className="block px-3 py-2.5 rounded-md text-gray-700 dark:text-gray-200 hover:text-brand-700 hover:bg-brand-50 transition-colors"
               >
                 {link.label}
               </Link>

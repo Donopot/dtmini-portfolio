@@ -9,14 +9,14 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-[calc(100vh-3.5rem)] items-center bg-gradient-to-br from-brand-50 via-white to-brand-50">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand-600 mb-3">
+          <p className="text-sm font-semibold uppercase tracking-wider text-brand-700 mb-3">
             Donovan Beaulavon
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white max-w-3xl">
             Automatisation,{" "}
             <span className="text-brand-700">Full-stack &amp; IA</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-gray-600 leading-relaxed">
+          <p className="mt-6 max-w-xl text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             J&apos;aide les entreprises à automatiser leurs processus métier, intégrer
             l&apos;IA et construire des applications full-stack modernes avec Python,
             React, FastAPI et les systèmes agentiques.
@@ -25,7 +25,7 @@ export default function Home() {
       </section>
 
       {/* Automatisation & IA */}
-      <Section id="automatisation-ia" title="Automatisation & IA" className="bg-gray-50">
+      <Section id="automatisation-ia" title="Automatisation & IA" className="bg-gray-50 dark:bg-gray-800">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <CaseStudyCard
             title="Extraction automatisée de données"
@@ -75,7 +75,7 @@ export default function Home() {
       </Section>
 
       {/* Projets */}
-      <Section id="projets" title="Projets" className="bg-gray-50">
+      <Section id="projets" title="Projets" className="bg-gray-50 dark:bg-gray-800">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <ProjectCard
             title="Agent de veille automatisée"
@@ -126,15 +126,15 @@ export default function Home() {
             },
           ].map((exp) => (
             <div key={exp.date} className="relative pl-8 border-l-2 border-brand-200">
-              <div className="absolute left-0 top-0 -translate-x-1/2 h-3 w-3 rounded-full bg-brand-600 ring-4 ring-white" />
-              <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">
+              <div className="absolute left-0 top-0 -translate-x-1/2 h-3 w-3 rounded-full bg-brand-700 ring-4 ring-white" />
+              <span className="text-xs font-semibold uppercase tracking-wider text-brand-700">
                 {exp.date}
               </span>
-              <h3 className="mt-1 text-lg font-semibold text-gray-900">
+              <h3 className="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
                 {exp.role}{" "}
                 <span className="text-gray-500 font-normal">— {exp.company}</span>
               </h3>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+              <p className="mt-2 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                 {exp.description}
               </p>
             </div>
@@ -143,8 +143,8 @@ export default function Home() {
       </Section>
 
       {/* À propos */}
-      <Section id="a-propos" title="À propos" className="bg-gray-50">
-        <div className="max-w-3xl space-y-4 text-gray-600 leading-relaxed">
+      <Section id="a-propos" title="À propos" className="bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-3xl space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
           <p>
             Développeur full-stack passionné par l&apos;intersection entre le
             développement logiciel et l&apos;intelligence artificielle. Je conçois des
@@ -165,13 +165,13 @@ export default function Home() {
 
       {/* Contact */}
       <Section id="contact" title="Contact">
-        <p className="max-w-xl text-gray-600 leading-relaxed mb-8">
+        <p className="max-w-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
           Une idée de projet, une question ou simplement envie d&apos;échanger ?
           N&apos;hésitez pas à me contacter.
         </p>
         <a
           href="mailto:donovan@dtmini.com"
-          className="inline-flex items-center gap-2 rounded-lg bg-brand-700 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-600 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 rounded-lg bg-brand-700 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-700 transition-colors shadow-sm"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

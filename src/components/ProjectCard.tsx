@@ -14,12 +14,12 @@ export default function ProjectCard({
   demoUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-200 motion-reduce:transition-none">
-      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-brand-700 transition-colors">
+    <div className="group rounded-xl border border-gray-200 bg-white dark:bg-gray-900 p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-brand-200 motion-reduce:transition-none">
+      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-brand-700 transition-colors">
         {title}
       </h3>
 
-      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
         {description}
       </p>
 
@@ -44,7 +44,7 @@ export default function ProjectCard({
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-gray-600 hover:text-brand-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-gray-600 dark:text-gray-300 hover:text-brand-700 transition-colors"
           >
             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path
@@ -62,7 +62,7 @@ export default function ProjectCard({
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-brand-700 hover:text-brand-600 transition-colors"
+            className="inline-flex items-center gap-1.5 text-brand-700 hover:text-brand-700 transition-colors"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path

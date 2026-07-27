@@ -34,7 +34,7 @@ export default function CTASection({ title, description, buttons }: CTASectionPr
                 <Link
                   key={btn.label}
                   href={btn.href}
-                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-brand-700 transition-colors"
+                  className="inline-flex items-center rounded-lg border-2 border-white px-6 py-3 text-sm font-semibold text-white hover:bg-white dark:bg-gray-900 hover:text-brand-700 transition-colors"
                 >
                   {btn.label}
                 </Link>
@@ -42,7 +42,7 @@ export default function CTASection({ title, description, buttons }: CTASectionPr
                 <Link
                   key={btn.label}
                   href={btn.href}
-                  className="inline-flex items-center rounded-lg bg-white px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors shadow-sm"
+                  className="inline-flex items-center rounded-lg bg-white dark:bg-gray-900 px-6 py-3 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors shadow-sm"
                 >
                   {btn.label}
                 </Link>

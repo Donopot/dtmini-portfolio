@@ -1,0 +1,118 @@
+name: CI — Quality & Tests
+
+on:
+  push:
+    branches: [main, "feature/*"]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 8 * * 1" # Every Monday at 8 AM
+
+jobs:
+  # Job 1: Build + Lint + Type check
+  build:
+    name: Build & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+
+      - run: npm ci
+      - run: npm run lint 2>&1 || true # Non-blocking for now
+      - run: npm run build
+
+  # Job 2: Broken link checker
+  link-check:
+    name: Check Broken Links
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+
+      - name: Start server
+        run: npx next start -p 3100 &
+        env:
+          NODE_ENV: production
+          PORT: 3100
+
+      - name: Wait for server
+        run: npx wait-on http://127.0.0.1:3100 --timeout 30000
+
+      - name: Check broken links
+        run: |
+          npx broken-link-checker http://127.0.0.1:3100 --recursive --ordered --filter-level=3 --exclude-external 2>&1 | tee link-report.txt
+          grep -q "broken" link-report.txt && echo "::warning::Broken links detected!" || echo "No broken links found."
+
+  # Job 3: Lighthouse CI
+  lighthouse:
+    name: Lighthouse Audit
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+
+      - name: Start server
+        run: npx next start -p 3100 &
+        env:
+          NODE_ENV: production
+          PORT: 3100
+
+      - name: Wait for server
+        run: npx wait-on http://127.0.0.1:3100 --timeout 30000
+
+      - name: Install Lighthouse
+        run: npm install -g lighthouse
+
+      - name: Run Lighthouse
+        run: |
+          lighthouse http://127.0.0.1:3100 \
+            --output=html \
+            --output-path=./lighthouse-report.html \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=accessibility,performance,seo,best-practices \
+            --throttling.cpuSlowdownMultiplier=2
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: lighthouse-report.html
+          retention-days: 30
+
+      - name: Check scores
+        run: |
+          lighthouse http://127.0.0.1:3100 \
+            --output=json \
+            --output-path=./lighthouse.json \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=accessibility,performance,seo,best-practices
+
+      - name: Display scores
+        run: |
+          python3 -c "
+          import json
+          with open('lighthouse.json') as f:
+              data = json.load(f)
+          cats = data['categories']
+          for k, v in cats.items():
+              score = v['score'] * 100
+              emoji = '✅' if score >= 90 else '⚠️' if score >= 70 else '❌'
+              print(f'{emoji} {v[\"title\"]}: {score:.0f}/100')
+          "

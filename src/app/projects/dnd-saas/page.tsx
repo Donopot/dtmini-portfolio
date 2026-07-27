@@ -13,7 +13,7 @@ export default function DndSaasPage() {
       <article className="mx-auto max-w-4xl px-6 py-12 sm:py-20">
         <Link
           href="/development"
-          className="text-sm text-gray-500 hover:text-brand-600 underline"
+          className="text-sm text-gray-500 hover:text-brand-700 underline"
         >
           ← Retour aux projets
         </Link>
@@ -22,16 +22,16 @@ export default function DndSaasPage() {
           <span className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
             En production
           </span>
-          <h1 className="mt-4 text-3xl font-extrabold text-gray-900 sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-extrabold text-gray-900 dark:text-white sm:text-5xl">
             DnD SaaS
           </h1>
-          <p className="mt-3 text-lg text-gray-600">
+          <p className="mt-3 text-lg text-gray-600 dark:text-gray-300">
             Générateur de contenu pour jeux de rôle avec IA, abonnements et éditeur en temps réel.
           </p>
         </div>
 
         {/* Placeholder screenshot */}
-        <div className="mt-8 flex h-64 items-center justify-center rounded-xl bg-gray-100 text-sm text-gray-400 sm:h-80">
+        <div className="mt-8 flex h-64 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-800 text-sm text-gray-500 sm:h-80">
           [Capture d&apos;écran — DnD SaaS]
         </div>
 
@@ -39,7 +39,7 @@ export default function DndSaasPage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           <div className="rounded-lg border border-gray-200 p-5">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Rôle</h3>
-            <p className="mt-1 text-sm font-medium text-gray-900">Développeur full-stack</p>
+            <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">Développeur full-stack</p>
           </div>
           <div className="rounded-lg border border-gray-200 p-5">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Statut</h3>
@@ -51,20 +51,20 @@ export default function DndSaasPage() {
               href="https://github.com/Donopot/DnD"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 inline-block text-sm font-medium text-brand-600 hover:text-brand-800"
+              className="mt-1 inline-block text-sm font-medium text-brand-700 hover:text-brand-800"
             >
               github.com/Donopot/DnD ↗
             </a>
           </div>
           <div className="rounded-lg border border-gray-200 p-5">
             <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">Type</h3>
-            <p className="mt-1 text-sm font-medium text-gray-900">SaaS B2C</p>
+            <p className="mt-1 text-sm font-medium text-gray-900 dark:text-white">SaaS B2C</p>
           </div>
         </div>
 
         {/* Stack */}
         <div className="mt-8">
-          <h2 className="text-xl font-bold text-gray-900">Stack technique</h2>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">Stack technique</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {[
               "Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Stripe",
@@ -72,7 +72,7 @@ export default function DndSaasPage() {
             ].map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700"
+                className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200"
               >
                 {t}
               </span>
@@ -81,8 +81,8 @@ export default function DndSaasPage() {
         </div>
 
         {/* Description */}
-        <div className="mt-8 space-y-5 text-gray-700 leading-relaxed">
-          <h2 className="text-xl font-bold text-gray-900">À propos du projet</h2>
+        <div className="mt-8 space-y-5 text-gray-700 dark:text-gray-200 leading-relaxed">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">À propos du projet</h2>
           <p>
             DnD SaaS est une plateforme web complète dédiée aux maîtres de jeu de Donjons &amp; Dragons.
             Elle permet de générer instantanément du contenu narratif — scénarios, descriptions de PNJ,
@@ -95,7 +95,7 @@ export default function DndSaasPage() {
             de modifier et sauvegarder leurs créations.
           </p>
 
-          <h3 className="text-lg font-semibold text-gray-900">Fonctionnalités clés</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Fonctionnalités clés</h3>
           <ul className="list-disc pl-5 space-y-1 text-sm">
             <li>Génération IA de scénarios, PNJ, quêtes et dialogues</li>
             <li>Authentification utilisateur (email, Google OAuth)</li>
@@ -105,7 +105,7 @@ export default function DndSaasPage() {
             <li>API REST documentée pour intégrations tierces</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-gray-900">Défis techniques</h3>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Défis techniques</h3>
           <p>
             Le principal défi était la gestion des coûts d&apos;API OpenAI : mise en place
             d&apos;un système de cache intelligent (prompt + paramètres → réponse), rate-limiting
@@ -116,10 +116,10 @@ export default function DndSaasPage() {
 
         {/* Screenshots placeholder row */}
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          <div className="flex h-40 items-center justify-center rounded-lg bg-gray-100 text-xs text-gray-400">
+          <div className="flex h-40 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-xs text-gray-500">
             [Éditeur de contenu]
           </div>
-          <div className="flex h-40 items-center justify-center rounded-lg bg-gray-100 text-xs text-gray-400">
+          <div className="flex h-40 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 text-xs text-gray-500">
             [Dashboard utilisateur]
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function DndSaasPage() {
           </a>
           <Link
             href="/development"
-            className="rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+            className="rounded-full border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 dark:text-gray-200 transition hover:bg-gray-50 dark:bg-gray-800"
           >
             ← Tous les projets
           </Link>
