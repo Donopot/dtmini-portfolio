@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { projects } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -11,6 +10,22 @@ export const metadata: Metadata = {
     description: "Pipeline d'automatisation, RAG documentaire, agents IA.",
   },
 };
+
+const emojiMap: Record<string, string> = {
+  Python: "🐍",
+  LangChain: "🧠",
+  "Next.js": "▲",
+  Docker: "🐳",
+  Discord: "💬",
+  TypeScript: "🔷",
+};
+
+function getEmoji(tags: string[]): string {
+  for (const t of tags) {
+    if (emojiMap[t]) return emojiMap[t];
+  }
+  return "⚡";
+}
 
 export default function ProjetsPage() {
   return (
@@ -29,20 +44,20 @@ export default function ProjetsPage() {
           className="text-lg max-w-2xl mb-12 leading-relaxed"
           style={{ color: "var(--color-light-text-secondary)" }}
         >
-          Chaque projet répond à un besoin concret identifié sur le terrain.
+          Chaque projet répond à un besoin concret, du prototype au déploiement.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p) => (
-            <Link
+            <div
               key={p.id}
-              href={`/projets/${p.id}`}
-              className="rounded-2xl p-6 border block no-underline transition-all duration-400 hover:-translate-y-1 group"
+              className="rounded-2xl p-6 border transition-all duration-400 hover:-translate-y-1 group flex flex-col"
               style={{
                 backgroundColor: "var(--color-light-card)",
                 borderColor: "var(--color-light-border)",
               }}
             >
+              {/* Icon */}
               <div
                 className="h-32 rounded-xl mb-4 flex items-center justify-center font-mono text-3xl"
                 style={{
@@ -50,18 +65,46 @@ export default function ProjetsPage() {
                   color: "var(--color-light-accent)",
                 }}
               >
-                {p.tags[0] === "Python" ? "🐍" : p.tags[0] === "LangChain" ? "🧠" : p.tags[0] === "Next.js" ? "▲" : "⚡"}
+                {getEmoji(p.tags)}
               </div>
-              <h2 className="font-display dark:font-mono text-lg font-bold mb-2 group-hover:opacity-70 transition-opacity">
+
+              {/* Title + Category */}
+              <span
+                className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] mb-1"
+                style={{ color: "var(--color-light-accent)" }}
+              >
+                {p.category}
+              </span>
+              <h2 className="font-display dark:font-mono text-lg font-bold mb-2">
                 {p.name}
               </h2>
+
+              {/* Description */}
               <p
-                className="text-sm leading-relaxed mb-3"
+                className="text-sm leading-relaxed mb-4 flex-grow"
                 style={{ color: "var(--color-light-text-secondary)" }}
               >
                 {p.description}
               </p>
-              <div className="flex flex-wrap gap-1.5">
+
+              {/* Results */}
+              {p.results && p.results.length > 0 && (
+                <ul className="mb-4 space-y-1">
+                  {p.results.map((r, i) => (
+                    <li
+                      key={i}
+                      className="text-xs flex items-start gap-2"
+                      style={{ color: "var(--color-light-text-secondary)" }}
+                    >
+                      <span style={{ color: "var(--color-light-accent)" }}>▸</span>
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
                 {p.tags.map((t) => (
                   <span
                     key={t}
@@ -75,7 +118,20 @@ export default function ProjetsPage() {
                   </span>
                 ))}
               </div>
-            </Link>
+
+              {/* Link */}
+              {p.link && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70"
+                  style={{ color: "var(--color-light-accent)" }}
+                >
+                  Voir le projet ↗
+                </a>
+              )}
+            </div>
           ))}
         </div>
       </div>

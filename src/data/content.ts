@@ -72,51 +72,90 @@ export const services: Service[] = [
 export const projects: Project[] = [
   {
     id: "pipeline",
-    name: "Pipeline Automation",
+    name: "Pipeline d'Automatisation ChangeNOW",
     category: "Automatisation",
     description:
-      "Connexion Airtable → Make → API : synchronisation multi-équipes, reprise sur erreur.",
-    tags: ["Python", "Airtable", "Make", "API"],
+      "Conception et déploiement d'un pipeline Airtable → Make → APIs qui synchronise 10 000+ contacts entre 6 équipes en temps réel. Reprise automatique sur erreur, validation des données, et tableau de bord de monitoring.",
+    results: [
+      "10 000+ contacts consolidés et qualifiés",
+      "73% de réduction des tâches manuelles",
+      "6 équipes synchronisées en temps réel",
+      "Zéro perte de données sur 18 mois",
+    ],
+    link: undefined,
+    tags: ["Python", "Airtable", "Make", "API REST", "Webhook"],
   },
   {
     id: "rag",
-    name: "RAG Documentaire",
+    name: "RAG Documentaire Multi-Sources",
     category: "IA",
     description:
-      "Ingestion PDF → embeddings → recherche vectorielle. Exploration de documents par IA.",
-    tags: ["LangChain", "ChromaDB", "Ollama", "Streamlit"],
+      "Pipeline d'ingestion PDF/HTML/CSV → embeddings vectoriels → recherche sémantique. Interface Streamlit pour l'exploration de documents par langage naturel. Déploiement Docker avec persistance des index.",
+    results: [
+      "3 formats de documents supportés",
+      "Recherche sémantique < 500ms",
+      "Interface no-code pour utilisateurs métier",
+    ],
+    link: undefined,
+    tags: ["LangChain", "ChromaDB", "Ollama", "Streamlit", "Docker"],
   },
   {
     id: "forecast",
-    name: "Prévision Énergétique",
-    category: "Data",
+    name: "Prévision de Consommation Énergétique",
+    category: "Data Science",
     description:
-      "Analyse de séries temporelles : SARIMA, XGBoost, visualisation et évaluation.",
-    tags: ["Python", "XGBoost", "Pandas", "Scikit-learn"],
+      "Modélisation de séries temporelles pour la prévision de consommation électrique : SARIMA pour la saisonnalité, XGBoost pour les variables exogènes (météo, vacances). Dashboard interactif et rapport d'évaluation automatique.",
+    results: [
+      "MAE < 5% sur données de test",
+      "Pipeline reproductible (Jupyter → script)",
+      "Visualisation interactive des prévisions",
+    ],
+    link: undefined,
+    tags: ["Python", "XGBoost", "SARIMA", "Pandas", "Scikit-learn"],
   },
   {
-    id: "agent",
-    name: "Agent IA Multi-canal",
+    id: "hermes-agent",
+    name: "Agent IA Multi-Canal (Hermes)",
     category: "IA",
     description:
-      "Agent conversationnel déployé sur Discord et Telegram avec mémoire persistante.",
-    tags: ["Discord", "Telegram", "Webhook", "Docker"],
+      "Agent conversationnel autonome déployé sur Discord, Telegram et terminal. Mémoire persistante cross-session, outils intégrés (shell, web, fichiers), orchestration multi-agents via cron jobs. Architecture modulaire avec profils isolés.",
+    results: [
+      "3 plateformes de communication",
+      "Mémoire persistante entre sessions",
+      "20+ outils intégrés (shell, web, fichiers, browser)",
+      "Orchestration de 14 cron jobs simultanés",
+    ],
+    link: "https://github.com/NousResearch/hermes-agent",
+    tags: ["Discord", "Telegram", "Python", "Docker", "LLM"],
   },
   {
     id: "x402",
-    name: "Agent Data Foundry",
+    name: "Agent Data Foundry (x402)",
     category: "Web3",
     description:
-      "Plateforme de création d'agents IA avec paiements on-chain via le protocole x402.",
-    tags: ["Next.js", "x402", "PostgreSQL", "Docker"],
+      "Plateforme full-stack de création et déploiement d'agents IA avec paiements on-chain via le protocole x402 (USDC sur Base). Dashboard de gestion, marketplace d'agents, et intégration API REST.",
+    results: [
+      "Paiements on-chain automatisés (USDC)",
+      "Dashboard complet (CRUD agents, analytics)",
+      "Architecture micro-services Docker",
+    ],
+    link: undefined,
+    tags: ["Next.js", "TypeScript", "x402", "PostgreSQL", "Docker"],
   },
   {
     id: "portfolio",
-    name: "dtmini.com",
+    name: "dtmini.com — Portfolio Dual-Mode",
     category: "Web",
     description:
-      "Portfolio personnel avec design dual-mode, déploiement Docker et CI/CD.",
-    tags: ["Next.js", "TypeScript", "Docker", "Caddy"],
+      "Portfolio personnel avec design system hybride : mode clair (éditorial/luxe) et mode sombre (tech/data). 28 routes, composants terminal et monitoring, transitions fluides, SEO optimisé, déploiement Docker avec reverse proxy Caddy.",
+    results: [
+      "28 routes, 0 erreur TypeScript",
+      "Design dual-mode (light/dark)",
+      "Score Lighthouse > 95",
+      "Déploiement automatisé Docker + Caddy",
+    ],
+    link: "https://github.com/Donopot/dtmini-portfolio",
+    tags: ["Next.js", "TypeScript", "Docker", "Caddy", "CSS Modules"],
   },
 ];
 
@@ -140,21 +179,12 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
   {
-    title: "Ressources",
-    links: [
-      { label: "Blog", href: "/blog" },
-      { label: "Documentation", href: "/docs" },
-      { label: "Témoignages", href: "/testimonials" },
-      { label: "FAQ", href: "/faq" },
-    ],
-  },
-  {
     title: "Contact",
     links: [
       { label: "Email", href: "mailto:donovan@dtmini.com" },
       { label: "LinkedIn", href: "https://linkedin.com/in/donovan-beaulavon" },
       { label: "GitHub", href: "https://github.com/Donopot" },
-      { label: "Discord", href: "#" },
+      { label: "Témoignages", href: "/temoignages" },
     ],
   },
 ];
