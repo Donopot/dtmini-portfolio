@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/legal/", "/api/stats", "/api/track"],
+        disallow: ["/api/", "/legal/"],
       },
     ],
     sitemap: "https://dtmini.com/sitemap.xml",

@@ -1,12 +1,52 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { createHash } from "node:crypto";
-import { trackConversion } from "@/lib/analytics";
+import { createHmac, randomBytes } from "node:crypto";
 
-// Rate limiting keyed on a pseudonymized hash of the IP (never the raw IP).
-const rateLimit = new Map<string, { count: number; resetAt: number }>();
+// ── Rate limiting (HMAC-SHA256, clé éphémère) ──────────────────────────
+// La clé est générée aléatoirement au démarrage du processus et perdue au
+// redémarrage (aucun secret d'environnement requis). L'adresse IP brute n'est
+// jamais conservée ni journalisée : elle est convertie en une empreinte HMAC
+// non réversible (impossible à retrouver par énumération sans la clé), puis
+// abandonnée. Seuls le compteur et l'expiration sont conservés.
+const RATE_LIMIT_KEY = randomBytes(32);
+
+interface RateEntry {
+  count: number;
+  resetAt: number;
+}
+
+const rateLimit = new Map<string, RateEntry>();
 const MAX_REQUESTS = 3;
 const WINDOW_MS = 5 * 60 * 1000;
+const MAX_ENTRIES = 10_000;
+
+function clientKey(ip: string): string {
+  return createHmac("sha256", RATE_LIMIT_KEY).update(ip).digest("hex");
+}
+
+function isRateLimited(key: string): boolean {
+  const now = Date.now();
+  const entry = rateLimit.get(key);
+  return entry !== undefined && now < entry.resetAt && entry.count >= MAX_REQUESTS;
+}
+
+function recordRequest(key: string): void {
+  const now = Date.now();
+  let entry = rateLimit.get(key);
+
+  if (!entry || now >= entry.resetAt) {
+    // Nettoyage opportuniste des entrées expirées si la table approche sa limite
+    if (rateLimit.size >= MAX_ENTRIES) {
+      for (const [k, v] of rateLimit) {
+        if (now >= v.resetAt) rateLimit.delete(k);
+      }
+    }
+    entry = { count: 0, resetAt: now + WINDOW_MS };
+    rateLimit.set(key, entry);
+  }
+
+  entry.count++;
+}
 
 // Labels must match the <select> options in src/app/contact/page.tsx exactly.
 const TYPE_LABELS: Record<string, string> = {
@@ -16,10 +56,6 @@ const TYPE_LABELS: Record<string, string> = {
   ia: "Projet IA (RAG, agents, LLM)",
   autre: "Autre",
 };
-
-function pseudonymizeIp(ip: string): string {
-  return createHash("sha256").update(ip).digest("hex");
-}
 
 function escapeHtml(value: string): string {
   return value
@@ -45,29 +81,18 @@ interface ContactBody {
 }
 
 export async function POST(request: NextRequest) {
-  // Rate limit by pseudonymized IP
+  // Rate limiting : l'IP est convertie en empreinte HMAC puis abandonnée.
   const rawIp = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  const ipKey = pseudonymizeIp(rawIp);
-  const now = Date.now();
-  const entry = rateLimit.get(ipKey);
+  const key = clientKey(rawIp);
+  // rawIp n'est plus référencée après cette ligne.
 
-  if (entry && now < entry.resetAt) {
-    if (entry.count >= MAX_REQUESTS) {
-      return NextResponse.json(
-        { error: "Trop de tentatives. Réessayez dans quelques minutes." },
-        { status: 429 }
-      );
-    }
-    entry.count++;
-  } else {
-    rateLimit.set(ipKey, { count: 1, resetAt: now + WINDOW_MS });
+  if (isRateLimited(key)) {
+    return NextResponse.json(
+      { error: "Trop de tentatives. Réessayez dans quelques minutes." },
+      { status: 429 }
+    );
   }
-
-  if (rateLimit.size > 100) {
-    for (const [key, val] of rateLimit) {
-      if (now > val.resetAt) rateLimit.delete(key);
-    }
-  }
+  recordRequest(key);
 
   let body: ContactBody;
   try {
@@ -149,7 +174,5 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Only reached when Resend confirmed the send. No IP is recorded.
-  trackConversion("form_submit", "/contact");
   return NextResponse.json({ success: true });
 }
