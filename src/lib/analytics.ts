@@ -1,19 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-// Simple in-memory analytics store (resets on deploy)
-// For production, consider piping to a log file or external service
+// Simple in-memory analytics store (resets on deploy).
+// No personal data is stored: no IP, no user agent, no identifiers.
+
 interface PageView {
   path: string;
   timestamp: number;
   referer: string;
-  userAgent: string;
 }
 
 interface ConversionEvent {
   type: string;
   path: string;
   timestamp: number;
-  ip: string;
 }
 
 const pageViews: PageView[] = [];
@@ -46,29 +45,20 @@ export function analyticsMiddleware(request: NextRequest) {
   const pageView: PageView = {
     path: pathname,
     timestamp: Date.now(),
-    referer: request.headers.get("referer") || "direct",
-    userAgent: (request.headers.get("user-agent") || "unknown").substring(0, 100),
+    referer: (request.headers.get("referer") || "direct").substring(0, 200),
   };
 
   pageViews.push(pageView);
   if (pageViews.length > MAX_EVENTS) pageViews.splice(0, pageViews.length - MAX_EVENTS);
-
-  // Log to console for external log collection
-  console.log(
-    `[ANALYTICS] ${new Date(pageView.timestamp).toISOString()} | ${pathname} | ref: ${pageView.referer.substring(0, 60)}`
-  );
 }
 
-export function trackConversion(type: string, path: string, ip: string) {
+export function trackConversion(type: string, path: string) {
   const event: ConversionEvent = {
     type,
     path,
     timestamp: Date.now(),
-    ip,
   };
 
   conversions.push(event);
   if (conversions.length > MAX_EVENTS) conversions.splice(0, conversions.length - MAX_EVENTS);
-
-  console.log(`[CONVERSION] ${type} | ${path} | ${new Date(event.timestamp).toISOString()}`);
 }

@@ -4,6 +4,7 @@ export interface Project {
   name: string;
   category: string;
   description: string;
+  results?: string[];
   tags: string[];
   link?: string;
 }

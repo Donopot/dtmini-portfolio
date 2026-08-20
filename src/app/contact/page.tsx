@@ -1,13 +1,74 @@
-import type { Metadata } from "next";
-import Link from "next/link";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Contact — Donovan Beaulavon",
-  description:
-    "Contactez Donovan Beaulavon pour vos projets d'automatisation, développement full-stack ou IA. Formulaire avec consentement RGPD.",
-};
+import Link from "next/link";
+import { useState } from "react";
+
+// Must match TYPE_LABELS in src/app/api/contact/route.ts exactly.
+const REQUEST_TYPES = [
+  { value: "automatisation", label: "Automatisation de processus" },
+  { value: "data", label: "Structuration & données" },
+  { value: "developpement", label: "Développement (SaaS, app web)" },
+  { value: "ia", label: "Projet IA (RAG, agents, LLM)" },
+  { value: "autre", label: "Autre" },
+];
+
+type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactPage() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    setError(null);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    // Honeypot (client side) — hidden field, bots fill it
+    if (data.get("website")) {
+      setStatus("success");
+      return;
+    }
+
+    const payload = {
+      name: data.get("name"),
+      email: data.get("email"),
+      company: data.get("company"),
+      type: data.get("type"),
+      message: data.get("message"),
+      consent: data.get("consent") === "on",
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setError(json.error || "Une erreur est survenue. Merci de réessayer.");
+        setStatus("error");
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch {
+      setError(
+        "Impossible de contacter le serveur. Merci de réessayer ou d'utiliser l'email de secours."
+      );
+      setStatus("error");
+    }
+  }
+
+  const inputClass =
+    "mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200";
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-brand-50 to-white">
       <div className="mx-auto max-w-2xl px-6 py-16 sm:py-24">
@@ -22,8 +83,7 @@ export default function ContactPage() {
         </div>
 
         <form
-          action="https://formspree.io/f/your-form-id"
-          method="POST"
+          onSubmit={handleSubmit}
           className="mt-10 space-y-6 rounded-2xl bg-brand-50 dark:bg-brand-950 p-8 shadow-sm"
         >
           {/* Honeypot */}
@@ -43,7 +103,8 @@ export default function ContactPage() {
               name="name"
               required
               minLength={2}
-              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              maxLength={100}
+              className={inputClass}
               placeholder="Votre nom"
             />
           </div>
@@ -57,7 +118,7 @@ export default function ContactPage() {
               type="text"
               id="company"
               name="company"
-              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className={inputClass}
               placeholder="Nom de votre entreprise (optionnel)"
             />
           </div>
@@ -72,7 +133,7 @@ export default function ContactPage() {
               id="email"
               name="email"
               required
-              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
+              className={inputClass}
               placeholder="vous@entreprise.com"
             />
           </div>
@@ -82,18 +143,15 @@ export default function ContactPage() {
             <label htmlFor="type" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
               Type de demande <span className="text-red-500">*</span>
             </label>
-            <select
-              id="type"
-              name="type"
-              required
-              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
-            >
-              <option value="">— Sélectionnez —</option>
-              <option value="recrutement">Recrutement (CDI / Freelance)</option>
-              <option value="automatisation">Automatisation de processus</option>
-              <option value="developpement">Développement (SaaS, app web)</option>
-              <option value="projet-ia">Projet IA (RAG, agents, LLM)</option>
-              <option value="autre">Autre</option>
+            <select id="type" name="type" required defaultValue="" className={inputClass}>
+              <option value="" disabled>
+                — Sélectionnez —
+              </option>
+              {REQUEST_TYPES.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -106,9 +164,10 @@ export default function ContactPage() {
               id="message"
               name="message"
               required
-              minLength={20}
+              minLength={10}
+              maxLength={2000}
               rows={5}
-              className="mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200 resize-y"
+              className={`${inputClass} resize-y`}
               placeholder="Décrivez votre projet ou votre besoin…"
             />
           </div>
@@ -140,13 +199,27 @@ export default function ContactPage() {
           <div>
             <button
               type="submit"
-              className="w-full rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer"
+              disabled={status === "submitting"}
+              className="w-full rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-brand-900 shadow-lg transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Envoyer le message
+              {status === "submitting" ? "Envoi en cours…" : "Envoyer le message"}
             </button>
-            <p className="mt-2 text-center text-xs text-brand-700">
-              Réponse sous 48h ouvrées. Aucun spam.
-            </p>
+
+            {status === "success" && (
+              <p role="status" className="mt-3 text-center text-sm font-medium text-green-700">
+                Message envoyé. Je vous réponds sous 48h ouvrées.
+              </p>
+            )}
+            {status === "error" && (
+              <p role="alert" className="mt-3 text-center text-sm font-medium text-red-600">
+                {error}
+              </p>
+            )}
+            {status !== "error" && (
+              <p className="mt-2 text-center text-xs text-brand-700">
+                Réponse sous 48h ouvrées. Aucun spam.
+              </p>
+            )}
           </div>
         </form>
 

@@ -8,7 +8,10 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3100
-      - CONTACT_EMAIL=${CONTACT_EMAIL:-donovan.beaulavon@gmail.com}
+      - CONTACT_EMAIL=${CONTACT_EMAIL}
+      - CONTACT_FROM=${CONTACT_FROM}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - STATS_TOKEN=${STATS_TOKEN}
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3100/"]
       interval: 30s

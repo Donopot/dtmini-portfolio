@@ -1,14 +1,18 @@
 import { NextResponse } from "next/server";
 import { getPageViews, getConversions } from "@/lib/analytics";
 
-// Simple password-protected stats endpoint
-const STATS_TOKEN = process.env.STATS_TOKEN || "dtmini-stats-2026";
-
+// Aggregated, non-personal statistics endpoint.
+// Requires STATS_TOKEN via environment (no hardcoded fallback).
+// The response contains no personal data (no IP, no identifiers).
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const token = searchParams.get("token");
+  const token = process.env.STATS_TOKEN;
+  if (!token) {
+    return NextResponse.json({ error: "Statistiques désactivées" }, { status: 503 });
+  }
 
-  if (token !== STATS_TOKEN) {
+  const { searchParams } = new URL(request.url);
+  const provided = searchParams.get("token");
+  if (provided !== token) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -40,6 +44,5 @@ export async function GET(request: Request) {
     dailyPageViews: dailyCounts,
     totalConversions: conversions.length,
     conversionsByType: conversionByType,
-    recentConversions: conversions.slice(-10).reverse(),
   });
 }
