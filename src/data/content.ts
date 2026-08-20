@@ -23,15 +23,15 @@ export const heroData: HeroData = {
     secondary: { label: "Voir les projets ↓", href: "#projets" },
   },
   stats: [
-    { value: "2 ans", label: "chez ChangeNOW" },
-    { value: "10 000+", label: "contacts consolidés" },
-    { value: "~200", label: "fichiers standardisés" },
+    { value: "ChangeNOW", label: "Tool & IT Coordinator" },
+    { value: "DataScientest", label: "Mines Paris - PSL" },
+    { value: "Oreegami", label: "Développement Full-stack" },
   ],
   metrics: [
-    { value: "2", label: "Années ChangeNOW", bar: 66 },
-    { value: "10k+", label: "Contacts consolidés", bar: 80 },
-    { value: "~200", label: "Fichiers /std", bar: 45 },
-    { value: "73%", label: "↓ Tâches manuelles", bar: 73 },
+    { value: "Python", label: "Automatisation & scripts", bar: 88 },
+    { value: "TypeScript", label: "Web & Next.js", bar: 82 },
+    { value: "Docker", label: "Déploiement & infra", bar: 78 },
+    { value: "IA / RAG", label: "Agents & LLM", bar: 75 },
   ],
 };
 
@@ -75,12 +75,11 @@ export const projects: Project[] = [
     name: "Pipeline d'Automatisation ChangeNOW",
     category: "Automatisation",
     description:
-      "Conception et déploiement d'un pipeline Airtable → Make → APIs qui synchronise 10 000+ contacts entre 6 équipes en temps réel. Reprise automatique sur erreur, validation des données, et tableau de bord de monitoring.",
+      "Conception et déploiement d'un pipeline Airtable → Make → APIs qui synchronise les contacts entre plusieurs équipes en temps réel. Reprise automatique sur erreur, validation des données, et tableau de bord de monitoring.",
     results: [
-      "10 000+ contacts consolidés et qualifiés",
-      "73% de réduction des tâches manuelles",
-      "6 équipes synchronisées en temps réel",
-      "Zéro perte de données sur 18 mois",
+      "Pipelines Airtable → Make → API déployés",
+      "Synchronisation multi-équipes en temps réel",
+      "Tableau de bord de monitoring mis en place",
     ],
     link: undefined,
     tags: ["Python", "Airtable", "Make", "API REST", "Webhook"],
@@ -93,7 +92,7 @@ export const projects: Project[] = [
       "Pipeline d'ingestion PDF/HTML/CSV → embeddings vectoriels → recherche sémantique. Interface Streamlit pour l'exploration de documents par langage naturel. Déploiement Docker avec persistance des index.",
     results: [
       "3 formats de documents supportés",
-      "Recherche sémantique < 500ms",
+      "Recherche sémantique sur documents internes",
       "Interface no-code pour utilisateurs métier",
     ],
     link: undefined,
@@ -106,7 +105,6 @@ export const projects: Project[] = [
     description:
       "Modélisation de séries temporelles pour la prévision de consommation électrique : SARIMA pour la saisonnalité, XGBoost pour les variables exogènes (météo, vacances). Dashboard interactif et rapport d'évaluation automatique.",
     results: [
-      "MAE < 5% sur données de test",
       "Pipeline reproductible (Jupyter → script)",
       "Visualisation interactive des prévisions",
     ],
@@ -123,7 +121,7 @@ export const projects: Project[] = [
       "3 plateformes de communication",
       "Mémoire persistante entre sessions",
       "20+ outils intégrés (shell, web, fichiers, browser)",
-      "Orchestration de 14 cron jobs simultanés",
+      "Orchestration de cron jobs simultanés",
     ],
     link: "https://github.com/NousResearch/hermes-agent",
     tags: ["Discord", "Telegram", "Python", "Docker", "LLM"],
@@ -147,11 +145,9 @@ export const projects: Project[] = [
     name: "dtmini.com — Portfolio Dual-Mode",
     category: "Web",
     description:
-      "Portfolio personnel avec design system hybride : mode clair (éditorial/luxe) et mode sombre (tech/data). 28 routes, composants terminal et monitoring, transitions fluides, SEO optimisé, déploiement Docker avec reverse proxy Caddy.",
+      "Portfolio personnel avec design system hybride : mode clair (éditorial/luxe) et mode sombre (tech/data). Composants terminal et monitoring, transitions fluides, SEO optimisé, déploiement Docker avec reverse proxy Caddy.",
     results: [
-      "28 routes, 0 erreur TypeScript",
       "Design dual-mode (light/dark)",
-      "Score Lighthouse > 95",
       "Déploiement automatisé Docker + Caddy",
     ],
     link: "https://github.com/Donopot/dtmini-portfolio",
@@ -187,4 +183,21 @@ export const footerColumns: FooterColumn[] = [
       { label: "Témoignages", href: "/temoignages" },
     ],
   },
+];
+
+// ─────────────────────────────────────────────────────────────
+// AFFIRMATIONS EN ATTENTE DE VALIDATION — NON AFFICHÉES PUBLIQUEMENT
+// Ces chiffres ont été retirés du rendu tant qu'ils ne sont pas
+// étayés par une preuve vérifiable. Ne pas réutiliser sans validation.
+// ─────────────────────────────────────────────────────────────
+export const pendingValidation: { claim: string; source: string }[] = [
+  { claim: "73% de réduction des tâches manuelles", source: "hero / projet pipeline / témoignages" },
+  { claim: "10 000+ contacts consolidés", source: "hero / projet pipeline" },
+  { claim: "~200 fichiers standardisés", source: "hero" },
+  { claim: "6 équipes synchronisées en temps réel", source: "projet pipeline" },
+  { claim: "Zéro perte de données sur 18 mois", source: "projet pipeline" },
+  { claim: "28 routes, 0 erreur TypeScript", source: "projet portfolio" },
+  { claim: "Score Lighthouse > 95", source: "projet portfolio" },
+  { claim: "Recherche sémantique < 500ms", source: "projet rag" },
+  { claim: "MAE < 5% sur données de test", source: "projet forecast" },
 ];

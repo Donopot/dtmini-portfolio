@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Mentions légales & Politique de confidentialité — Donovan Beaulavon",
+  alternates: { canonical: "/legal/privacy" },
+  title: "Mentions légales & Politique de confidentialité",
   description:
     "Mentions légales et politique de confidentialité du site portfolio de Donovan Beaulavon (dtmini.com). Conformité RGPD.",
   robots: { index: false, follow: false },
@@ -16,7 +17,7 @@ export default function PrivacyPage() {
           Mentions légales & Politique de confidentialité
         </h1>
         <p className="mt-2 text-sm text-brand-700">
-          Dernière mise à jour : juillet 2025
+          Dernière mise à jour : août 2026
         </p>
 
         <div className="mt-10 space-y-10 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
@@ -30,7 +31,7 @@ export default function PrivacyPage() {
               <p>Entrepreneur individuel</p>
               <p>Email : donovan@dtmini.com</p>
               <p>Site web : dtmini.com</p>
-              <p>Hébergement : Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA</p>
+              <p>Hébergement : serveur auto-hébergé (France), déployé via Docker.</p>
             </div>
           </section>
 
@@ -56,7 +57,16 @@ export default function PrivacyPage() {
             <p className="mt-3">
               Conformément au Règlement Général sur la Protection des Données (RGPD),
               les informations collectées via le formulaire de contact (nom, entreprise,
-              email, message) sont strictement utilisées pour répondre à votre demande.
+              email, type de demande, message, consentement) sont strictement utilisées
+              pour répondre à votre demande. L&apos;envoi est traité via un service
+              d&apos;emailing (Resend).
+            </p>
+            <p className="mt-2">
+              Aucune adresse IP n&apos;est stockée ni journalisée. À des fins de protection
+              contre les abus, l&apos;adresse IP peut être utilisée temporairement sous une
+              forme pseudonymisée (empreinte non réversible) pour limiter le nombre de
+              soumissions, puis écartée. Ce site ne collecte aucune donnée de navigation
+              ni statistique nominative.
             </p>
             <h3 className="mt-4 font-semibold text-brand-900 dark:text-brand-100">Finalités :</h3>
             <ul className="mt-2 list-disc pl-5 space-y-1">

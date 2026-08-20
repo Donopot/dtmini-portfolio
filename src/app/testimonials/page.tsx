@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
-import testimonials from "@/content/testimonials";
 
 export const metadata: Metadata = {
-  title: "Témoignages — Donovan Beaulavon",
+  alternates: { canonical: "/testimonials" },
+  title: "Témoignages",
   description:
     "Ce que mes collègues et collaborateurs disent de mon travail en automatisation, développement full-stack et intégration IA.",
   openGraph: {
@@ -26,77 +26,29 @@ export default function TestimonialsPage() {
             Ils me font confiance
           </h1>
           <p className="text-lg text-brand-700 dark:text-brand-400 leading-relaxed mb-12">
-            Retours d&apos;expérience de mes collaborateurs chez ChangeNOW et au-delà.
+            Retours d&apos;expérience de mes collaborateurs.
           </p>
         </AnimatedSection>
 
-        <div className="space-y-8">
-          {testimonials.map((t, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <blockquote className="group relative rounded-2xl border border-brand-200 dark:border-brand-900 bg-brand-100 dark:bg-brand-900/50 p-8 transition-all duration-300 hover:shadow-lg hover:border-brand-200 dark:hover:border-brand-800">
-                {/* Quote mark */}
-                <svg
-                  className="absolute top-6 right-6 h-12 w-12 text-brand-100 dark:text-brand-900/50"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" />
-                </svg>
-
-                <p className="relative text-brand-800 dark:text-brand-200 text-base leading-relaxed mb-6 pr-12">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                <footer className="flex items-center gap-4 border-t border-brand-200 dark:border-brand-800 pt-4">
-                  <div className="flex-1">
-                    <cite className="not-italic font-semibold text-brand-950 dark:text-brand-50 text-sm block">
-                      {t.author}
-                    </cite>
-                    <span className="text-sm text-brand-700 dark:text-brand-500">
-                      {t.role}
-                      {t.organization && (
-                        <>
-                          {" — "}
-                          <span className="text-brand-700 dark:text-brand-400">
-                            {t.organization}
-                          </span>
-                        </>
-                      )}
-                    </span>
-                    {t.date && (
-                      <span className="ml-3 text-xs text-brand-700 dark:text-brand-500">
-                        {t.date}
-                      </span>
-                    )}
-                  </div>
-                </footer>
-              </blockquote>
-            </AnimatedSection>
-          ))}
+        {/* pendingValidation — témoignages masqués tant que l'identité et
+            l'autorisation des auteurs ne sont pas confirmées. */}
+        <div className="rounded-2xl border border-brand-200 dark:border-brand-900 bg-brand-100 dark:bg-brand-900/50 p-8 text-center">
+          <p className="text-brand-800 dark:text-brand-200 leading-relaxed">
+            Les témoignages sont actuellement en cours de vérification
+            (confirmation de l&apos;identité et de l&apos;autorisation des
+            auteurs). Ils seront publiés prochainement.
+          </p>
         </div>
 
-        <AnimatedSection delay={0.4}>
+        <AnimatedSection delay={0.2}>
           <div className="mt-16 text-center p-8 rounded-2xl bg-brand-50 dark:bg-brand-950 border border-brand-100 dark:border-brand-900">
             <p className="text-brand-800 dark:text-brand-400 font-medium mb-4">
               Vous avez travaillé avec moi ? Votre retour m&apos;intéresse.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-600 dark:hover:bg-brand-600 transition-all shadow-lg shadow-brand-200/50 dark:shadow-brand-900/30 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-600 px-6 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-600 dark:hover:bg-brand-600 transition-all shadow-lg shadow-brand-200/50 dark:shadow-brand-900/30 hover:-translate-y-0.5"
             >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
               Me contacter
             </Link>
           </div>

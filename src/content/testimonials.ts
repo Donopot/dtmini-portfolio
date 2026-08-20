@@ -6,6 +6,11 @@ export interface Testimonial {
   date?: string;
 }
 
+// ─────────────────────────────────────────────────────────────
+// pendingValidation — TÉMOIGNAGES NON PUBLIABLES.
+// L'identité et l'autorisation des auteurs ne sont pas encore
+// confirmées. Ne pas afficher avant validation explicite de Donovan.
+// ─────────────────────────────────────────────────────────────
 const testimonials: Testimonial[] = [
   {
     quote:
