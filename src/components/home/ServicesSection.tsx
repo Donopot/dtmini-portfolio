@@ -12,7 +12,7 @@ export function ServicesSection({ services }: Props) {
     <section className="max-w-[72rem] mx-auto px-6 py-24 relative z-10">
       <span
         className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-        style={{ color: "var(--color-light-accent)" }}
+        style={{ color: "var(--color-light-accent-text)" }}
       >
         Expertise
       </span>

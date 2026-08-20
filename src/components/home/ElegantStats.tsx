@@ -12,7 +12,7 @@ export function ElegantStats() {
         <div key={s.label} className="text-center">
           <div
             className="font-display text-[2.5rem] font-bold"
-            style={{ color: "var(--color-light-accent)" }}
+            style={{ color: "var(--color-light-accent-text)" }}
           >
             {s.value}
           </div>

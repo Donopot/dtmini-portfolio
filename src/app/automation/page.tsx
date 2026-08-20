@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Automatisation & IA métier — Donovan Beaulavon",
+  alternates: { canonical: "/automation" },
+  title: "Automatisation & IA métier",
   description:
     "Parcours Automatisation & IA métier : workflows n8n/Zapier, intégrations API, chatbots, RAG documentaire. 3 études de cas détaillées chez ChangeNOW.",
 };
@@ -201,7 +202,7 @@ export default function AutomationPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-600 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-brand-900">
         <h2 className="text-2xl font-bold sm:text-3xl">
           Un processus à automatiser ?
         </h2>
@@ -217,7 +218,7 @@ export default function AutomationPage() {
           </Link>
           <Link
             href="/cv/automation"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+            className="rounded-full border-2 border-brand-900 px-8 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-600"
           >
             Voir mon CV
           </Link>

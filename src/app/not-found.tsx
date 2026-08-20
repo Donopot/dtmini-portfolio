@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Page introuvable (404) — Donovan Beaulavon",
+  title: "Page introuvable (404)",
   description: "La page demandée n'existe pas.",
   robots: { index: false, follow: false },
 };
@@ -21,7 +21,7 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <Link
           href="/"
-          className="rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-brand-600"
+          className="rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-brand-900 shadow-lg transition hover:bg-brand-600"
         >
           Retour à l&apos;accueil
         </Link>

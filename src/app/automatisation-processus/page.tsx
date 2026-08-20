@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/automatisation-processus" },
+  title: "Automatisation de processus",
+  description:
+    "Analyse de processus, connexion d'outils (Airtable, Make, n8n) et automatisation des tâches répétitives.",
+};
 
 export default function AutomatisationPage() {
   return (

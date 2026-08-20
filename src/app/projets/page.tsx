@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { projects } from "@/data/content";
 
 export const metadata: Metadata = {
-  title: "Projets — Donovan Beaulavon",
+  alternates: { canonical: "/projets" },
+  title: "Projets",
   description:
     "Pipeline d'automatisation, RAG documentaire, prévision énergétique, agents IA — découvrez mes réalisations techniques.",
   openGraph: {
@@ -33,7 +34,7 @@ export default function ProjetsPage() {
       <div className="max-w-[72rem] mx-auto">
         <span
           className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-          style={{ color: "var(--color-light-accent)" }}
+          style={{ color: "var(--color-light-accent-text)" }}
         >
           Projets
         </span>
@@ -62,7 +63,7 @@ export default function ProjetsPage() {
                 className="h-32 rounded-xl mb-4 flex items-center justify-center font-mono text-3xl"
                 style={{
                   backgroundColor: "var(--color-light-bg-alt)",
-                  color: "var(--color-light-accent)",
+                  color: "var(--color-light-accent-text)",
                 }}
               >
                 {getEmoji(p.tags)}
@@ -71,7 +72,7 @@ export default function ProjetsPage() {
               {/* Title + Category */}
               <span
                 className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] mb-1"
-                style={{ color: "var(--color-light-accent)" }}
+                style={{ color: "var(--color-light-accent-text)" }}
               >
                 {p.category}
               </span>
@@ -96,7 +97,7 @@ export default function ProjetsPage() {
                       className="text-xs flex items-start gap-2"
                       style={{ color: "var(--color-light-text-secondary)" }}
                     >
-                      <span style={{ color: "var(--color-light-accent)" }}>▸</span>
+                      <span style={{ color: "var(--color-light-accent-text)" }}>▸</span>
                       {r}
                     </li>
                   ))}
@@ -126,7 +127,7 @@ export default function ProjetsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70"
-                  style={{ color: "var(--color-light-accent)" }}
+                  style={{ color: "var(--color-light-accent-text)" }}
                 >
                   Voir le projet ↗
                 </a>

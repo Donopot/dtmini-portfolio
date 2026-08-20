@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "DnD SaaS — Générateur de contenu JDR — Donovan Beaulavon",
+  alternates: { canonical: "/projects/dnd-saas" },
+  title: "DnD SaaS — Générateur de contenu JDR",
   description:
     "Plateforme SaaS de génération de contenu pour jeux de rôle (D&D) avec Next.js, FastAPI, OpenAI, Stripe. Authentification, abonnements, éditeur temps réel.",
 };

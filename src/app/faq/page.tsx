@@ -3,7 +3,8 @@ import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ — Donovan Beaulavon",
+  alternates: { canonical: "/faq" },
+  title: "FAQ",
   description:
     "Questions fréquentes : missions, délais, tarifs, confidentialité, outils et méthodes de travail.",
   openGraph: {
@@ -106,7 +107,7 @@ export default function FAQPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-600 dark:hover:bg-brand-600 transition-all shadow-lg shadow-brand-200/50 dark:shadow-brand-900/30 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-600 dark:bg-brand-600 px-6 py-3 text-sm font-semibold text-brand-900 hover:bg-brand-600 dark:hover:bg-brand-600 transition-all shadow-lg shadow-brand-200/50 dark:shadow-brand-900/30 hover:-translate-y-0.5"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

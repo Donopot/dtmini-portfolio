@@ -19,7 +19,7 @@ export function Hero() {
         <span
           className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border mb-6 transition-colors"
           style={{
-            color: isDark ? "var(--color-dark-accent)" : "var(--color-light-accent)",
+            color: isDark ? "var(--color-dark-accent)" : "var(--color-light-accent-text)",
             borderColor: isDark ? "var(--color-dark-accent)" : "var(--color-light-accent)",
           }}
         >

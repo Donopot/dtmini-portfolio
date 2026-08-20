@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Expérience — Donovan Beaulavon",
+  alternates: { canonical: "/experience" },
+  title: "Expérience",
   description:
     "Parcours professionnel : 3 ans chez ChangeNOW (alternance Data & Automatisation puis CDD Chargé de projet IA). Formation en commerce, data et développement.",
 };
@@ -162,7 +163,7 @@ export default function ExperiencePage() {
       <section className="px-6 py-16 text-center">
         <Link
           href="/about"
-          className="rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-white shadow transition hover:bg-brand-600"
+          className="rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-brand-900 shadow transition hover:bg-brand-600"
         >
           En savoir plus sur mon parcours
         </Link>

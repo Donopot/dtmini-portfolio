@@ -10,7 +10,7 @@ export function ProjectsSection({ projects }: Props) {
     <section className="max-w-[72rem] mx-auto px-6 py-24 relative z-10">
       <span
         className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-        style={{ color: "var(--color-light-accent)" }}
+        style={{ color: "var(--color-light-accent-text)" }}
       >
         Projets
       </span>
@@ -37,7 +37,7 @@ export function ProjectsSection({ projects }: Props) {
             href="/projets"
             className="font-mono text-sm no-underline border-b pb-0.5 transition-opacity hover:opacity-70"
             style={{
-              color: "var(--color-light-accent)",
+              color: "var(--color-light-accent-text)",
               borderColor: "var(--color-light-accent)",
             }}
           >

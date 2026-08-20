@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "CV Développeur Full-stack & IA — Donovan Beaulavon",
+  alternates: { canonical: "/cv/development" },
+  title: "CV Développeur Full-stack & IA",
   description:
     "Aperçu du CV de Donovan Beaulavon orienté Développement Full-stack & IA agentique. React, Next.js, FastAPI, Python, RAG, systèmes agentiques.",
 };
@@ -221,7 +222,7 @@ export default function CvDevelopmentPage() {
           </Link>
           <Link
             href="/contact"
-            className="rounded-full bg-brand-600 px-6 py-2 text-sm font-semibold text-white transition hover:bg-brand-600"
+            className="rounded-full bg-brand-600 px-6 py-2 text-sm font-semibold text-brand-900 transition hover:bg-brand-600"
           >
             Me contacter
           </Link>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { ModeBanner } from "@/components/layout/ModeBanner";
 import { GeoGrid } from "@/components/layout/GeoGrid";
 import { Scanlines } from "@/components/layout/Scanlines";
 import { Nav } from "@/components/layout/Nav";
@@ -30,11 +29,14 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Donovan Beaulavon — Tool & IT Coordinator",
+  title: {
+    default: "Donovan Beaulavon — Tool & IT Coordinator",
+    template: "%s — Donovan Beaulavon",
+  },
   description:
     "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier — du tableur au déploiement, avec ou sans IA.",
   metadataBase: new URL("https://dtmini.com"),
-  alternates: { canonical: "https://dtmini.com" },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Donovan Beaulavon — Tool & IT Coordinator",
     description:
@@ -43,14 +45,14 @@ export const metadata: Metadata = {
     siteName: "Donovan Beaulavon",
     type: "profile",
     locale: "fr_FR",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Donovan Beaulavon — Tool & IT Coordinator",
     description:
       "Automatisation, IA, développement full-stack et systèmes agentiques.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -111,7 +113,6 @@ export default function RootLayout({
         <ThemeProvider>
           <Scanlines />
           <GeoGrid />
-          <ModeBanner />
           <Nav />
           <main className="pt-14">{children}</main>
           <Footer />

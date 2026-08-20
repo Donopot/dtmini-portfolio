@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Prévision énergétique — Machine Learning — Donovan Beaulavon",
+  alternates: { canonical: "/projects/prevision-energetique" },
+  title: "Prévision énergétique — Machine Learning",
   description:
     "Outil de prévision de consommation et production énergétique avec analyse de séries temporelles (XGBoost, Prophet) et dashboard Streamlit.",
 };

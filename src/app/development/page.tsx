@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Développement Full-stack & IA agentique — Donovan Beaulavon",
+  alternates: { canonical: "/development" },
+  title: "Développement Full-stack & IA agentique",
   description:
     "Parcours Développement Full-stack & IA agentique : React, Next.js, FastAPI, Python, agents IA, RAG. 3 projets open-source avec liens GitHub.",
 };
@@ -209,7 +210,7 @@ export default function DevelopmentPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-600 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-brand-900">
         <h2 className="text-2xl font-bold sm:text-3xl">
           Un projet de développement ?
         </h2>
@@ -225,7 +226,7 @@ export default function DevelopmentPage() {
           </Link>
           <Link
             href="/cv/development"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+            className="rounded-full border-2 border-brand-900 px-8 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-600"
           >
             Voir mon CV
           </Link>

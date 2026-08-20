@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/data-operations" },
+  title: "Data & opérations",
+  description:
+    "Consolidation, nettoyage et structuration de données dispersées (CSV, Excel, Airtable, API).",
+};
 
 export default function DataOperationsPage() {
   return (

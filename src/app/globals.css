@@ -19,6 +19,7 @@
   --color-light-text-secondary: #6E6660;
   --color-light-accent: #B8884D;
   --color-light-accent-light: #C89B67;
+  --color-light-accent-text: #85602F;
   --color-light-border: #E6E1D8;
 
   /* === DARK MODE === */
@@ -26,7 +27,7 @@
   --color-dark-bg-alt: #081317;
   --color-dark-card: #081317;
   --color-dark-text: #E0F2FE;
-  --color-dark-text-secondary: #5A7C7D;
+  --color-dark-text-secondary: #6E9192;
   --color-dark-accent: #22D3EE;
   --color-dark-accent-light: #38BDF8;
   --color-dark-accent-green: #4ADE80;
@@ -143,3 +144,28 @@ body {
 .dark-only-grid { display: none; }
 .dark .light-only-grid { display: none; }
 .dark .dark-only-grid { display: grid; }
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+:focus-visible {
+  outline: 2px solid #85602F;
+  outline-offset: 2px;
+}
+
+.dark :focus-visible {
+  outline-color: #22D3EE;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

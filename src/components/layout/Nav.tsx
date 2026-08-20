@@ -19,7 +19,7 @@ export function Nav() {
         <Link
           href="/"
           className="font-display text-xl font-bold tracking-wider no-underline transition-colors hover:opacity-70"
-          style={{ color: theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent)" }}
+          style={{ color: theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent-text)" }}
         >
           DB
         </Link>
@@ -36,7 +36,7 @@ export function Nav() {
                 color: theme === "dark" ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent)";
+                e.currentTarget.style.color = theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent-text)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = theme === "dark" ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)";

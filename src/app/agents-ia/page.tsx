@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/AnimatedSection";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/agents-ia" },
+  title: "Agents IA & RAG",
+  description:
+    "Intégration d'IA : RAG documentaire, classification automatique, recherche sémantique et orchestration d'agents.",
+};
 
 export default function AgentsIAPage() {
   return (

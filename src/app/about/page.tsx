@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "À propos — Donovan Beaulavon",
+  alternates: { canonical: "/about" },
+  title: "À propos",
   description:
     "De l'école de commerce au développement full-stack et à l'IA agentique : le parcours atypique de Donovan Beaulavon, passionné par l'automatisation et la tech.",
 };
@@ -160,7 +161,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-600 px-6 py-16 text-center text-white">
+      <section className="bg-brand-600 px-6 py-16 text-center text-brand-900">
         <h2 className="text-2xl font-bold sm:text-3xl">Travaillons ensemble</h2>
         <p className="mx-auto mt-2 max-w-lg text-brand-100">
           Vous avez un projet d&apos;automatisation, de développement ou d&apos;IA ?
@@ -175,7 +176,7 @@ export default function AboutPage() {
           </Link>
           <Link
             href="/"
-            className="rounded-full border-2 border-white px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+            className="rounded-full border-2 border-brand-900 px-8 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-600"
           >
             Accueil
           </Link>

@@ -53,7 +53,7 @@ export function Footer() {
           <span>© 2026 Donovan Beaulavon — Tous droits réservés</span>
           <div className="flex gap-3">
             <a href="https://github.com/Donopot" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>GH</a>
-            <a href="#" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>LI</a>
+            <a href="https://linkedin.com/in/donovan-beaulavon" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>LI</a>
             <a href="mailto:donovan@dtmini.com" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>@</a>
           </div>
         </div>

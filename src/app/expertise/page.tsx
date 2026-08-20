@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Expertise — Donovan Beaulavon",
+  alternates: { canonical: "/expertise" },
+  title: "Expertise",
   description:
     "Automatisation, déploiement, structuration de données et IA. Mes domaines d'expertise au service de vos processus métier.",
   openGraph: {
@@ -64,7 +65,7 @@ export default function ExpertisePage() {
       <div className="max-w-[72rem] mx-auto">
         <span
           className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-          style={{ color: "var(--color-light-accent)" }}
+          style={{ color: "var(--color-light-accent-text)" }}
         >
           Expertise
         </span>
@@ -91,7 +92,7 @@ export default function ExpertisePage() {
             >
               <span
                 className="text-2xl font-bold mb-4 block font-mono"
-                style={{ color: "var(--color-light-accent)" }}
+                style={{ color: "var(--color-light-accent-text)" }}
               >
                 {exp.icon}
               </span>
@@ -105,7 +106,7 @@ export default function ExpertisePage() {
                     className="flex items-start gap-2 text-sm"
                     style={{ color: "var(--color-light-text-secondary)" }}
                   >
-                    <span style={{ color: "var(--color-light-accent)" }}>→</span>
+                    <span style={{ color: "var(--color-light-accent-text)" }}>→</span>
                     {item}
                   </li>
                 ))}
