@@ -15,6 +15,7 @@ export interface Metric {
 export interface HeroData {
   badge: string;
   name: string;
+  headline: string;
   subtitle: string;
   cta: {
     primary: { label: string; href: string };

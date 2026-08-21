@@ -30,17 +30,17 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Donovan Beaulavon — Tool & IT Coordinator",
-    template: "%s — Donovan Beaulavon",
+    default: "Donovan Beaulavon — Automatisation, IA & outils métier",
+    template: "%s | Donovan Beaulavon",
   },
   description:
-    "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier — du tableur au déploiement, avec ou sans IA.",
+    "Freelance en automatisation, IA appliquée et outils métier. J'automatise vos opérations et transforme vos données en outils fiables.",
   metadataBase: new URL("https://dtmini.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Donovan Beaulavon — Tool & IT Coordinator",
+    title: "Donovan Beaulavon — Automatisation, IA & outils métier",
     description:
-      "Automatisation, IA, développement full-stack et systèmes agentiques.",
+      "Freelance en automatisation, IA appliquée et outils métier.",
     url: "https://dtmini.com",
     siteName: "Donovan Beaulavon",
     type: "profile",
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Donovan Beaulavon — Tool & IT Coordinator",
+    title: "Donovan Beaulavon — Automatisation, IA & outils métier",
     description:
-      "Automatisation, IA, développement full-stack et systèmes agentiques.",
+      "Freelance en automatisation, IA appliquée et outils métier.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
@@ -61,9 +61,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Donovan Beaulavon",
-  jobTitle: "Tool & IT Coordinator",
+  jobTitle: "Consultant freelance en automatisation et IA appliquée",
   description:
-    "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier.",
+    "J'automatise vos opérations et transforme vos données en outils fiables.",
   url: "https://dtmini.com",
   sameAs: ["https://github.com/Donopot"],
   knowsAbout: [

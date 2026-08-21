@@ -10,7 +10,7 @@ import { CtaGroup } from "./CtaGroup";
 export function Hero() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  const { badge, name, subtitle, cta } = heroData;
+  const { badge, name, headline, subtitle, cta } = heroData;
 
   return (
     <section className="relative min-h-screen flex items-center pt-32 pb-16 px-6 overflow-hidden">
@@ -26,17 +26,25 @@ export function Hero() {
           {badge}
         </span>
 
-        {/* Heading */}
+        {/* H1 = promesse */}
         <h1
-          className={`text-[clamp(2.5rem,7vw,5.5rem)] font-bold leading-[1.08] -tracking-[0.02em] mb-1 transition-all ${
+          className={`text-[clamp(2rem,4.5vw,3.5rem)] font-bold leading-[1.12] -tracking-[0.02em] mb-3 transition-all ${
             isDark ? "font-mono" : "font-display"
           }`}
         >
-          {name}
+          {headline}
           {isDark && <span className="cursor-blink" />}
         </h1>
 
-        {/* Subtitle */}
+        {/* Nom — visible mais secondaire */}
+        <p
+          className={`text-xl mb-6 ${isDark ? "font-mono" : "font-display italic"}`}
+          style={{ color: "var(--accent-strong)" }}
+        >
+          {name}
+        </p>
+
+        {/* Intro */}
         <p
           className="text-lg max-w-xl mb-10 leading-relaxed transition-colors"
           style={{ color: "var(--text-muted)" }}

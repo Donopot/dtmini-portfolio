@@ -1,16 +1,22 @@
 import { Hero } from "@/components/home/Hero";
+import { ProblemsSection } from "@/components/home/ProblemsSection";
 import { OffersSection } from "@/components/home/OffersSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
+import { MethodSection } from "@/components/home/MethodSection";
 import { ProjectsSection } from "@/components/home/ProjectsSection";
-import { services, projects } from "@/data/content";
+import { FaqSection } from "@/components/home/FaqSection";
+import { FinalCta } from "@/components/home/FinalCta";
+import { projects } from "@/data/content";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <ProblemsSection />
       <OffersSection />
-      <ServicesSection services={services} />
+      <MethodSection />
       <ProjectsSection projects={projects} />
+      <FaqSection />
+      <FinalCta />
     </>
   );
 }

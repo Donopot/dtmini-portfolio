@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 const expertises = [
   {
+    id: "automatisation",
     icon: "</>",
     title: "Automatisation",
     items: [
@@ -25,6 +26,7 @@ const expertises = [
     ],
   },
   {
+    id: "deploiement",
     icon: ">_",
     title: "Déploiement",
     items: [
@@ -36,6 +38,7 @@ const expertises = [
     ],
   },
   {
+    id: "structuration",
     icon: "{ }",
     title: "Structuration",
     items: [
@@ -47,6 +50,7 @@ const expertises = [
     ],
   },
   {
+    id: "ia",
     icon: "⚡",
     title: "IA & RAG",
     items: [
@@ -83,8 +87,9 @@ export default function ExpertisePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {expertises.map((exp) => (
             <div
-              key={exp.title}
-              className="rounded-2xl p-8 border relative transition-all duration-400 hover:-translate-y-1"
+              key={exp.id}
+              id={exp.id}
+              className="rounded-2xl p-8 border relative transition-all duration-400 hover:-translate-y-1 scroll-mt-28"
               style={{
                 backgroundColor: "var(--surface)",
                 borderColor: "var(--border)",

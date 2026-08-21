@@ -1,31 +1,53 @@
 # Guide de contenu — dtmini-portfolio
 
-## Mettre à jour les données
+## Où sont les données
 
-Tout le contenu textuel est dans `src/content/` :
+| Fichier | Contenu | Modifiable ? |
+|---|---|---|
+| `src/data/content.ts` | Navigation, hero (badge/headline/intro), problèmes, méthode, services, projets, footer | ✅ principal |
+| `src/data/offers.ts` | 4 offres commerciales | ✅ importé (section Offres) |
+| `src/data/faq.ts` | 6 questions/réponses | ✅ importé (section FAQ + page /faq) |
+| `src/content/testimonials.ts` | 3 témoignages | 🔒 masqués (validation en attente) |
 
-| Fichier | Ce qu'il contient |
-|---------|-------------------|
-| `site.ts` | Nom, titre, tagline, disponibilité, preuves chiffrées, liens sociaux |
-| `projects.ts` | Projets techniques (titre, description, stack, liens) |
-| `case-studies.ts` | Études de cas métier anonymisées |
-| `experience.ts` | Expériences professionnelles et formations |
-| `skills.ts` | Groupes de compétences |
+## Modifier le contenu
 
-Modifier un de ces fichiers → `npm run build` → redéployer.
+1. Éditer le fichier concerné dans `src/data/` (ou `src/content/`).
+2. `npm run build` pour vérifier.
+3. Redéployer (voir `docs/deployment.md`).
 
-## Ajouter une image
+## Ajouter un projet
 
-1. Placer l'image dans `public/images/`
-2. Référencer avec `/images/nom-fichier.jpg` dans le composant
+Dans `src/data/content.ts` → tableau `projects` :
+
+```ts
+{
+  id: "mon-projet",
+  name: "Nom du projet",
+  category: "Automatisation | IA | Data Science | Web | Web3",
+  description: "…",
+  results: ["Résultat 1", "Résultat 2"],
+  link: "https://…",        // optionnel
+  tags: ["Python", "Docker"],
+}
+```
+
+## Ajouter / modifier une offre
+
+`src/data/offers.ts` → tableau `offers` (interface `Offer`). Relié à la section Offres de l'accueil via `OffersSection.tsx` ; le champ `contactType` préremplit le formulaire `/contact?type=…`.
+
+## Ajouter un témoignage
+
+`src/content/testimonials.ts` → tableau `testimonials`. ⚠️ Les témoignages actuels sont **masqués** en attendant la validation de l'identité des auteurs. Ne pas publier sans validation explicite de Donovan.
 
 ## Ajouter un CV PDF
 
-1. Placer les PDF dans `public/cv/`
-2. Les routes `/cv/automation` et `/cv/development` pointent vers ces fichiers
+1. Placer le PDF dans `public/cv/`.
+2. Routes existantes : `/cv/automation`, `/cv/development`.
 
-## Style
+## Design tokens
 
-- Palette : teal (`#0f766e`), blanc, gris
-- Typographie : system fonts
-- Responsive : mobile-first, testé à 360/390/768/1024/1440 px
+Modifier les couleurs dans `src/app/globals.css` → bloc `@theme` (PAS `tailwind.config.ts`, ignoré par Tailwind v4). Voir `docs/architecture.md` pour la table complète des tokens.
+
+## Règle d'or : affirmations chiffrées
+
+Toute affirmation non prouvée (73 % de réduction, 10 000 contacts, ~200 fichiers, etc.) va dans `pendingValidation` (fin de `content.ts`) et ne doit **pas** être affichée publiquement. C'est une contrainte de conformité, pas une suggestion.

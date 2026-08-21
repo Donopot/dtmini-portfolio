@@ -14,16 +14,18 @@ export const navItems: NavItem[] = [
 ];
 
 export const heroData: HeroData = {
-  badge: "Tool & IT Coordinator",
+  badge: "Freelance · Automatisation, IA & outils métier",
   name: "Donovan Beaulavon",
+  headline:
+    "J'automatise vos opérations et transforme vos données en outils fiables.",
   subtitle:
-    "J'analyse, automatise et déploie des systèmes intelligents qui transforment les processus métier — du tableur au déploiement, avec ou sans IA.",
+    "J'aide les équipes à remplacer les fichiers dispersés, les doubles saisies et les tâches répétitives par des processus clairs, automatisés et transmissibles.",
   cta: {
-    primary: { label: "Me contacter", href: "/contact" },
-    secondary: { label: "Voir les projets ↓", href: "#projets" },
+    primary: { label: "Parler de mon besoin", href: "/contact" },
+    secondary: { label: "Découvrir les offres", href: "/#offres" },
   },
   stats: [
-    { value: "ChangeNOW", label: "Tool & IT Coordinator" },
+    { value: "ChangeNOW", label: "Automatisation des processus" },
     { value: "DataScientest", label: "Mines Paris - PSL" },
     { value: "Oreegami", label: "Développement Full-stack" },
   ],
@@ -37,9 +39,9 @@ export const heroData: HeroData = {
 
 export const terminalProfile = `{
   "name": "Donovan Beaulavon",
-  "role": "Tool & IT Coordinator",
+  "role": "Consultant freelance · Automatisation, IA & outils métier",
   "stack": ["Python", "TypeScript", "Airtable", "Make"],
-  "mission": "automatiser les processus métier"
+  "mission": "automatiser vos opérations et transformer vos données en outils fiables"
 }`;
 
 export const services: Service[] = [
@@ -66,6 +68,68 @@ export const services: Service[] = [
     title: "IA & RAG",
     description:
       "Recherche vectorielle, embeddings, chatbots documentaires. L'IA au service de vos données.",
+  },
+];
+
+export interface Problem {
+  title: string;
+  description: string;
+}
+
+export const problems: Problem[] = [
+  {
+    title: "Des données dispersées",
+    description:
+      "Vos informations sont éparpillées entre tableurs, emails et outils qui ne communiquent pas entre eux.",
+  },
+  {
+    title: "Des doubles saisies",
+    description:
+      "Les mêmes informations sont ressaisies plusieurs fois à plusieurs endroits, ce qui multiplie les erreurs.",
+  },
+  {
+    title: "Des tâches répétitives",
+    description:
+      "Des opérations manuelles répétées consomment le temps de vos équipes sans valeur ajoutée.",
+  },
+];
+
+export interface MethodStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export const method: MethodStep[] = [
+  {
+    step: "01",
+    title: "Cadrage",
+    description:
+      "On définit ensemble le périmètre, les contraintes et le résultat attendu.",
+  },
+  {
+    step: "02",
+    title: "Prototype",
+    description:
+      "Un prototype rapide ou un audit pour valider l'approche avant de construire.",
+  },
+  {
+    step: "03",
+    title: "Construction",
+    description:
+      "Développement et tests, avec des points réguliers pour rester alignés.",
+  },
+  {
+    step: "04",
+    title: "Déploiement",
+    description:
+      "Mise en production, supervision et sauvegardes.",
+  },
+  {
+    step: "05",
+    title: "Transmission",
+    description:
+      "Documentation et transfert de compétences pour que votre équipe reste autonome.",
   },
 ];
 
