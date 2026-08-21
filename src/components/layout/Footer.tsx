@@ -11,9 +11,7 @@ export function Footer() {
   return (
     <footer
       className="border-t z-10 relative px-6 pt-16 pb-8 transition-colors"
-      style={{
-        borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)",
-      }}
+      style={{ borderColor: "var(--border)" }}
     >
       <div className="max-w-[72rem] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
@@ -25,7 +23,7 @@ export function Footer() {
                     ? "font-mono text-xs uppercase tracking-widest"
                     : "font-display text-base"
                 }`}
-                style={{ color: isDark ? "var(--color-dark-accent)" : "inherit" }}
+                style={{ color: "var(--accent-strong)" }}
               >
                 {col.title}
               </h4>
@@ -34,7 +32,7 @@ export function Footer() {
                   key={link.href}
                   href={link.href}
                   className="block py-1 text-sm no-underline transition-colors hover:opacity-70"
-                  style={{ color: isDark ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)" }}
+                  style={{ color: "var(--text-muted)" }}
                 >
                   {link.label}
                 </Link>
@@ -46,21 +44,41 @@ export function Footer() {
         <div
           className="flex items-center justify-between pt-8 border-t text-sm transition-colors"
           style={{
-            borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)",
-            color: isDark ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)",
+            borderColor: "var(--border)",
+            color: "var(--text-muted)",
           }}
         >
           <span>© 2026 Donovan Beaulavon — Tous droits réservés</span>
           <div className="flex gap-3">
-            <a href="https://github.com/Donopot" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>GH</a>
-            <a href="https://linkedin.com/in/donovan-beaulavon" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>LI</a>
-            <a href="mailto:donovan@dtmini.com" className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70" style={{ borderColor: isDark ? "var(--color-dark-border)" : "var(--color-light-border)" }}>@</a>
+            <a
+              href="https://github.com/Donopot"
+              className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70"
+              style={{ borderColor: "var(--border)" }}
+            >
+              GH
+            </a>
+            <a
+              href="https://linkedin.com/in/donovan-beaulavon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70"
+              style={{ borderColor: "var(--border)" }}
+            >
+              LI
+            </a>
+            <a
+              href="mailto:donovan@dtmini.com"
+              className="w-8 h-8 rounded-full border flex items-center justify-center text-xs no-underline transition-colors hover:opacity-70"
+              style={{ borderColor: "var(--border)" }}
+            >
+              @
+            </a>
           </div>
         </div>
 
         {/* Terminal prompt (dark only) */}
         {isDark && (
-          <div className="mt-6 py-3 font-mono text-sm" style={{ color: "var(--color-dark-accent-green)" }}>
+          <div className="mt-6 py-3 font-mono text-sm" style={{ color: "var(--accent-green)" }}>
             donopot@portfolio:~$ <span className="cursor-blink" />
           </div>
         )}

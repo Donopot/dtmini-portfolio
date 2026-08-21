@@ -17,7 +17,7 @@ export default function TemoignagesPage() {
       <div className="max-w-[48rem] mx-auto">
         <span
           className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-          style={{ color: "var(--color-light-accent-text)" }}
+          style={{ color: "var(--accent-strong)" }}
         >
           Témoignages
         </span>
@@ -26,7 +26,7 @@ export default function TemoignagesPage() {
         </h1>
         <p
           className="text-lg mb-12 leading-relaxed"
-          style={{ color: "var(--color-light-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           Des retours de collaborateurs avec qui j&apos;ai travaillé sur des
           projets d&apos;automatisation, de déploiement et d&apos;IA.
@@ -37,13 +37,13 @@ export default function TemoignagesPage() {
         <div
           className="rounded-2xl p-8 border text-center"
           style={{
-            backgroundColor: "var(--color-light-card)",
-            borderColor: "var(--color-light-border)",
+            backgroundColor: "var(--surface)",
+            borderColor: "var(--border)",
           }}
         >
           <p
             className="text-base leading-relaxed"
-            style={{ color: "var(--color-light-text-secondary)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             Les témoignages sont actuellement en cours de vérification
             (confirmation de l&apos;identité et de l&apos;autorisation des
@@ -54,13 +54,13 @@ export default function TemoignagesPage() {
         <div className="mt-16 text-center">
           <p
             className="text-sm"
-            style={{ color: "var(--color-light-text-secondary)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             Vous avez travaillé avec moi ?{" "}
             <a
               href="mailto:donovan@dtmini.com"
               className="underline font-medium hover:opacity-70"
-              style={{ color: "var(--color-light-accent-text)" }}
+              style={{ color: "var(--accent-strong)" }}
             >
               Envoyez-moi votre témoignage
             </a>

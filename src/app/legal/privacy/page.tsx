@@ -13,17 +13,17 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16">
-        <h1 className="text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-4xl">
+        <h1 className="text-3xl font-extrabold sm:text-4xl">
           Mentions légales & Politique de confidentialité
         </h1>
-        <p className="mt-2 text-sm text-brand-700">
+        <p className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
           Dernière mise à jour : août 2026
         </p>
 
-        <div className="mt-10 space-y-10 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
+        <div className="mt-10 space-y-10 text-sm leading-relaxed">
           {/* Éditeur */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">1. Éditeur du site</h2>
+            <h2 className="text-xl font-bold">1. Éditeur du site</h2>
             <div className="mt-3 space-y-1">
               <p>
                 <strong>Donovan Beaulavon</strong>
@@ -37,7 +37,7 @@ export default function PrivacyPage() {
 
           {/* Propriété intellectuelle */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">2. Propriété intellectuelle</h2>
+            <h2 className="text-xl font-bold">2. Propriété intellectuelle</h2>
             <p className="mt-3">
               L&apos;ensemble du contenu de ce site (textes, images, code source, design)
               est la propriété exclusive de Donovan Beaulavon, sauf mention contraire.
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
 
           {/* Données personnelles */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">
+            <h2 className="text-xl font-bold">
               3. Collecte des données personnelles
             </h2>
             <p className="mt-3">
@@ -68,12 +68,12 @@ export default function PrivacyPage() {
               soumissions, puis écartée. Ce site ne collecte aucune donnée de navigation
               ni statistique nominative.
             </p>
-            <h3 className="mt-4 font-semibold text-brand-900 dark:text-brand-100">Finalités :</h3>
+            <h3 className="mt-4 font-semibold">Finalités :</h3>
             <ul className="mt-2 list-disc pl-5 space-y-1">
               <li>Répondre aux demandes de contact</li>
               <li>Échanger sur vos projets d&apos;automatisation, développement ou IA</li>
             </ul>
-            <h3 className="mt-4 font-semibold text-brand-900 dark:text-brand-100">Durée de conservation :</h3>
+            <h3 className="mt-4 font-semibold">Durée de conservation :</h3>
             <p className="mt-2">
               Les données sont conservées pendant une durée maximale de 2 ans après le
               dernier échange, sauf demande de suppression anticipée.
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
 
           {/* Vos droits */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">4. Vos droits</h2>
+            <h2 className="text-xl font-bold">4. Vos droits</h2>
             <p className="mt-3">
               Conformément au RGPD, vous disposez des droits suivants :
             </p>
@@ -97,7 +97,8 @@ export default function PrivacyPage() {
               Pour exercer ces droits, contactez-moi à :{" "}
               <a
                 href="mailto:donovan@dtmini.com"
-                className="text-brand-700 hover:text-brand-800 underline"
+                className="underline hover:opacity-70"
+                style={{ color: "var(--accent-strong)" }}
               >
                 donovan@dtmini.com
               </a>
@@ -106,7 +107,7 @@ export default function PrivacyPage() {
 
           {/* Cookies */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">5. Cookies</h2>
+            <h2 className="text-xl font-bold">5. Cookies</h2>
             <p className="mt-3">
               Ce site n&apos;utilise <strong>aucun cookie de tracking</strong> ou de
               publicité. Seuls des cookies techniques essentiels au fonctionnement du
@@ -116,7 +117,7 @@ export default function PrivacyPage() {
 
           {/* Responsabilité */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">6. Limitation de responsabilité</h2>
+            <h2 className="text-xl font-bold">6. Limitation de responsabilité</h2>
             <p className="mt-3">
               Les informations présentes sur ce site sont fournies à titre indicatif.
               Je m&apos;efforce de les maintenir à jour mais ne peux garantir leur
@@ -127,13 +128,14 @@ export default function PrivacyPage() {
 
           {/* Contact */}
           <section>
-            <h2 className="text-xl font-bold text-brand-950 dark:text-brand-50">7. Contact</h2>
+            <h2 className="text-xl font-bold">7. Contact</h2>
             <p className="mt-3">
               Pour toute question relative à ces mentions légales ou à la protection
               de vos données :{" "}
               <a
                 href="mailto:donovan@dtmini.com"
-                className="text-brand-700 hover:text-brand-800 underline"
+                className="underline hover:opacity-70"
+                style={{ color: "var(--accent-strong)" }}
               >
                 donovan@dtmini.com
               </a>
@@ -142,7 +144,11 @@ export default function PrivacyPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
+          <Link
+            href="/"
+            className="text-sm underline hover:opacity-70"
+            style={{ color: "var(--accent-strong)" }}
+          >
             ← Retour à l&apos;accueil
           </Link>
         </div>

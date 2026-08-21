@@ -6,7 +6,7 @@ export function TerminalBlock() {
       className="rounded-xl overflow-hidden font-mono text-sm border"
       style={{
         backgroundColor: "rgba(8, 19, 23, 0.9)",
-        borderColor: "var(--color-dark-border)",
+        borderColor: "var(--border)",
       }}
     >
       {/* Terminal header dots */}
@@ -14,7 +14,7 @@ export function TerminalBlock() {
         className="flex items-center gap-2 px-4 py-2.5 border-b"
         style={{
           backgroundColor: "rgba(19, 47, 53, 0.5)",
-          borderColor: "var(--color-dark-border)",
+          borderColor: "var(--border)",
         }}
       >
         <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
@@ -22,7 +22,7 @@ export function TerminalBlock() {
         <span className="w-2.5 h-2.5 rounded-full bg-[#27CA40]" />
         <span
           className="ml-2 text-xs"
-          style={{ color: "var(--color-dark-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           portfolio.json — zsh
         </span>
@@ -31,14 +31,14 @@ export function TerminalBlock() {
       {/* Terminal body */}
       <div className="p-5 leading-7">
         <div>
-          <span style={{ color: "var(--color-dark-accent-green)" }}>donopot@portfolio:~$</span>{" "}
+          <span style={{ color: "var(--accent-green)" }}>donopot@portfolio:~$</span>{" "}
           <span>cat profile.json</span>
         </div>
-        <pre className="mt-1 whitespace-pre-wrap" style={{ color: "var(--color-dark-text-secondary)" }}>
+        <pre className="mt-1 whitespace-pre-wrap" style={{ color: "var(--text-muted)" }}>
           {terminalProfile}
         </pre>
         <div className="mt-3">
-          <span style={{ color: "var(--color-dark-accent-green)" }}>donopot@portfolio:~$</span>{" "}
+          <span style={{ color: "var(--accent-green)" }}>donopot@portfolio:~$</span>{" "}
           <span className="cursor-blink" />
         </div>
       </div>

@@ -19,8 +19,8 @@ export function Hero() {
         <span
           className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border mb-6 transition-colors"
           style={{
-            color: isDark ? "var(--color-dark-accent)" : "var(--color-light-accent-text)",
-            borderColor: isDark ? "var(--color-dark-accent)" : "var(--color-light-accent)",
+            color: "var(--accent-strong)",
+            borderColor: "var(--accent)",
           }}
         >
           {badge}
@@ -39,7 +39,7 @@ export function Hero() {
         {/* Subtitle */}
         <p
           className="text-lg max-w-xl mb-10 leading-relaxed transition-colors"
-          style={{ color: isDark ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           {subtitle}
         </p>

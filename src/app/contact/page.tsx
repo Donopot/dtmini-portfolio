@@ -1,22 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-
-// Must match TYPE_LABELS in src/app/api/contact/route.ts exactly.
-const REQUEST_TYPES = [
-  { value: "automatisation", label: "Automatisation de processus" },
-  { value: "data", label: "Structuration & données" },
-  { value: "developpement", label: "Développement (SaaS, app web)" },
-  { value: "ia", label: "Projet IA (RAG, agents, LLM)" },
-  { value: "autre", label: "Autre" },
-];
+import { useState, useEffect } from "react";
+import { CONTACT_TYPES, type ContactType } from "@/types/contact";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactPage() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [type, setType] = useState<ContactType | "">("");
+
+  // Préremplissage du type depuis /contact?type=… (ex: depuis une offre)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get("type") as ContactType | null;
+    if (t && CONTACT_TYPES.some((c) => c.value === t)) {
+      setType(t);
+    }
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -58,6 +60,7 @@ export default function ContactPage() {
 
       setStatus("success");
       form.reset();
+      setType("");
     } catch {
       setError(
         "Impossible de contacter le serveur. Merci de réessayer ou d'utiliser l'email de secours."
@@ -67,16 +70,21 @@ export default function ContactPage() {
   }
 
   const inputClass =
-    "mt-1 block w-full rounded-lg border border-brand-300 px-4 py-3 text-sm shadow-sm transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200";
+    "mt-1 block w-full rounded-lg border px-4 py-3 text-sm shadow-sm transition focus:outline-none";
+  const inputStyle = {
+    backgroundColor: "var(--background-alt)",
+    borderColor: "var(--border)",
+    color: "var(--text)",
+  };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-brand-50 to-white">
+    <main className="min-h-screen" style={{ backgroundColor: "var(--background)" }}>
       <div className="mx-auto max-w-2xl px-6 py-16 sm:py-24">
         <div className="text-center">
-          <h1 className="text-3xl font-extrabold text-brand-950 dark:text-brand-50 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold sm:text-4xl" style={{ color: "var(--text)" }}>
             Me contacter
           </h1>
-          <p className="mt-3 text-brand-700 dark:text-brand-400">
+          <p className="mt-3" style={{ color: "var(--text-muted)" }}>
             Vous avez un projet d&apos;automatisation, de développement ou d&apos;IA ?
             Remplissez ce formulaire, je vous réponds sous 48h.
           </p>
@@ -84,7 +92,11 @@ export default function ContactPage() {
 
         <form
           onSubmit={handleSubmit}
-          className="mt-10 space-y-6 rounded-2xl bg-brand-50 dark:bg-brand-950 p-8 shadow-sm"
+          className="mt-10 space-y-6 rounded-2xl border p-8 shadow-sm"
+          style={{
+            backgroundColor: "var(--surface)",
+            borderColor: "var(--border)",
+          }}
         >
           {/* Honeypot */}
           <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
@@ -94,7 +106,7 @@ export default function ContactPage() {
 
           {/* Nom */}
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
+            <label htmlFor="name" className="block text-sm font-semibold" style={{ color: "var(--text)" }}>
               Nom <span className="text-red-500">*</span>
             </label>
             <input
@@ -105,13 +117,14 @@ export default function ContactPage() {
               minLength={2}
               maxLength={100}
               className={inputClass}
+              style={inputStyle}
               placeholder="Votre nom"
             />
           </div>
 
           {/* Entreprise */}
           <div>
-            <label htmlFor="company" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
+            <label htmlFor="company" className="block text-sm font-semibold" style={{ color: "var(--text)" }}>
               Entreprise
             </label>
             <input
@@ -119,13 +132,14 @@ export default function ContactPage() {
               id="company"
               name="company"
               className={inputClass}
+              style={inputStyle}
               placeholder="Nom de votre entreprise (optionnel)"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
+            <label htmlFor="email" className="block text-sm font-semibold" style={{ color: "var(--text)" }}>
               Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -134,20 +148,29 @@ export default function ContactPage() {
               name="email"
               required
               className={inputClass}
+              style={inputStyle}
               placeholder="vous@entreprise.com"
             />
           </div>
 
           {/* Type de demande */}
           <div>
-            <label htmlFor="type" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
+            <label htmlFor="type" className="block text-sm font-semibold" style={{ color: "var(--text)" }}>
               Type de demande <span className="text-red-500">*</span>
             </label>
-            <select id="type" name="type" required defaultValue="" className={inputClass}>
+            <select
+              id="type"
+              name="type"
+              required
+              value={type}
+              onChange={(e) => setType(e.target.value as ContactType)}
+              className={inputClass}
+              style={inputStyle}
+            >
               <option value="" disabled>
                 — Sélectionnez —
               </option>
-              {REQUEST_TYPES.map((t) => (
+              {CONTACT_TYPES.map((t) => (
                 <option key={t.value} value={t.value}>
                   {t.label}
                 </option>
@@ -157,7 +180,7 @@ export default function ContactPage() {
 
           {/* Message */}
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold text-brand-800 dark:text-brand-200">
+            <label htmlFor="message" className="block text-sm font-semibold" style={{ color: "var(--text)" }}>
               Message <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -168,6 +191,7 @@ export default function ContactPage() {
               maxLength={2000}
               rows={5}
               className={`${inputClass} resize-y`}
+              style={inputStyle}
               placeholder="Décrivez votre projet ou votre besoin…"
             />
           </div>
@@ -179,14 +203,19 @@ export default function ContactPage() {
               id="consent"
               name="consent"
               required
-              className="mt-1 h-4 w-4 rounded border-brand-300 text-brand-700 accent-brand-600"
+              className="mt-1 h-4 w-4 rounded"
             />
-            <label htmlFor="consent" className="text-xs text-brand-700 dark:text-brand-400 leading-relaxed">
+            <label
+              htmlFor="consent"
+              className="text-xs leading-relaxed"
+              style={{ color: "var(--text-muted)" }}
+            >
               J&apos;accepte que mes données personnelles soient collectées et traitées
               conformément à la{" "}
               <Link
                 href="/legal/privacy"
-                className="text-brand-700 underline hover:text-brand-800"
+                className="underline hover:opacity-70"
+                style={{ color: "var(--accent-strong)" }}
               >
                 politique de confidentialité
               </Link>
@@ -200,13 +229,14 @@ export default function ContactPage() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="w-full rounded-full bg-brand-600 px-8 py-3 text-sm font-semibold text-brand-900 shadow-lg transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full rounded-full px-8 py-3 text-sm font-semibold shadow-lg transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              style={{ backgroundColor: "var(--cta-bg)", color: "var(--cta-text)" }}
             >
               {status === "submitting" ? "Envoi en cours…" : "Envoyer le message"}
             </button>
 
             {status === "success" && (
-              <p role="status" className="mt-3 text-center text-sm font-medium text-green-700">
+              <p role="status" className="mt-3 text-center text-sm font-medium text-green-600">
                 Message envoyé. Je vous réponds sous 48h ouvrées.
               </p>
             )}
@@ -216,7 +246,7 @@ export default function ContactPage() {
               </p>
             )}
             {status !== "error" && (
-              <p className="mt-2 text-center text-xs text-brand-700">
+              <p className="mt-2 text-center text-xs" style={{ color: "var(--text-muted)" }}>
                 Réponse sous 48h ouvrées. Aucun spam.
               </p>
             )}
@@ -225,11 +255,12 @@ export default function ContactPage() {
 
         {/* Alternative */}
         <div className="mt-10 text-center">
-          <p className="text-sm text-brand-700">
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             Vous pouvez aussi me contacter directement par email :{" "}
             <a
               href="mailto:donovan@dtmini.com"
-              className="font-medium text-brand-700 hover:text-brand-800 underline"
+              className="font-medium underline hover:opacity-70"
+              style={{ color: "var(--accent-strong)" }}
             >
               donovan@dtmini.com
             </a>
@@ -237,7 +268,11 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <Link href="/" className="text-sm text-brand-700 hover:text-brand-700 underline">
+          <Link
+            href="/"
+            className="text-sm underline hover:opacity-70"
+            style={{ color: "var(--accent-strong)" }}
+          >
             ← Retour à l&apos;accueil
           </Link>
         </div>

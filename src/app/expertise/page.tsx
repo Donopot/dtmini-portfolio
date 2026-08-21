@@ -65,7 +65,7 @@ export default function ExpertisePage() {
       <div className="max-w-[72rem] mx-auto">
         <span
           className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-          style={{ color: "var(--color-light-accent-text)" }}
+          style={{ color: "var(--accent-strong)" }}
         >
           Expertise
         </span>
@@ -74,7 +74,7 @@ export default function ExpertisePage() {
         </h1>
         <p
           className="text-lg max-w-2xl mb-12 leading-relaxed"
-          style={{ color: "var(--color-light-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           Quatre piliers techniques pour transformer vos processus métier — de
           l&apos;analyse à la mise en production.
@@ -86,13 +86,13 @@ export default function ExpertisePage() {
               key={exp.title}
               className="rounded-2xl p-8 border relative transition-all duration-400 hover:-translate-y-1"
               style={{
-                backgroundColor: "var(--color-light-card)",
-                borderColor: "var(--color-light-border)",
+                backgroundColor: "var(--surface)",
+                borderColor: "var(--border)",
               }}
             >
               <span
                 className="text-2xl font-bold mb-4 block font-mono"
-                style={{ color: "var(--color-light-accent-text)" }}
+                style={{ color: "var(--accent-strong)" }}
               >
                 {exp.icon}
               </span>
@@ -104,9 +104,9 @@ export default function ExpertisePage() {
                   <li
                     key={item}
                     className="flex items-start gap-2 text-sm"
-                    style={{ color: "var(--color-light-text-secondary)" }}
+                    style={{ color: "var(--text-muted)" }}
                   >
-                    <span style={{ color: "var(--color-light-accent-text)" }}>→</span>
+                    <span style={{ color: "var(--accent-strong)" }}>→</span>
                     {item}
                   </li>
                 ))}

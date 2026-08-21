@@ -68,7 +68,7 @@ export default function ParcoursPage() {
         <AnimatedSection>
           <span
             className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-            style={{ color: "var(--color-light-accent-text)" }}
+            style={{ color: "var(--accent-strong)" }}
           >
             Parcours
           </span>
@@ -77,7 +77,7 @@ export default function ParcoursPage() {
           </h1>
           <p
             className="text-lg max-w-2xl mb-16 leading-relaxed"
-            style={{ color: "var(--color-light-text-secondary)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             De la data science au déploiement d&apos;agents IA, un parcours
             orienté vers l&apos;automatisation et l&apos;efficacité
@@ -91,13 +91,13 @@ export default function ParcoursPage() {
           <div
             className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 hidden md:block"
             style={{
-              background: `linear-gradient(to bottom, var(--color-light-accent), var(--color-light-border), var(--color-light-accent))`,
+              background: `linear-gradient(to bottom, var(--accent), var(--border), var(--accent))`,
             }}
           />
           <div
             className="absolute left-4 top-0 bottom-0 w-0.5 md:hidden"
             style={{
-              background: `linear-gradient(to bottom, var(--color-light-accent), var(--color-light-border), var(--color-light-accent))`,
+              background: `linear-gradient(to bottom, var(--accent), var(--border), var(--accent))`,
             }}
           />
 
@@ -122,13 +122,13 @@ export default function ParcoursPage() {
               <div
                 className="h-3 w-3 rounded-full"
                 style={{
-                  backgroundColor: "var(--color-light-accent)",
-                  boxShadow: "0 0 0 6px var(--color-light-bg), 0 0 12px var(--color-dark-accent)",
+                  backgroundColor: "var(--accent)",
+                  boxShadow: "0 0 0 6px var(--background), 0 0 12px var(--accent)",
                 }}
               />
               <p
                 className="font-mono text-sm"
-                style={{ color: "var(--color-dark-accent-green)" }}
+                style={{ color: "var(--accent-green)" }}
               >
                 <span className="dark-only-inline">donopot@portfolio:~$ █</span>
                 <span
@@ -136,7 +136,7 @@ export default function ParcoursPage() {
                   style={{
                     fontFamily: "Georgia, serif",
                     fontStyle: "italic",
-                    color: "var(--color-light-text-secondary)",
+                    color: "var(--text-muted)",
                   }}
                 >
                   ... et la suite s&apos;écrit maintenant.
@@ -159,10 +159,10 @@ function TimelineRow({
 }) {
   const typeColor =
     entry.type === "work"
-      ? "var(--color-light-accent-text)"
+      ? "var(--accent-strong)"
       : entry.type === "education"
         ? "#4F8C8C"
-        : "var(--color-dark-accent-green)";
+        : "var(--accent-green)";
 
   const typeBg =
     entry.type === "work"
@@ -173,10 +173,10 @@ function TimelineRow({
 
   const dotColor =
     entry.type === "work"
-      ? "var(--color-light-accent)"
+      ? "var(--accent)"
       : entry.type === "education"
         ? "#4F8C8C"
-        : "var(--color-dark-accent-green)";
+        : "var(--accent-green)";
 
   return (
     <div className="relative grid grid-cols-[2rem_1fr] md:grid-cols-[1fr_2rem_1fr] items-start gap-x-4 md:gap-x-6">
@@ -186,7 +186,7 @@ function TimelineRow({
           className="h-3 w-3 rounded-full z-10 shrink-0"
           style={{
             backgroundColor: dotColor,
-            boxShadow: "0 0 0 5px var(--color-light-bg)",
+            boxShadow: "0 0 0 5px var(--background)",
           }}
         />
       </div>
@@ -216,8 +216,8 @@ function TimelineCard({
     <div
       className="rounded-2xl p-6 border transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
       style={{
-        backgroundColor: "var(--color-light-card)",
-        borderColor: "var(--color-light-border)",
+        backgroundColor: "var(--surface)",
+        borderColor: "var(--border)",
       }}
     >
       {/* Icon + type pill + location */}
@@ -236,7 +236,7 @@ function TimelineCard({
         {entry.location && (
           <span
             className="text-[10px] ml-auto"
-            style={{ color: "var(--color-light-text-secondary)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             📍 {entry.location}
           </span>
@@ -258,13 +258,13 @@ function TimelineCard({
       <h3 className="text-lg font-bold mb-0.5">{entry.title}</h3>
       <p
         className="text-sm mb-3"
-        style={{ color: "var(--color-light-text-secondary)" }}
+        style={{ color: "var(--text-muted)" }}
       >
         {entry.subtitle}
       </p>
       <p
         className="text-sm leading-relaxed mb-4"
-        style={{ color: "var(--color-light-text-secondary)" }}
+        style={{ color: "var(--text-muted)" }}
       >
         {entry.description}
       </p>

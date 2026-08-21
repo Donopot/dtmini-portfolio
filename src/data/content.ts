@@ -91,7 +91,7 @@ export const projects: Project[] = [
     description:
       "Pipeline d'ingestion PDF/HTML/CSV → embeddings vectoriels → recherche sémantique. Interface Streamlit pour l'exploration de documents par langage naturel. Déploiement Docker avec persistance des index.",
     results: [
-      "3 formats de documents supportés",
+      "PDF, HTML et CSV supportés",
       "Recherche sémantique sur documents internes",
       "Interface no-code pour utilisateurs métier",
     ],
@@ -118,9 +118,9 @@ export const projects: Project[] = [
     description:
       "Agent conversationnel autonome déployé sur Discord, Telegram et terminal. Mémoire persistante cross-session, outils intégrés (shell, web, fichiers), orchestration multi-agents via cron jobs. Architecture modulaire avec profils isolés.",
     results: [
-      "3 plateformes de communication",
+      "Multi-plateformes (Discord, Telegram, terminal)",
       "Mémoire persistante entre sessions",
-      "20+ outils intégrés (shell, web, fichiers, browser)",
+      "Outils intégrés (shell, web, fichiers, navigateur)",
       "Orchestration de cron jobs simultanés",
     ],
     link: "https://github.com/NousResearch/hermes-agent",

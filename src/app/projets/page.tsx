@@ -34,7 +34,7 @@ export default function ProjetsPage() {
       <div className="max-w-[72rem] mx-auto">
         <span
           className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-          style={{ color: "var(--color-light-accent-text)" }}
+          style={{ color: "var(--accent-strong)" }}
         >
           Projets
         </span>
@@ -43,7 +43,7 @@ export default function ProjetsPage() {
         </h1>
         <p
           className="text-lg max-w-2xl mb-12 leading-relaxed"
-          style={{ color: "var(--color-light-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           Chaque projet répond à un besoin concret, du prototype au déploiement.
         </p>
@@ -54,16 +54,16 @@ export default function ProjetsPage() {
               key={p.id}
               className="rounded-2xl p-6 border transition-all duration-400 hover:-translate-y-1 group flex flex-col"
               style={{
-                backgroundColor: "var(--color-light-card)",
-                borderColor: "var(--color-light-border)",
+                backgroundColor: "var(--surface)",
+                borderColor: "var(--border)",
               }}
             >
               {/* Icon */}
               <div
                 className="h-32 rounded-xl mb-4 flex items-center justify-center font-mono text-3xl"
                 style={{
-                  backgroundColor: "var(--color-light-bg-alt)",
-                  color: "var(--color-light-accent-text)",
+                  backgroundColor: "var(--background-alt)",
+                  color: "var(--accent-strong)",
                 }}
               >
                 {getEmoji(p.tags)}
@@ -72,7 +72,7 @@ export default function ProjetsPage() {
               {/* Title + Category */}
               <span
                 className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] mb-1"
-                style={{ color: "var(--color-light-accent-text)" }}
+                style={{ color: "var(--accent-strong)" }}
               >
                 {p.category}
               </span>
@@ -83,7 +83,7 @@ export default function ProjetsPage() {
               {/* Description */}
               <p
                 className="text-sm leading-relaxed mb-4 flex-grow"
-                style={{ color: "var(--color-light-text-secondary)" }}
+                style={{ color: "var(--text-muted)" }}
               >
                 {p.description}
               </p>
@@ -95,9 +95,9 @@ export default function ProjetsPage() {
                     <li
                       key={i}
                       className="text-xs flex items-start gap-2"
-                      style={{ color: "var(--color-light-text-secondary)" }}
+                      style={{ color: "var(--text-muted)" }}
                     >
-                      <span style={{ color: "var(--color-light-accent-text)" }}>▸</span>
+                      <span style={{ color: "var(--accent-strong)" }}>▸</span>
                       {r}
                     </li>
                   ))}
@@ -111,8 +111,8 @@ export default function ProjetsPage() {
                     key={t}
                     className="px-2.5 py-1 rounded-full text-xs font-medium border"
                     style={{
-                      borderColor: "var(--color-light-border)",
-                      color: "var(--color-light-text-secondary)",
+                      borderColor: "var(--border)",
+                      color: "var(--text-muted)",
                     }}
                   >
                     {t}
@@ -127,7 +127,7 @@ export default function ProjetsPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70"
-                  style={{ color: "var(--color-light-accent-text)" }}
+                  style={{ color: "var(--accent-strong)" }}
                 >
                   Voir le projet ↗
                 </a>

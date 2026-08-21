@@ -56,37 +56,63 @@
 }
 
 /* ============================================
-   BASE STYLES
+   SEMANTIC TOKENS — thème unique, bascule via .dark
    ============================================ */
 
 :root {
   --mode-transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* === LIGHT (éditorial, premium, crème/or/aubergine) === */
+  --background: #F5F2EC;
+  --background-alt: #F3EFE8;
+  --surface: #FAFAF7;
+  --text: #231F20;
+  --text-muted: #6E6660;
+  --accent: #B8884D;
+  --accent-strong: #85602F;
+  --accent-muted: #C89B67;
+  --border: #E6E1D8;
+  --accent-green: #B8884D; /* fallback, non utilisé en clair */
+  --cta-bg: #B8884D;
+  --cta-text: #231F20;
+  --focus-ring: #85602F;
 }
+
+.dark {
+  /* === DARK (tech, data, terminal, teal) === */
+  --background: #060B0E;
+  --background-alt: #081317;
+  --surface: #081317;
+  --text: #E0F2FE;
+  --text-muted: #6E9192;
+  --accent: #22D3EE;
+  --accent-strong: #22D3EE;
+  --accent-muted: #38BDF8;
+  --border: #132F35;
+  --accent-green: #4ADE80;
+  --cta-bg: #4ADE80;
+  --cta-text: #060B0E;
+  --focus-ring: #22D3EE;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-light-bg);
-  color: var(--color-light-text);
+  background-color: var(--background);
+  color: var(--text);
   transition: background-color var(--mode-transition), color var(--mode-transition);
   -webkit-font-smoothing: antialiased;
 }
 
-.dark body {
-  background-color: var(--color-dark-bg);
-  color: var(--color-dark-text);
-}
-
 ::selection {
-  background-color: var(--color-light-accent);
-  color: var(--color-light-bg);
-}
-
-.dark ::selection {
-  background-color: var(--color-dark-accent);
-  color: var(--color-dark-bg);
+  background-color: var(--accent);
+  color: var(--background);
 }
 
 /* ============================================
@@ -121,7 +147,7 @@ body {
   display: inline-block;
   width: 3px;
   height: 1.2em;
-  background: var(--color-dark-accent-green);
+  background: var(--accent-green);
   margin-left: 2px;
   animation: blink 1s step-end infinite;
   vertical-align: text-bottom;
@@ -149,12 +175,8 @@ body {
    ACCESSIBILITY
    ============================================ */
 :focus-visible {
-  outline: 2px solid #85602F;
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
-}
-
-.dark :focus-visible {
-  outline-color: #22D3EE;
 }
 
 @media (prefers-reduced-motion: reduce) {

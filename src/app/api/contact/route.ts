@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { createHmac, randomBytes } from "node:crypto";
+import { CONTACT_TYPE_LABELS, type ContactType } from "@/types/contact";
 
 // ── Rate limiting (HMAC-SHA256, clé éphémère) ──────────────────────────
 // La clé est générée aléatoirement au démarrage du processus et perdue au
@@ -49,13 +50,10 @@ function recordRequest(key: string): void {
 }
 
 // Labels must match the <select> options in src/app/contact/page.tsx exactly.
-const TYPE_LABELS: Record<string, string> = {
-  automatisation: "Automatisation de processus",
-  data: "Structuration & données",
-  developpement: "Développement (SaaS, app web)",
-  ia: "Projet IA (RAG, agents, LLM)",
-  autre: "Autre",
-};
+// Source unique de vérité : src/types/contact.ts
+function resolveTypeLabel(type: unknown): string {
+  return CONTACT_TYPE_LABELS[type as ContactType] || CONTACT_TYPE_LABELS.autre;
+}
 
 function escapeHtml(value: string): string {
   return value
@@ -122,7 +120,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ errors }, { status: 400 });
   }
 
-  const typeLabel = TYPE_LABELS[type as string] || "Autre";
+  const typeLabel = resolveTypeLabel(type);
 
   // Destination / sender / API key come from environment variables only.
   const to = process.env.CONTACT_EMAIL;

@@ -11,15 +11,15 @@ export function Nav() {
     <nav
       className="fixed top-8 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors"
       style={{
-        backgroundColor: `color-mix(in srgb, ${theme === "dark" ? "var(--color-dark-bg)" : "var(--color-light-bg)"} 88%, transparent)`,
-        borderColor: theme === "dark" ? "var(--color-dark-border)" : "var(--color-light-border)",
+        backgroundColor: `color-mix(in srgb, var(--background) 88%, transparent)`,
+        borderColor: "var(--border)",
       }}
     >
       <div className="max-w-[72rem] mx-auto px-6 flex items-center justify-between h-14">
         <Link
           href="/"
           className="font-display text-xl font-bold tracking-wider no-underline transition-colors hover:opacity-70"
-          style={{ color: theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent-text)" }}
+          style={{ color: "var(--accent-strong)" }}
         >
           DB
         </Link>
@@ -32,14 +32,12 @@ export function Nav() {
               className={`px-4 py-2 rounded-lg text-sm font-medium no-underline transition-colors ${
                 theme === "dark" ? "font-mono text-xs tracking-wider" : "font-sans"
               }`}
-              style={{
-                color: theme === "dark" ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)",
-              }}
+              style={{ color: "var(--text-muted)" }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = theme === "dark" ? "var(--color-dark-accent)" : "var(--color-light-accent-text)";
+                e.currentTarget.style.color = "var(--accent-strong)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = theme === "dark" ? "var(--color-dark-text-secondary)" : "var(--color-light-text-secondary)";
+                e.currentTarget.style.color = "var(--text-muted)";
               }}
             >
               {item.label}
@@ -51,8 +49,8 @@ export function Nav() {
           onClick={toggle}
           className="w-10 h-10 rounded-full border flex items-center justify-center text-lg cursor-pointer transition-colors hover:opacity-80"
           style={{
-            borderColor: theme === "dark" ? "var(--color-dark-border)" : "var(--color-light-border)",
-            backgroundColor: theme === "dark" ? "var(--color-dark-card)" : "var(--color-light-card)",
+            borderColor: "var(--border)",
+            backgroundColor: "var(--surface)",
           }}
           aria-label="Changer de mode"
         >

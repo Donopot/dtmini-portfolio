@@ -10,7 +10,7 @@ export function ProjectsSection({ projects }: Props) {
     <section className="max-w-[72rem] mx-auto px-6 py-24 relative z-10">
       <span
         className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
-        style={{ color: "var(--color-light-accent-text)" }}
+        style={{ color: "var(--accent-strong)" }}
       >
         Projets
       </span>
@@ -28,7 +28,7 @@ export function ProjectsSection({ projects }: Props) {
           </h3>
           <p
             className="text-base mb-6 leading-relaxed"
-            style={{ color: "var(--color-light-text-secondary)" }}
+            style={{ color: "var(--text-muted)" }}
           >
             Chaque projet répond à un besoin métier concret identifié sur le terrain.
             De l&apos;automatisation Airtable au déploiement d&apos;agents IA.
@@ -37,8 +37,8 @@ export function ProjectsSection({ projects }: Props) {
             href="/projets"
             className="font-mono text-sm no-underline border-b pb-0.5 transition-opacity hover:opacity-70"
             style={{
-              color: "var(--color-light-accent-text)",
-              borderColor: "var(--color-light-accent)",
+              color: "var(--accent-strong)",
+              borderColor: "var(--accent)",
             }}
           >
             Tous les projets →
@@ -61,27 +61,27 @@ function ProjectPreview({ project }: { project: Project }) {
     <div
       className="rounded-xl overflow-hidden border transition-all duration-400 hover:-translate-y-1 cursor-pointer"
       style={{
-        backgroundColor: "var(--color-light-card)",
-        borderColor: "var(--color-light-border)",
+        backgroundColor: "var(--surface)",
+        borderColor: "var(--border)",
       }}
     >
       <div
         className="h-24 flex items-center justify-center font-mono text-xs"
         style={{
-          backgroundColor: "var(--color-light-bg-alt)",
-          color: "var(--color-light-text-secondary)",
+          backgroundColor: "var(--background-alt)",
+          color: "var(--text-muted)",
         }}
       >
         {project.tags[0]}
       </div>
       <div
         className="p-3 border-t"
-        style={{ borderColor: "var(--color-light-border)" }}
+        style={{ borderColor: "var(--border)" }}
       >
         <div className="text-sm font-semibold">{project.name}</div>
         <div
           className="text-xs mt-0.5"
-          style={{ color: "var(--color-light-text-secondary)" }}
+          style={{ color: "var(--text-muted)" }}
         >
           {project.tags.slice(0, 2).join(" · ")}
         </div>
