@@ -33,11 +33,10 @@ export default function CvAutomationPage() {
               Résumé
             </h2>
             <p className="mt-2 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
-              Expert en automatisation des processus métier avec 3 ans d&apos;expérience
-              chez ChangeNOW. Spécialisé dans la conception de workflows intelligents
-              (n8n, Zapier, Make), l&apos;intégration d&apos;IA générative (LLM, RAG) et
-              l&apos;optimisation des opérations. 50+ workflows déployés, 500+ heures
-              économisées par an.
+              Expert en automatisation des processus métier, avec une expérience chez
+              ChangeNOW en tant que Tool &amp; IT Coordinator. Spécialisé dans la
+              conception de workflows intelligents (n8n, Zapier, Make), l&apos;intégration
+              d&apos;IA générative (LLM, RAG) et l&apos;optimisation des opérations.
             </p>
           </section>
 
@@ -70,17 +69,17 @@ export default function CvAutomationPage() {
               <div>
                 <div className="flex justify-between items-baseline flex-wrap gap-2">
                   <h3 className="font-semibold text-brand-950 dark:text-brand-50">
-                    Chargé de projet IA & Automatisation
+                    Tool &amp; IT Coordinator
                   </h3>
                   <span className="text-xs text-brand-700">2023 – 2025</span>
                 </div>
                 <p className="text-sm text-brand-700 dark:text-brand-400">ChangeNOW · CDD</p>
                 <ul className="mt-1 list-disc pl-4 text-xs text-brand-800 dark:text-brand-200 space-y-0.5">
-                  <li>Déploiement de 30+ workflows n8n/Zapier (ventes, ops, RH)</li>
-                  <li>Assistant IA documentaire RAG réduisant l&apos;onboarding de 2 semaines à 3 jours</li>
-                  <li>Pipeline de qualification des leads : 15h → 2h/semaine</li>
-                  <li>Dashboards temps réel CODIR (Airtable + Python)</li>
-                  <li>Formation de 20+ collaborateurs aux outils no-code</li>
+                  <li>Structuration et synchronisation de données entre équipes</li>
+                  <li>Automatisation de tâches répétitives</li>
+                  <li>Création d&apos;outils internes (assistant documentaire RAG, tableaux de bord)</li>
+                  <li>Accompagnement et formation des équipes aux outils</li>
+                  <li>Documentation et transmission des processus</li>
                 </ul>
               </div>
               <div>

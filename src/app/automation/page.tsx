@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
   title: "Automatisation & IA métier",
   description:
-    "Parcours Automatisation & IA métier : workflows n8n/Zapier, intégrations API, chatbots, RAG documentaire. 3 études de cas détaillées chez ChangeNOW.",
+    "Parcours Automatisation & IA métier : workflows n8n/Zapier, intégrations API, chatbots, RAG documentaire.",
 };
 
 interface CaseStudy {
@@ -21,43 +21,43 @@ interface CaseStudy {
 const caseStudies: CaseStudy[] = [
   {
     title: "Workflow de qualification des leads",
-    subtitle: "ChangeNOW — Équipe Partenariats",
+    subtitle: "ChangeNOW — expérience interne",
     problem:
-      "L'équipe partenariats traitait manuellement des centaines de leads issus de multiples canaux (formulaires, emails, LinkedIn). Le tri, l'enrichissement et l'assignation prenaient ~15h/semaine.",
+      "Les leads issus de plusieurs canaux étaient traités manuellement : tri, enrichissement et assignation, une source d'erreurs et de temps perdu.",
     solution:
-      "Conception d'un pipeline automatisé n8n + Airtable + API ChatGPT : le lead est capturé, enrichi (entreprise, secteur, taille), scoré automatiquement, puis assigné au bon chargé de partenariat avec un template d'email personnalisé.",
-    stack: ["n8n", "Airtable", "OpenAI API", "Slack API", "Google Sheets"],
+      "Conception d'un pipeline automatisé qui capture, enrichit et assigne les leads au bon interlocuteur, avec validation des données.",
+    stack: ["n8n", "Airtable", "API REST", "Webhooks"],
     impact:
-      "Temps de qualification réduit de 15h à 2h/semaine. Taux de réponse aux leads +35% grâce aux emails personnalisés générés par IA.",
+      "Réduction du temps de traitement manuel et fiabilisation de l'assignation.",
   },
   {
     title: "Assistant IA documentaire (RAG)",
-    subtitle: "ChangeNOW — Équipe Opérations",
+    subtitle: "ChangeNOW — expérience interne",
     problem:
-      "La documentation interne (procédures, guides, historiques) était dispersée sur Notion, Google Drive et Slack. Les nouveaux arrivants mettaient 2 semaines à être autonomes.",
+      "La documentation interne était dispersée entre plusieurs outils, ce qui compliquait l'accès à l'information.",
     solution:
-      "Mise en place d'un chatbot RAG (Retrieval-Augmented Generation) : ingestion de toute la documentation dans une base vectorielle, interface de chat connectée à GPT-4, réponses sourcées avec liens vers les documents originaux.",
-    stack: ["Python", "LangChain", "ChromaDB", "OpenAI", "FastAPI", "Streamlit"],
+      "Mise en place d'un assistant documentaire RAG : ingestion de la documentation dans une base vectorielle et interface de chat avec réponses sourcées.",
+    stack: ["Python", "LangChain", "ChromaDB", "RAG"],
     impact:
-      "Autonomie des nouveaux arrivants en 3 jours (au lieu de 2 semaines). Plus de 200 questions traitées par mois sans solliciter les équipes.",
+      "Accès centralisé à la documentation et autonomie accrue des équipes.",
   },
   {
     title: "Dashboard de pilotage automatisé",
-    subtitle: "ChangeNOW — Direction",
+    subtitle: "ChangeNOW — expérience interne",
     problem:
-      "Les KPIs étaient suivis dans des fichiers Excel disparates, consolidés manuellement chaque semaine pour le CODIR. Aucune vue en temps réel.",
+      "Les indicateurs étaient suivis dans des fichiers disparates, consolidés manuellement.",
     solution:
-      "Automatisation de la collecte de données depuis Airtable, HubSpot et Stripe via Make + scripts Python. Dashboard Airtable Interfaces avec graphiques, alertes automatiques Slack en cas d'anomalies.",
-    stack: ["Make (Integromat)", "Airtable", "Python", "Slack API", "Stripe API", "HubSpot API"],
+      "Automatisation de la collecte et de la consolidation des données, avec un tableau de bord centralisé.",
+    stack: ["Make", "Airtable", "Python", "API REST"],
     impact:
-      "Reporting CODIR disponible en temps réel. Détection proactive de 3 anomalies critiques évitées. Gain de 8h/semaine pour l'équipe finance.",
+      "Reporting centralisé et vision plus fiable des indicateurs.",
   },
 ];
 
 const skills = [
   { category: "Automatisation", items: ["n8n", "Zapier", "Make (Integromat)", "Airtable Automations"] },
   { category: "IA & LLM", items: ["OpenAI API", "LangChain", "RAG", "ChromaDB / Pinecone", "Prompt Engineering"] },
-  { category: "Intégrations", items: ["API REST", "Webhooks", "Slack API", "HubSpot", "Stripe", "Notion API"] },
+  { category: "Intégrations", items: ["API REST", "Webhooks", "Slack API", "HubSpot", "Notion API"] },
   { category: "Low-code / No-code", items: ["Airtable", "Notion", "Softr", "Glide", "Google Workspace"] },
 ];
 
@@ -92,10 +92,12 @@ export default function AutomationPage() {
               solutions sur mesure, du prototype rapide au déploiement robuste.
             </p>
             <p>
-              Chez ChangeNOW, j&apos;ai automatisé plus de <strong>50 workflows</strong>
-              couvrant les ventes, les opérations, la finance et les RH. Chaque projet
-              commence par une question simple : <em>&ldquo;combien de temps cette tâche
-              vole-t-elle à votre équipe chaque semaine ?&rdquo;</em>
+              Chez ChangeNOW, dans le cadre de mon poste de Tool &amp; IT
+              Coordinator, j&apos;ai accompagné les équipes sur la structuration des
+              données, l&apos;automatisation de tâches répétitives et la création
+              d&apos;outils internes. Chaque projet commence par une question simple :{" "}
+              <em>&ldquo;combien de temps cette tâche vole-t-elle à votre équipe
+              chaque semaine ?&rdquo;</em>
             </p>
           </div>
         </div>

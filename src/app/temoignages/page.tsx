@@ -33,8 +33,8 @@ export default function TemoignagesPage() {
           projets d&apos;automatisation, de déploiement et d&apos;IA.
         </p>
 
-        {/* pendingValidation — témoignages masqués tant que l'identité et
-            l'autorisation des auteurs ne sont pas confirmées. */}
+        {/* Témoignages masqués tant que l'identité et l'autorisation des
+            auteurs ne sont pas confirmées. */}
         <div
           className="rounded-2xl p-8 border text-center"
           style={{

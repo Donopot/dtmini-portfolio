@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       { source: "/data-operations", destination: "/expertise#structuration", permanent: true },
       { source: "/agents-ia", destination: "/expertise#ia", permanent: true },
       { source: "/testimonials", destination: "/temoignages", permanent: true },
+      { source: "/projects/dnd-saas", destination: "/projets/dnd-vtt", permanent: true },
+      { source: "/projects/rag-documentaire", destination: "/projets/rag-documentaire", permanent: true },
+      { source: "/projects/prevision-energetique", destination: "/projets/prevision-energetique", permanent: true },
     ];
   },
 };

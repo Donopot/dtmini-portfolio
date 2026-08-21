@@ -51,7 +51,7 @@ export default function CvDevelopmentPage() {
                 { cat: "Frontend", items: "React, Next.js, TypeScript, Tailwind CSS, shadcn/ui" },
                 { cat: "Backend", items: "FastAPI, Python, PostgreSQL, REST APIs, WebSockets" },
                 { cat: "IA & ML", items: "LangChain, OpenAI API, RAG, ChromaDB, Embeddings" },
-                { cat: "DevOps", items: "Docker, GitHub Actions, Vercel, Railway, CI/CD" },
+                { cat: "DevOps", items: "Docker, GitHub Actions, Caddy, Nginx, CI/CD" },
               ].map((s) => (
                 <div key={s.cat}>
                   <h3 className="text-sm font-semibold text-brand-700">{s.cat}</h3>
@@ -70,18 +70,18 @@ export default function CvDevelopmentPage() {
               <div>
                 <div className="flex justify-between items-baseline flex-wrap gap-2">
                   <h3 className="font-semibold text-brand-950 dark:text-brand-50">
-                    DnD SaaS — Générateur de contenu JDR
+                    DnD VTT — Table virtuelle
                   </h3>
                   <span className="text-xs rounded-full bg-green-100 px-2 py-0.5 font-medium text-green-700">
-                    Production
+                    Beta privée
                   </span>
                 </div>
                 <p className="text-xs text-brand-700 dark:text-brand-400">
-                  Next.js · FastAPI · PostgreSQL · Stripe · OpenAI
+                  React · TypeScript · FastAPI · PostgreSQL · WebSocket
                 </p>
                 <p className="mt-1 text-xs text-brand-800 dark:text-brand-200">
-                  Plateforme SaaS complète : authentification, abonnements, génération IA,
-                  éditeur temps réel.
+                  Table virtuelle auto-hébergée : carte, tokens, fog of war, combat,
+                  synchronisation temps réel.
                 </p>
                 <a
                   href="https://github.com/Donopot/DnD"
@@ -95,17 +95,18 @@ export default function CvDevelopmentPage() {
               <div>
                 <div className="flex justify-between items-baseline flex-wrap gap-2">
                   <h3 className="font-semibold text-brand-950 dark:text-brand-50">
-                    Epstein Files RAG — Recherche documentaire IA
+                    RAG documentaire multi-sources
                   </h3>
                   <span className="text-xs rounded-full bg-yellow-100 px-2 py-0.5 font-medium text-yellow-700">
-                    En cours
+                    Contribution open source
                   </span>
                 </div>
                 <p className="text-xs text-brand-700 dark:text-brand-400">
-                  Python · FastAPI · ChromaDB · LangChain · Next.js
+                  Python · LangChain · ChromaDB · Streamlit
                 </p>
                 <p className="mt-1 text-xs text-brand-800 dark:text-brand-200">
-                  Système RAG complet : ingestion PDF, embeddings, chat sourcé, &lt;2s réponse.
+                  Contribution sur un fork : recherche hybride BM25 + dense, fusion RRF,
+                  reranking.
                 </p>
                 <a
                   href="https://github.com/Donopot/Epstein_Files_RAG"
@@ -119,17 +120,18 @@ export default function CvDevelopmentPage() {
               <div>
                 <div className="flex justify-between items-baseline flex-wrap gap-2">
                   <h3 className="font-semibold text-brand-950 dark:text-brand-50">
-                    Prévision énergétique — ML
+                    Analyse et prévision de la consommation énergétique
                   </h3>
                   <span className="text-xs rounded-full bg-yellow-100 px-2 py-0.5 font-medium text-yellow-700">
-                    En cours
+                    Projet d&apos;étude
                   </span>
                 </div>
                 <p className="text-xs text-brand-700 dark:text-brand-400">
-                  Python · XGBoost · Prophet · Streamlit · Docker
+                  Python · Pandas · Scikit-learn · XGBoost · SARIMA
                 </p>
                 <p className="mt-1 text-xs text-brand-800 dark:text-brand-200">
-                  Pipeline ETL, modèles de prévision, dashboard interactif.
+                  Notebooks Jupyter : corrélations température/consommation, modèles
+                  SARIMA + XGBoost.
                 </p>
                 <a
                   href="https://github.com/Donopot/DA"

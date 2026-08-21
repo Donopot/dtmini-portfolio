@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl, priority: 1.0, changeFrequency: "weekly" },
     { url: `${baseUrl}/expertise`, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/projets`, priority: 0.9, changeFrequency: "monthly" },
+    { url: `${baseUrl}/projets/dnd-vtt`, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${baseUrl}/projets/automatisation-operations`, priority: 0.8, changeFrequency: "monthly" },
     { url: `${baseUrl}/parcours`, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/faq`, priority: 0.7, changeFrequency: "monthly" },
     { url: `${baseUrl}/contact`, priority: 0.8, changeFrequency: "monthly" },

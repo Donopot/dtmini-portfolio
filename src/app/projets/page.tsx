@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { projects } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -77,8 +78,27 @@ export default function ProjetsPage() {
                 {p.category}
               </span>
               <h2 className="font-display dark:font-mono text-lg font-bold mb-2">
-                {p.name}
+                {p.slug ? (
+                  <Link
+                    href={`/projets/${p.slug}`}
+                    className="transition-colors hover:opacity-70"
+                  >
+                    {p.name}
+                  </Link>
+                ) : (
+                  p.name
+                )}
               </h2>
+
+              {/* Badge */}
+              {p.badge && (
+                <p
+                  className="text-xs mb-2"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {p.badge}
+                </p>
+              )}
 
               {/* Description */}
               <p
@@ -120,18 +140,29 @@ export default function ProjetsPage() {
                 ))}
               </div>
 
-              {/* Link */}
-              {p.link && (
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold mt-auto transition-opacity hover:opacity-70"
-                  style={{ color: "var(--accent-strong)" }}
-                >
-                  Voir le projet ↗
-                </a>
-              )}
+              {/* Actions */}
+              <div className="flex flex-wrap items-center gap-3 mt-auto">
+                {p.slug && (
+                  <Link
+                    href={`/projets/${p.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                    style={{ color: "var(--accent-strong)" }}
+                  >
+                    Voir le détail →
+                  </Link>
+                )}
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity hover:opacity-70"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    GitHub ↗
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>

@@ -14,7 +14,7 @@ interface Project {
   summary: string;
   description: string;
   stack: string[];
-  status: "En production" | "En développement";
+  status: string;
   github: string;
   link?: string;
   route: string;
@@ -22,37 +22,37 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "DnD SaaS — Générateur de contenu",
+    title: "DnD VTT — Table virtuelle",
     summary:
-      "Plateforme SaaS de génération de contenu pour jeux de rôle, avec authentification, abonnements Stripe et éditeur en temps réel.",
+      "Outil web multi-utilisateurs en temps réel pour jouer à Donjons & Dragons à distance.",
     description:
-      "Application full-stack combinant Next.js, FastAPI et OpenAI pour générer des scénarios, PNJs et quêtes personnalisés. Le backend gère l'orchestration des appels LLM avec cache et rate-limiting, le frontend offre une expérience d'édition fluide avec sauvegarde automatique.",
-    stack: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "Stripe", "OpenAI API", "Docker"],
-    status: "En production",
+      "Table virtuelle auto-hébergée : frontend React/Vite, backend FastAPI, synchronisation temps réel par WebSocket, gestion de campagnes, carte, tokens, fog of war et combat.",
+    stack: ["React", "TypeScript", "FastAPI", "PostgreSQL", "WebSocket", "Docker"],
+    status: "Beta privée",
     github: "https://github.com/Donopot/DnD",
-    route: "/projects/dnd-saas",
+    route: "/projets/dnd-vtt",
   },
   {
-    title: "Epstein Files RAG — Moteur de recherche documentaire",
+    title: "RAG documentaire multi-sources",
     summary:
-      "Système RAG complet pour explorer des milliers de pages de documents juridiques avec réponses sourcées et interface de chat.",
+      "Contribution à un moteur de recherche documentaire combinant recherche lexicale, vectorielle et reranking.",
     description:
-      "Pipeline d'ingestion de documents PDF (OCR, chunking, embeddings), base vectorielle ChromaDB, API FastAPI de recherche sémantique, et interface Next.js avec citations précises. Le système gère des dizaines de milliers de pages et répond en moins de 2 secondes.",
-    stack: ["Python", "FastAPI", "Next.js", "ChromaDB", "LangChain", "OpenAI", "PyMuPDF"],
-    status: "En développement",
+      "Contribution sur un fork open source : recherche hybride BM25 + dense, fusion RRF, reranking, cache Streamlit et amélioration de l'interface conversationnelle.",
+    stack: ["Python", "LangChain", "ChromaDB", "Streamlit", "Ollama", "BM25"],
+    status: "Contribution open source",
     github: "https://github.com/Donopot/Epstein_Files_RAG",
-    route: "/projects/rag-documentaire",
+    route: "/projets/rag-documentaire",
   },
   {
-    title: "Prévision énergétique — Machine Learning",
+    title: "Analyse et prévision de la consommation énergétique",
     summary:
-      "Outil de prévision de consommation et production énergétique avec analyse de séries temporelles et dashboard interactif.",
+      "Projet d'étude DataScientest / Mines PSL : exploration de données énergétiques et comparaison de modèles de prévision.",
     description:
-      "Pipeline de data engineering nettoyant et agrégeant des données énergétiques multi-sources, modèles de prévision (XGBoost, Prophet), et dashboard Streamlit avec visualisations interactives. Déploiement conteneurisé avec monitoring.",
-    stack: ["Python", "Pandas", "XGBoost", "Prophet", "Streamlit", "Docker", "FastAPI"],
-    status: "En développement",
+      "Notebooks Jupyter : analyse de corrélations température/consommation, modèles de régression et séries temporelles (SARIMA, XGBoost) sur données RTE Eco2mix et Visual Crossing.",
+    stack: ["Python", "Pandas", "Scikit-learn", "XGBoost", "SARIMA", "Jupyter"],
+    status: "Projet d'étude",
     github: "https://github.com/Donopot/DA",
-    route: "/projects/prevision-energetique",
+    route: "/projets/prevision-energetique",
   },
 ];
 
@@ -60,7 +60,7 @@ const skills = [
   { category: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"] },
   { category: "Backend", items: ["FastAPI", "Python", "PostgreSQL", "REST APIs", "WebSockets"] },
   { category: "IA & ML", items: ["LangChain", "OpenAI API", "RAG", "Embeddings", "ChromaDB"] },
-  { category: "DevOps", items: ["Docker", "GitHub Actions", "Vercel", "AWS", "CI/CD"] },
+  { category: "DevOps", items: ["Docker", "GitHub Actions", "Caddy", "Nginx", "CI/CD"] },
 ];
 
 export default function DevelopmentPage() {
@@ -152,11 +152,11 @@ export default function DevelopmentPage() {
                     <p className="mt-1 text-sm text-brand-700">{proj.summary}</p>
                   </div>
                   <span
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                      proj.status === "En production"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-yellow-100 text-yellow-700"
-                    }`}
+                    className="rounded-full px-3 py-1 text-xs font-semibold"
+                    style={{
+                      backgroundColor: "var(--background-alt)",
+                      color: "var(--accent-strong)",
+                    }}
                   >
                     {proj.status}
                   </span>
@@ -165,11 +165,6 @@ export default function DevelopmentPage() {
                 <p className="mt-4 text-sm text-brand-800 dark:text-brand-200 leading-relaxed">
                   {proj.description}
                 </p>
-
-                {/* Placeholder image */}
-                <div className="mt-6 flex items-center justify-center rounded-lg bg-brand-200 dark:bg-brand-900 h-48 text-sm text-brand-700">
-                  [Capture d&apos;écran — {proj.title}]
-                </div>
 
                 <div className="mt-4">
                   <h4 className="text-xs font-semibold uppercase tracking-wide text-brand-700">

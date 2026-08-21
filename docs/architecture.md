@@ -77,19 +77,18 @@ src/components/
 
 | Fichier | Contenu | Statut |
 |---|---|---|
-| `src/data/content.ts` | navItems, heroData (badge/headline/intro), terminalProfile, problems×3, method×5, services×4 (legacy), projects×6, footerColumns, pendingValidation | suivi |
+| `src/data/content.ts` | navItems, heroData (badge/headline/intro), terminalProfile, problems×3, method×5, projects×7, footerColumns | suivi |
 | `src/data/offers.ts` | 4 offres commerciales (diagnostic, automatisation, outil-métier, production) | importé (section Offres) |
 | `src/data/faq.ts` | 6 questions/réponses | importé (section FAQ + page /faq) |
-| `src/content/testimonials.ts` | 3 témoignages (ChangeNOW) | masqués (validation en attente) |
 
-Types dans `src/types/` : `nav`, `hero`, `services`, `projects`, `footer`, `theme`, `contact`.
+Types dans `src/types/` : `nav`, `hero`, `projects`, `footer`, `theme`, `contact`.
 
 ## Règles d'architecture
 
 - Contenu 100 % dans `src/data/` (fichiers TS versionnés) — pas de CMS.
 - Pas de `'use client'` sauf nécessité (`ThemeProvider`, animations).
 - Tailwind v4 : toute couleur doit être dans `globals.css` `@theme`. `tailwind.config.ts` est **ignoré** (fichier mort à supprimer).
-- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (6 entrées indexables), `robots.ts` (`/api/` et `/legal/` en disallow).
-- Redirections 308 (dans `next.config.ts`) : `/about`→`/parcours`, `/experience`→`/parcours`, `/automatisation-processus`→`/automation`, `/data-operations`→`/expertise#structuration`, `/agents-ia`→`/expertise#ia`, `/testimonials`→`/temoignages`.
-- Routes `noindex, follow` (accès direct conservé, hors sitemap) : `/automation`, `/development`, `/cv/automation`, `/cv/development`, `/temoignages`, `/projects/*` (3, incomplètes). `/legal/privacy` : `noindex, nofollow`.
+- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (8 entrées indexables), `robots.ts` (`/api/` et `/legal/` en disallow).
+- Redirections 308 (dans `next.config.ts`) : `/about`→`/parcours`, `/experience`→`/parcours`, `/automatisation-processus`→`/expertise#automatisation`, `/data-operations`→`/expertise#structuration`, `/agents-ia`→`/expertise#ia`, `/testimonials`→`/temoignages`, `/projects/dnd-saas`→`/projets/dnd-vtt`, `/projects/rag-documentaire`→`/projets/rag-documentaire`, `/projects/prevision-energetique`→`/projets/prevision-energetique`.
+- Routes `noindex, follow` (accès direct conservé, hors sitemap) : `/automation`, `/development`, `/cv/automation`, `/cv/development`, `/temoignages`, `/projets/rag-documentaire`, `/projets/prevision-energetique` (en attente de visuels). `/legal/privacy` : `noindex, follow`.
 - Accessibilité : WCAG AA, `:focus-visible`, `prefers-reduced-motion`.

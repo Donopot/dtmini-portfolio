@@ -107,45 +107,64 @@ export const method: MethodStep[] = [
 
 export const projects: Project[] = [
   {
-    id: "pipeline",
-    name: "Pipeline d'Automatisation ChangeNOW",
-    category: "Automatisation",
+    id: "dnd-vtt",
+    slug: "dnd-vtt",
+    name: "DnD VTT — Table virtuelle",
+    category: "Outil métier · Production",
     description:
-      "Conception et déploiement d'un pipeline Airtable → Make → APIs qui synchronise les contacts entre plusieurs équipes en temps réel. Reprise automatique sur erreur, validation des données, et tableau de bord de monitoring.",
+      "Conception et mise en production d'un outil web multi-utilisateurs en temps réel : une table virtuelle pour jouer à Donjons & Dragons à distance.",
     results: [
-      "Pipelines Airtable → Make → API déployés",
-      "Synchronisation multi-équipes en temps réel",
-      "Tableau de bord de monitoring mis en place",
+      "Frontend React/Vite + backend FastAPI",
+      "Synchronisation temps réel (WebSocket)",
+      "Carte, tokens, fog of war, combat",
     ],
-    link: undefined,
-    tags: ["Python", "Airtable", "Make", "API REST", "Webhook"],
+    tags: ["React", "TypeScript", "FastAPI", "PostgreSQL", "WebSocket", "Docker"],
+    link: "https://github.com/Donopot/DnD",
   },
   {
-    id: "rag",
-    name: "RAG Documentaire Multi-Sources",
-    category: "IA",
+    id: "automatisation-operations",
+    slug: "automatisation-operations",
+    name: "Structuration et automatisation d'opérations événementielles",
+    category: "Expérience interne",
     description:
-      "Pipeline d'ingestion PDF/HTML/CSV → embeddings vectoriels → recherche sémantique. Interface Streamlit pour l'exploration de documents par langage naturel. Déploiement Docker avec persistance des index.",
+      "Expérience interne réalisée chez ChangeNOW dans le cadre d'un poste de Tool & IT Coordinator : structuration de données, automatisation de tâches répétitives et création d'outils internes pour les équipes.",
     results: [
-      "PDF, HTML et CSV supportés",
-      "Recherche sémantique sur documents internes",
-      "Interface no-code pour utilisateurs métier",
+      "Structuration et synchronisation de données",
+      "Automatisation de tâches répétitives",
+      "Documentation et transmission des processus",
     ],
-    link: undefined,
-    tags: ["LangChain", "ChromaDB", "Ollama", "Streamlit", "Docker"],
+    tags: ["Airtable", "Make", "Python", "API REST", "Automatisation"],
   },
   {
-    id: "forecast",
-    name: "Prévision de Consommation Énergétique",
-    category: "Data Science",
+    id: "rag-documentaire",
+    slug: "rag-documentaire",
+    name: "RAG documentaire multi-sources",
+    category: "Contribution open source",
     description:
-      "Modélisation de séries temporelles pour la prévision de consommation électrique : SARIMA pour la saisonnalité, XGBoost pour les variables exogènes (météo, vacances). Dashboard interactif et rapport d'évaluation automatique.",
+      "Contribution à un moteur de recherche documentaire combinant recherche lexicale, recherche vectorielle et reranking (fork open source).",
     results: [
-      "Pipeline reproductible (Jupyter → script)",
-      "Visualisation interactive des prévisions",
+      "Recherche hybride BM25 + dense",
+      "Fusion RRF + reranking",
+      "Interface conversationnelle",
     ],
-    link: undefined,
-    tags: ["Python", "XGBoost", "SARIMA", "Pandas", "Scikit-learn"],
+    tags: ["LangChain", "ChromaDB", "Streamlit", "Ollama", "BM25"],
+    link: "https://github.com/Donopot/Epstein_Files_RAG",
+  },
+  {
+    id: "prevision-energetique",
+    slug: "prevision-energetique",
+    name: "Analyse et prévision de la consommation énergétique",
+    category: "Data & machine learning — projet d'étude",
+    badge: "Projet d'étude · DataScientest / Mines PSL · 2023–2024",
+    description:
+      "Projet d'étude : exploration de données énergétiques françaises, analyse des corrélations température/consommation, et comparaison de modèles de prévision.",
+    results: [
+      "Analyse de corrélations et saisonnalité",
+      "Modèles SARIMA + XGBoost",
+      "Notebooks Jupyter reproductibles",
+    ],
+    tags: ["Python", "Pandas", "Scikit-learn", "XGBoost", "SARIMA", "Jupyter"],
+    link: "https://github.com/Donopot/DA",
   },
   {
     id: "hermes-agent",
@@ -173,7 +192,6 @@ export const projects: Project[] = [
       "Dashboard complet (CRUD agents, analytics)",
       "Architecture micro-services Docker",
     ],
-    link: undefined,
     tags: ["Next.js", "TypeScript", "x402", "PostgreSQL", "Docker"],
   },
   {
@@ -218,21 +236,4 @@ export const footerColumns: FooterColumn[] = [
       { label: "GitHub", href: "https://github.com/Donopot" },
     ],
   },
-];
-
-// ─────────────────────────────────────────────────────────────
-// AFFIRMATIONS EN ATTENTE DE VALIDATION — NON AFFICHÉES PUBLIQUEMENT
-// Ces chiffres ont été retirés du rendu tant qu'ils ne sont pas
-// étayés par une preuve vérifiable. Ne pas réutiliser sans validation.
-// ─────────────────────────────────────────────────────────────
-export const pendingValidation: { claim: string; source: string }[] = [
-  { claim: "73% de réduction des tâches manuelles", source: "hero / projet pipeline / témoignages" },
-  { claim: "10 000+ contacts consolidés", source: "hero / projet pipeline" },
-  { claim: "~200 fichiers standardisés", source: "hero" },
-  { claim: "6 équipes synchronisées en temps réel", source: "projet pipeline" },
-  { claim: "Zéro perte de données sur 18 mois", source: "projet pipeline" },
-  { claim: "28 routes, 0 erreur TypeScript", source: "projet portfolio" },
-  { claim: "Score Lighthouse > 95", source: "projet portfolio" },
-  { claim: "Recherche sémantique < 500ms", source: "projet rag" },
-  { claim: "MAE < 5% sur données de test", source: "projet forecast" },
 ];

@@ -2,7 +2,7 @@
 
 Portfolio professionnel de **Donovan Beaulavon** — [dtmini.com](https://dtmini.com)
 
-> **Statut** : refonte commerciale en cours — lot P0 validé (thème unifié + données alignées), P1A éditorial (positionnement freelance + restructuration de l'accueil).
+> **Statut** : refonte commerciale — P0 (thème unifié) · P1A (positionnement freelance) · P1B (routes/SEO) **commités** ; P2B (mise en conformité des projets) **en cours, non commité**.
 > État détaillé (Git, drifts, à faire) : [`docs/etat-actuel.md`](docs/etat-actuel.md).
 
 ## Stack
@@ -31,13 +31,13 @@ npm run lint       # next lint
 
 ```
 src/
-├── app/            # 15 pages + 6 redirections 308 + 1 API + sitemap/robots
+├── app/            # 16 pages + 9 redirections 308 + 1 API + sitemap/robots
 │   ├── layout.tsx  # Layout racine : fonts, metadata, ThemeProvider, Nav/Footer
 │   ├── page.tsx    # Accueil (/)
-│   ├── expertise/  projets/  parcours/  contact/  faq/  temoignages/
+│   ├── expertise/  parcours/  contact/  faq/  temoignages/
+│   ├── projets/    # 4 réalisations : dnd-vtt, automatisation-operations, rag-documentaire, prevision-energetique
 │   ├── automation/  development/  # profils partageables (noindex)
 │   ├── legal/      # privacy (noindex)
-│   ├── projects/   # dnd-saas, rag-documentaire, prevision-energetique (noindex)
 │   ├── cv/         # automation, development (noindex)
 │   ├── api/contact/route.ts   # endpoint formulaire (Resend)
 │   └── robots.ts · sitemap.ts
@@ -46,8 +46,7 @@ src/
 │   ├── layout/     # Nav, Footer, GeoGrid, Scanlines
 │   └── home/       # Hero, Problems, Offers, Method, Projects, FAQ, FinalCta, …
 ├── data/           # content.ts (nav, hero, problèmes, méthode, projets), offers.ts, faq.ts
-├── content/        # testimonials.ts (masqués, validation en attente)
-└── types/          # nav, hero, services, projects, footer, theme, contact
+└── types/          # nav, hero, projects, footer, theme, contact
 ```
 
 ## Sécurité
@@ -55,7 +54,7 @@ src/
 - Pas d'API exposée hors `/api/contact` (rate-limitée, validée)
 - Aucun secret dans le repo (`.env.example` uniquement)
 - Formulaire de contact : honeypot + rate limiting + envoi Resend
-- Témoignages et chiffres non vérifiés **masqués** (`pendingValidation` dans `content.ts`)
+- Aucun chiffre ni témoignage non vérifié (métriques ChangeNOW supprimées ; témoignages retirés)
 
 ## Documentation
 
