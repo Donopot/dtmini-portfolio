@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projects/dnd-saas" },
+  robots: { index: false, follow: true },
   title: "DnD SaaS — Générateur de contenu JDR",
   description:
     "Plateforme SaaS de génération de contenu pour jeux de rôle (D&D) avec Next.js, FastAPI, OpenAI, Stripe. Authentification, abonnements, éditeur temps réel.",

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/automation" },
+  robots: { index: false, follow: true },
   title: "Automatisation & IA métier",
   description:
     "Parcours Automatisation & IA métier : workflows n8n/Zapier, intégrations API, chatbots, RAG documentaire. 3 études de cas détaillées chez ChangeNOW.",

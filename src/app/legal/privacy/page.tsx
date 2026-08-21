@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Mentions légales & Politique de confidentialité",
   description:
     "Mentions légales et politique de confidentialité du site portfolio de Donovan Beaulavon (dtmini.com). Conformité RGPD.",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 };
 
 export default function PrivacyPage() {

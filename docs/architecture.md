@@ -89,5 +89,7 @@ Types dans `src/types/` : `nav`, `hero`, `services`, `projects`, `footer`, `them
 - Contenu 100 % dans `src/data/` (fichiers TS versionnés) — pas de CMS.
 - Pas de `'use client'` sauf nécessité (`ThemeProvider`, animations).
 - Tailwind v4 : toute couleur doit être dans `globals.css` `@theme`. `tailwind.config.ts` est **ignoré** (fichier mort à supprimer).
-- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (19 entrées), `robots.ts` (`/api/` et `/legal/` en disallow).
+- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (6 entrées indexables), `robots.ts` (`/api/` et `/legal/` en disallow).
+- Redirections 308 (dans `next.config.ts`) : `/about`→`/parcours`, `/experience`→`/parcours`, `/automatisation-processus`→`/automation`, `/data-operations`→`/expertise#structuration`, `/agents-ia`→`/expertise#ia`, `/testimonials`→`/temoignages`.
+- Routes `noindex, follow` (accès direct conservé, hors sitemap) : `/automation`, `/development`, `/cv/automation`, `/cv/development`, `/temoignages`, `/projects/*` (3, incomplètes). `/legal/privacy` : `noindex, nofollow`.
 - Accessibilité : WCAG AA, `:focus-visible`, `prefers-reduced-motion`.

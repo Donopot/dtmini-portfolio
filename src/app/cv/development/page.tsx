@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/cv/development" },
+  robots: { index: false, follow: true },
   title: "CV Développeur Full-stack & IA",
   description:
     "Aperçu du CV de Donovan Beaulavon orienté Développement Full-stack & IA agentique. React, Next.js, FastAPI, Python, RAG, systèmes agentiques.",

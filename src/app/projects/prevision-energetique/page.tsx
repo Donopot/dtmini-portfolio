@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projects/prevision-energetique" },
+  robots: { index: false, follow: true },
   title: "Prévision énergétique — Machine Learning",
   description:
     "Outil de prévision de consommation et production énergétique avec analyse de séries temporelles (XGBoost, Prophet) et dashboard Streamlit.",

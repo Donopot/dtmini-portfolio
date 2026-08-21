@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projects/rag-documentaire" },
+  robots: { index: false, follow: true },
   title: "RAG Documentaire — Epstein Files",
   description:
     "Système RAG complet pour explorer des milliers de pages de documents juridiques (Epstein Files) avec réponses sourcées. Python, FastAPI, ChromaDB, Next.js.",

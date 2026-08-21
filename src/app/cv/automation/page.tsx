@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/cv/automation" },
+  robots: { index: false, follow: true },
   title: "CV Automatisation & IA",
   description:
     "Aperçu du CV de Donovan Beaulavon orienté Automatisation & IA métier. Workflows n8n/Zapier, intégrations API, RAG, Python.",

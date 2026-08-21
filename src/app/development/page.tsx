@@ -3,6 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/development" },
+  robots: { index: false, follow: true },
   title: "Développement Full-stack & IA agentique",
   description:
     "Parcours Développement Full-stack & IA agentique : React, Next.js, FastAPI, Python, agents IA, RAG. 3 projets open-source avec liens GitHub.",

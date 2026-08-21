@@ -2,7 +2,6 @@
 // Fichier unique de données — pas de CMS, pas de base de données
 import type { NavItem } from "@/types/nav";
 import type { HeroData } from "@/types/hero";
-import type { Service } from "@/types/services";
 import type { Project } from "@/types/projects";
 import type { FooterColumn } from "@/types/footer";
 
@@ -43,33 +42,6 @@ export const terminalProfile = `{
   "stack": ["Python", "TypeScript", "Airtable", "Make"],
   "mission": "automatiser vos opérations et transformer vos données en outils fiables"
 }`;
-
-export const services: Service[] = [
-  {
-    icon: "</>",
-    title: "Automatisation",
-    description:
-      "Scripts Python, intégrations API, pipelines de données. Du tableur au workflow automatisé.",
-  },
-  {
-    icon: ">_",
-    title: "Déploiement",
-    description:
-      "Docker, CI/CD, reverse proxy. Des applications qui tournent 24/7 sans supervision.",
-  },
-  {
-    icon: "{ }",
-    title: "Structuration",
-    description:
-      "Bases Airtable, CRM, normalisation de données. Finis les fichiers éparpillés.",
-  },
-  {
-    icon: "⚡",
-    title: "IA & RAG",
-    description:
-      "Recherche vectorielle, embeddings, chatbots documentaires. L'IA au service de vos données.",
-  },
-];
 
 export interface Problem {
   title: string;
@@ -244,7 +216,6 @@ export const footerColumns: FooterColumn[] = [
       { label: "Email", href: "mailto:donovan@dtmini.com" },
       { label: "LinkedIn", href: "https://linkedin.com/in/donovan-beaulavon" },
       { label: "GitHub", href: "https://github.com/Donopot" },
-      { label: "Témoignages", href: "/temoignages" },
     ],
   },
 ];

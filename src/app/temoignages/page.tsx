@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/temoignages" },
+  robots: { index: false, follow: true },
   title: "Témoignages",
   description:
     "Ce que disent mes collaborateurs et clients sur mon travail en automatisation, déploiement et IA.",

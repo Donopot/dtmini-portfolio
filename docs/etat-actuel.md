@@ -6,35 +6,46 @@
 
 | Élément | État |
 |---|---|
-| Refonte commerciale | Lot P0 **validé + commité** (`7411c2f`), P1A éditorial **en cours** |
+| Refonte commerciale | P0 ✅ · P1A ✅ (commités) · P1B routes/SEO **en cours (non commité)** |
 | Branche active | `feat/refonte-offre-client` |
-| Push vers origin | ❌ 5 commits en avance, branche **non poussée** |
+| Push vers origin | ❌ 6 commits en avance, branche **non poussée** |
 | Positionnement | ✅ freelance (« Freelance · Automatisation, IA & outils métier ») |
-| Offres + FAQ | ✅ reliées (section Offres + section FAQ accueil + page `/faq`) |
-| Thème | ✅ tokens sémantiques light/dark unifiés (`--background`, `--surface`, `--text`, …) |
-| TypeScript / build | ✅ `typecheck` 0 erreur · `build` 27 routes |
+| Offres + FAQ | ✅ reliées (section Offres + FAQ accueil + page `/faq`) |
+| Thème | ✅ tokens sémantiques light/dark unifiés |
+| TypeScript / build | ✅ `typecheck` 0 erreur · `build` 19 routes |
 
 ## Git
 
-- **Branche locale active** : `feat/refonte-offre-client` (5 commits en avance sur `origin/feature/dtmini-portfolio-v1`).
-- **5 commits non poussés** : 4 correctifs sécurité/SEO/a11y (`32c5611` → `ce3c444`) + `7411c2f refactor(p0): unify theme and align commercial data`.
-- **P1A non commité** : positionnement éditorial + restructuration accueil + correctifs ancres + docs (working tree).
+- **6 commits non poussés** : 4 correctifs sécurité/SEO/a11y (`32c5611`→`ce3c444`) + `7411c2f refactor(p0)` + `2600c26 feat(p1a)`.
+- **P1B non commité** : redirections + noindex + sitemap + nettoyage `services×4` + fusion `/about`→`/parcours`.
 
-## Routes (22 : 21 pages + 1 API)
+## Routes & SEO (P1B)
 
-- **Actives** (nav/footer) : `/`, `/expertise`, `/projets`, `/parcours`, `/contact`, `/temoignages`, `/faq`, `/legal/privacy`.
-- **Héritées** (hors nav, encore dans le sitemap) : `/about`, `/experience`, `/automation`, `/automatisation-processus`, `/development`, `/data-operations`, `/agents-ia`, `/cv/automation`, `/cv/development`, `/testimonials`, `/projects/*` (3).
-- Leur sort (fusion/redirection/noindex) est tranché en **P1B** (voir matrice validée).
+### Indexables (sitemap — 6)
+`/`, `/expertise`, `/projets`, `/parcours`, `/faq`, `/contact`.
 
-## À faire (P1B+)
+### Redirections 308 (next.config.ts)
+| Ancienne | Vers |
+|---|---|
+| `/about` | `/parcours` (valeurs fusionnées) |
+| `/experience` | `/parcours` |
+| `/automatisation-processus` | `/automation` |
+| `/data-operations` | `/expertise#structuration` |
+| `/agents-ia` | `/expertise#ia` |
+| `/testimonials` | `/temoignages` |
 
-1. Routes héritées : fusionner/rediriger/noindex selon la matrice validée (ex. `/experience` → `/parcours`, `/testimonials` → 301 `/temoignages`, `/automation` + `/development` conservées comme profils partageables).
-2. Retirer `services×4` (data legacy, plus utilisée) et `src/content/testimonials.ts`.
-3. Supprimer `tailwind.config.ts` + nettoyer `STATS_TOKEN` / `/api/stats` résiduels (`.env.example`, `docker-compose.yml`).
+### noindex, follow (accès direct conservé, hors sitemap)
+`/automation`, `/development`, `/cv/automation`, `/cv/development` (profils/CV partageables) · `/temoignages` (vide, preuve sociale en attente) · `/projects/dnd-saas`, `/projects/rag-documentaire`, `/projects/prevision-energetique` (incomplètes : placeholders + chiffres non vérifiés). `/legal/privacy` : `noindex, nofollow`.
+
+## À faire (P2+)
+
+1. Compléter les 3 pages `/projects/*` (captures réelles + chiffres validés), puis les réindexer et relier les cartes `/projets`.
+2. Nettoyer `.env.example` / `docker-compose.yml` (`STATS_TOKEN`, `/api/stats` résiduels) + supprimer `tailwind.config.ts`.
+3. Déplacer `src/content/testimonials.ts` (masqués) vers `src/data/` ou attendre validation.
 4. Configurer `RESEND_API_KEY` / `CONTACT_EMAIL` / `CONTACT_FROM` avant déploiement (envoi réel).
 5. Pusher `feat/refonte-offre-client` vers origin (après validation).
 6. Dette technique : pas d'ESLint, pas de tests automatisés.
 
 ## Affirmations en attente de preuve
 
-`pendingValidation` (9 affirmations) toujours masquées dans `content.ts`. Témoignages masqués (`src/content/testimonials.ts`).
+`pendingValidation` (9 affirmations) toujours masquées. Témoignages masqués (`src/content/testimonials.ts`).

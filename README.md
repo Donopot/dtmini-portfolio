@@ -31,13 +31,14 @@ npm run lint       # next lint
 
 ```
 src/
-├── app/            # 22 routes (21 pages + 1 API) + sitemap/robots
+├── app/            # 15 pages + 6 redirections 308 + 1 API + sitemap/robots
 │   ├── layout.tsx  # Layout racine : fonts, metadata, ThemeProvider, Nav/Footer
 │   ├── page.tsx    # Accueil (/)
-│   ├── expertise/  projets/  parcours/  contact/  about/  experience/
-│   ├── faq/  temoignages/  testimonials/
-│   ├── projects/   # dnd-saas, rag-documentaire, prevision-energetique
-│   ├── cv/         # automation, development (PDF)
+│   ├── expertise/  projets/  parcours/  contact/  faq/  temoignages/
+│   ├── automation/  development/  # profils partageables (noindex)
+│   ├── legal/      # privacy (noindex)
+│   ├── projects/   # dnd-saas, rag-documentaire, prevision-energetique (noindex)
+│   ├── cv/         # automation, development (noindex)
 │   ├── api/contact/route.ts   # endpoint formulaire (Resend)
 │   └── robots.ts · sitemap.ts
 ├── components/

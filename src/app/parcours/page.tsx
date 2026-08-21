@@ -145,6 +145,48 @@ export default function ParcoursPage() {
             </div>
           </AnimatedSection>
         </div>
+
+        {/* Ce qui me motive (fusionné depuis /about) */}
+        <section className="mt-24">
+          <h2 className="font-display text-2xl font-bold mb-8 dark:font-mono">
+            Ce qui me motive
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div
+              className="rounded-2xl border p-6 text-center"
+              style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}
+            >
+              <div className="text-3xl">🎯</div>
+              <h3 className="mt-3 font-semibold">Impact concret</h3>
+              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>
+                Je construis des solutions qui font gagner du temps et de
+                l&apos;argent, pas des POC qui finissent dans un tiroir.
+              </p>
+            </div>
+            <div
+              className="rounded-2xl border p-6 text-center"
+              style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}
+            >
+              <div className="text-3xl">🧠</div>
+              <h3 className="mt-3 font-semibold">Apprentissage continu</h3>
+              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>
+                La tech évolue vite. Je passe mes soirées à explorer de nouveaux
+                paradigmes : agents, RAG, fine-tuning.
+              </p>
+            </div>
+            <div
+              className="rounded-2xl border p-6 text-center"
+              style={{ backgroundColor: "var(--surface)", borderColor: "var(--border)" }}
+            >
+              <div className="text-3xl">🤝</div>
+              <h3 className="mt-3 font-semibold">Transmission</h3>
+              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>
+                J&apos;aime former les équipes, vulgariser les concepts complexes
+                et rendre l&apos;IA accessible à tous.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
