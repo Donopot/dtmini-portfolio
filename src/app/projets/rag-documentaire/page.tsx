@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets/rag-documentaire" },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   title: "RAG documentaire multi-sources",
   description:
     "Contribution sur un fork open source : moteur de recherche documentaire combinant recherche lexicale, recherche vectorielle et reranking.",
@@ -122,6 +122,22 @@ export default function RagDocumentairePage() {
               </span>
             ))}
           </div>
+        </Section>
+
+        {/* Démonstration */}
+        <Section title="Démonstration">
+          <figure>
+            <img
+              src="/images/projects/rag-documentaire/demo-resultats.png"
+              alt="Démonstration du moteur RAG : une question sur la politique de télétravail et les passages pertinents retrouvés par recherche hybride sur un corpus synthétique."
+              className="rounded-xl border"
+              style={{ borderColor: "var(--border)", width: "100%", height: "auto" }}
+            />
+            <figcaption className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              Démonstration réalisée sur un corpus synthétique. Recherche hybride
+              (BM25 + vectorielle) avec fusion RRF.
+            </figcaption>
+          </figure>
         </Section>
 
         {/* Résultat observable */}

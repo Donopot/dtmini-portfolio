@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets/prevision-energetique" },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   title: "Analyse et prévision de la consommation énergétique",
   description:
     "Projet d'étude DataScientest / Mines PSL (2023–2024) : exploration de données énergétiques françaises et comparaison de modèles de prévision (SARIMA, XGBoost).",
@@ -113,6 +113,48 @@ export default function PrevisionEnergetiquePage() {
               </span>
             ))}
           </div>
+        </Section>
+
+        {/* Graphiques du projet d'étude */}
+        <Section title="Graphiques du projet d'étude">
+          <figure>
+            <img
+              src="/images/projects/prevision-energetique/evolution-consommation.png"
+              alt="Graphique de l'évolution de la consommation électrique française entre 2012 et 2019, montrant une saisonnalité marquée."
+              className="rounded-xl border"
+              style={{ borderColor: "var(--border)", width: "100%", height: "auto" }}
+            />
+            <figcaption className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              Évolution et saisonnalité de la consommation électrique. Graphique issu
+              du projet d&apos;étude DataScientest / Mines PSL, 2023–2024.
+            </figcaption>
+          </figure>
+
+          <figure className="mt-6">
+            <img
+              src="/images/projects/prevision-energetique/temperature-consommation.png"
+              alt="Graphique de corrélation entre la température moyenne mensuelle et la consommation électrique, avec droite de régression."
+              className="rounded-xl border"
+              style={{ borderColor: "var(--border)", width: "100%", height: "auto" }}
+            />
+            <figcaption className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              Relation entre température et consommation. Graphique issu du projet
+              d&apos;étude DataScientest / Mines PSL, 2023–2024.
+            </figcaption>
+          </figure>
+
+          <figure className="mt-6">
+            <img
+              src="/images/projects/prevision-energetique/prevision-consommation.png"
+              alt="Graphique comparant les consommations observées et les prévisions du modèle pour l'année 2019."
+              className="rounded-xl border"
+              style={{ borderColor: "var(--border)", width: "100%", height: "auto" }}
+            />
+            <figcaption className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+              Comparaison observations / prévisions (modèle de lissage exponentiel).
+              Graphique issu du projet d&apos;étude DataScientest / Mines PSL, 2023–2024.
+            </figcaption>
+          </figure>
         </Section>
 
         {/* Résultat observable */}

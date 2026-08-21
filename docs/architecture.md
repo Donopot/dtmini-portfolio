@@ -88,7 +88,7 @@ Types dans `src/types/` : `nav`, `hero`, `projects`, `footer`, `theme`, `contact
 - Contenu 100 % dans `src/data/` (fichiers TS versionnés) — pas de CMS.
 - Pas de `'use client'` sauf nécessité (`ThemeProvider`, animations).
 - Tailwind v4 : toute couleur doit être dans `globals.css` `@theme`. `tailwind.config.ts` est **ignoré** (fichier mort à supprimer).
-- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (8 entrées indexables), `robots.ts` (`/api/` et `/legal/` en disallow).
+- SEO : Metadata API par page, JSON-LD `Person`, `sitemap.ts` (10 entrées indexables), `robots.ts` (`/api/` et `/legal/` en disallow).
 - Redirections 308 (dans `next.config.ts`) : `/about`→`/parcours`, `/experience`→`/parcours`, `/automatisation-processus`→`/expertise#automatisation`, `/data-operations`→`/expertise#structuration`, `/agents-ia`→`/expertise#ia`, `/testimonials`→`/temoignages`, `/projects/dnd-saas`→`/projets/dnd-vtt`, `/projects/rag-documentaire`→`/projets/rag-documentaire`, `/projects/prevision-energetique`→`/projets/prevision-energetique`.
-- Routes `noindex, follow` (accès direct conservé, hors sitemap) : `/automation`, `/development`, `/cv/automation`, `/cv/development`, `/temoignages`, `/projets/rag-documentaire`, `/projets/prevision-energetique` (en attente de visuels). `/legal/privacy` : `noindex, follow`.
+- Routes `noindex, follow` (accès direct conservé, hors sitemap) : `/automation`, `/development`, `/cv/automation`, `/cv/development`, `/temoignages`. `/legal/privacy` : `noindex, follow`.
 - Accessibilité : WCAG AA, `:focus-visible`, `prefers-reduced-motion`.
