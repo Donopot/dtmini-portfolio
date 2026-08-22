@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4
+              <h2
                 className={`mb-4 font-bold transition-colors ${
                   isDark
                     ? "font-mono text-xs uppercase tracking-widest"
@@ -26,7 +26,7 @@ export function Footer() {
                 style={{ color: "var(--accent-strong)" }}
               >
                 {col.title}
-              </h4>
+              </h2>
               {col.links.map((link) => (
                 <Link
                   key={link.href}

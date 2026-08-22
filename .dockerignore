@@ -1,0 +1,47 @@
+# Dépendances
+node_modules
+.pnpm-store
+
+# Build Next.js
+.next
+out
+build
+
+# Git & CI
+.git
+.gitignore
+.github
+
+# Environnement & secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Caches
+.cache
+.next/cache
+.turbo
+.vercel
+
+# Tests & couverture
+coverage
+.nyc_output
+
+# IDE & OS
+.vscode
+.idea
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docs locaux / divers non nécessaires au build
+docs
+CHANGELOG.md
+README.md

@@ -55,6 +55,9 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: { url: "/favicon.svg", type: "image/svg+xml" },
+  },
 };
 
 const jsonLd = {
@@ -111,10 +114,13 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen antialiased font-sans">
         <ThemeProvider>
+          <a href="#contenu" className="skip-link">
+            Aller au contenu principal
+          </a>
           <Scanlines />
           <GeoGrid />
           <Nav />
-          <main className="pt-14">{children}</main>
+          <main id="contenu" className="pt-14">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

@@ -179,6 +179,26 @@ body {
   outline-offset: 2px;
 }
 
+/* Skip-link (lien d'évitement) — visible uniquement au focus clavier */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1;
+  background-color: var(--accent);
+  color: var(--background);
+  transform: translateY(-300%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

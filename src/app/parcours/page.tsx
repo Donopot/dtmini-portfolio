@@ -85,8 +85,11 @@ export default function ParcoursPage() {
           </p>
         </AnimatedSection>
 
-        {/* Timeline */}
-        <div className="relative">
+        {/* Timeline — overflow-x-clip contient le décalage horizontal (±40px)
+            des AnimatedSection "left"/"right" pendant l'animation d'entrée,
+            évitant le débordement de 16px sur mobile/tablette sans masquer
+            globalement (html/body) ni supprimer l'animation. */}
+        <div className="relative overflow-x-clip">
           {/* Vertical line (mobile + desktop) */}
           <div
             className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 hidden md:block"
