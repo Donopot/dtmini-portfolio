@@ -15,7 +15,7 @@ export function Nav() {
 
   return (
     <nav
-      className="fixed top-8 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-colors"
       style={{
         backgroundColor: `color-mix(in srgb, var(--background) 88%, transparent)`,
         borderColor: "var(--border)",
