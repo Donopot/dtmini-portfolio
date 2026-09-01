@@ -53,7 +53,13 @@ export default function ContactPage() {
       const json = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        setError(json.error || "Une erreur est survenue. Merci de réessayer.");
+        const msg =
+          json.error ||
+          (Array.isArray(json.errors) && json.errors.length
+            ? json.errors.join(" ")
+            : null) ||
+          "Une erreur est survenue. Merci de réessayer.";
+        setError(msg);
         setStatus("error");
         return;
       }
@@ -99,7 +105,7 @@ export default function ContactPage() {
           }}
         >
           {/* Honeypot */}
-          <div className="absolute opacity-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute left-[-9999px] opacity-0 pointer-events-none" aria-hidden="true">
             <label htmlFor="website">Website</label>
             <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
           </div>
