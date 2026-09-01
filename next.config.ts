@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
       { source: "/projects/dnd-saas", destination: "/projets/dnd-vtt", permanent: true },
       { source: "/projects/rag-documentaire", destination: "/projets/rag-documentaire", permanent: true },
       { source: "/projects/prevision-energetique", destination: "/projets/prevision-energetique", permanent: true },
+      { source: "/automation", destination: "/expertise#automatisation", permanent: true },
+      { source: "/development", destination: "/projets", permanent: true },
+      { source: "/cv/automation", destination: "/parcours", permanent: true },
+      { source: "/cv/development", destination: "/parcours", permanent: true },
     ];
   },
 };

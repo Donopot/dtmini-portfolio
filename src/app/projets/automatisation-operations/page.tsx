@@ -11,6 +11,44 @@ export const metadata: Metadata = {
     "Expérience interne réalisée chez ChangeNOW dans le cadre d'un poste de Tool & IT Coordinator : structuration de données, automatisation de tâches répétitives et création d'outils internes.",
 };
 
+interface CaseStudy {
+  title: string;
+  problem: string;
+  solution: string;
+  stack: string[];
+  impact: string;
+}
+
+const caseStudies: CaseStudy[] = [
+  {
+    title: "Workflow de qualification des leads",
+    problem:
+      "Les leads issus de plusieurs canaux étaient traités manuellement : tri, enrichissement et assignation, une source d'erreurs et de temps perdu.",
+    solution:
+      "Conception d'un pipeline automatisé qui capture, enrichit et assigne les leads au bon interlocuteur, avec validation des données.",
+    stack: ["n8n", "Airtable", "API REST", "Webhooks"],
+    impact: "Réduction du temps de traitement manuel et fiabilisation de l'assignation.",
+  },
+  {
+    title: "Assistant IA documentaire (RAG)",
+    problem:
+      "La documentation interne était dispersée entre plusieurs outils, ce qui compliquait l'accès à l'information.",
+    solution:
+      "Mise en place d'un assistant documentaire RAG : ingestion de la documentation dans une base vectorielle et interface de chat avec réponses sourcées.",
+    stack: ["Python", "LangChain", "ChromaDB", "RAG"],
+    impact: "Accès centralisé à la documentation et autonomie accrue des équipes.",
+  },
+  {
+    title: "Dashboard de pilotage automatisé",
+    problem:
+      "Les indicateurs étaient suivis dans des fichiers disparates, consolidés manuellement.",
+    solution:
+      "Automatisation de la collecte et de la consolidation des données, avec un tableau de bord centralisé.",
+    stack: ["Make", "Airtable", "Python", "API REST"],
+    impact: "Reporting centralisé et vision plus fiable des indicateurs.",
+  },
+];
+
 export default function AutomatisationOperationsPage() {
   return (
     <main className="min-h-screen">
@@ -117,6 +155,112 @@ export default function AutomatisationOperationsPage() {
             <li>Documentation des processus</li>
           </ul>
         </Section>
+
+        {/* 6bis. Réalisations concrètes */}
+        <section className="mt-12">
+          <h2 className="text-xl font-bold" style={{ color: "var(--text)" }}>
+            Trois réalisations concrètes
+          </h2>
+          <p className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+            Exemples d&apos;automatisations déployées dans ce périmètre.
+          </p>
+          <div className="mt-6 space-y-6">
+            {caseStudies.map((cs, i) => (
+              <article
+                key={cs.title}
+                className="rounded-2xl border p-6 sm:p-8"
+                style={{
+                  backgroundColor: "var(--surface)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                <div className="flex items-start justify-between flex-wrap gap-3">
+                  <h3
+                    className="font-display dark:font-mono text-lg font-bold"
+                    style={{ color: "var(--text)" }}
+                  >
+                    {cs.title}
+                  </h3>
+                  <span
+                    className="text-xs font-mono"
+                    style={{ color: "var(--accent-strong)" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <div className="mt-5 grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[0.15em] block mb-1.5"
+                      style={{ color: "var(--accent-strong)" }}
+                    >
+                      Problème
+                    </span>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {cs.problem}
+                    </p>
+                  </div>
+                  <div>
+                    <span
+                      className="text-xs font-semibold uppercase tracking-[0.15em] block mb-1.5"
+                      style={{ color: "var(--accent-strong)" }}
+                    >
+                      Solution
+                    </span>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {cs.solution}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <span
+                    className="text-xs font-semibold uppercase tracking-[0.15em] block mb-2"
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    Stack
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {cs.stack.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full px-3 py-1 text-xs font-medium font-mono"
+                        style={{
+                          backgroundColor: "var(--background-alt)",
+                          color: "var(--text)",
+                        }}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  className="mt-5 rounded-lg p-4"
+                  style={{ backgroundColor: "var(--background-alt)" }}
+                >
+                  <span
+                    className="text-xs font-semibold uppercase tracking-[0.15em] block mb-1"
+                    style={{ color: "var(--accent-strong)" }}
+                  >
+                    Impact
+                  </span>
+                  <p className="text-sm font-medium" style={{ color: "var(--text)" }}>
+                    {cs.impact}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         {/* 7. Accompagnement et transmission */}
         <Section title="Accompagnement et transmission aux équipes">
