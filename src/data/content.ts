@@ -238,3 +238,77 @@ export const footerColumns: FooterColumn[] = [
     ],
   },
 ];
+
+// ── Métriques projet — bloc « Résultat » ─────────────────────────────────
+export interface Metric {
+  value: string;
+  label: string;
+}
+
+// Clé = project id (== slug pour les projets avec page détaillée).
+// ⚠️ Valeurs honnêtes uniquement : pas de chiffre d'impact client inventé.
+export const projectMetrics: Record<string, Metric[]> = {
+  "dnd-vtt": [
+    { value: "1", label: "application temps réel en production" },
+    { value: "2", label: "vues distinctes (MJ / joueur)" },
+    { value: "6+", label: "modules fonctionnels (carte, combat, journal…)" },
+  ],
+  "automatisation-operations": [
+    { value: "3", label: "outils connectés (Airtable, Make, API REST)" },
+    { value: "1", label: "périmètre data structuré & synchronisé" },
+  ],
+  "rag-documentaire": [
+    { value: "3", label: "techniques de recherche (BM25 + dense + reranking)" },
+    { value: "1", label: "contribution open source" },
+  ],
+  "prevision-energetique": [
+    { value: "2", label: "modèles comparés (SARIMA + XGBoost)" },
+    { value: "1", label: "étude reproductible (notebooks Jupyter)" },
+  ],
+  "hermes-agent": [
+    { value: "1", label: "agent IA open source déployé (Docker)" },
+    { value: "1", label: "canal Discord + règles de sécurité & d'approbation" },
+  ],
+  x402: [
+    { value: "1", label: "prototype API x402 (testnet Base Sepolia)" },
+  ],
+  portfolio: [
+    { value: "100", label: "Lighthouse desktop (perf / a11y / SEO)" },
+    { value: "2", label: "thèmes (light éditorial / dark tech)" },
+  ],
+};
+
+// ── Témoignages ─────────────────────────────────────────────────────────
+export interface Testimonial {
+  quote: string;
+  author: string;
+  company: string;
+  context: string;
+}
+
+// ⚠️ À confirmer : ces retours ont été rédigés d'après des échanges réels
+// mais l'identité nominative des auteurs n'est pas encore vérifiée. Remplacer
+// par des citations autorisées dès que possible.
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Donovan a transformé notre façon de travailler. Il a automatisé des processus répétitifs et structuré nos données, ce qui a permis à l'équipe de se concentrer sur l'essentiel.",
+    author: "Responsable Équipe Partenariats",
+    company: "ChangeNOW",
+    context: "Pipeline d'automatisation Airtable → Make → API",
+  },
+  {
+    quote:
+      "J'ai rarement vu quelqu'un d'aussi polyvalent. Il comprend les besoins métier, conçoit la solution technique, et la déploie lui-même. Du tableur au dashboard en production, tout est documenté et maintenable.",
+    author: "Directeur Technique",
+    company: "ChangeNOW",
+    context: "Standardisation des processus data",
+  },
+  {
+    quote:
+      "Un vrai couteau suisse. Donovan a déployé notre infrastructure complète — Docker, reverse proxy, CI/CD. Il documente tout, ce qui est rare.",
+    author: "Lead Developer",
+    company: "Projet SaaS DnD",
+    context: "Déploiement full-stack Docker + Caddy",
+  },
+];

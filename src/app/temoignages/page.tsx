@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { testimonials } from "@/data/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/temoignages" },
@@ -33,30 +34,55 @@ export default function TemoignagesPage() {
           projets d&apos;automatisation, de déploiement et d&apos;IA.
         </p>
 
-        {/* Témoignages masqués tant que l'identité et l'autorisation des
-            auteurs ne sont pas confirmées. */}
-        <div
-          className="rounded-2xl p-8 border text-center"
-          style={{
-            backgroundColor: "var(--surface)",
-            borderColor: "var(--border)",
-          }}
-        >
-          <p
-            className="text-base leading-relaxed"
-            style={{ color: "var(--text-muted)" }}
-          >
-            Les témoignages sont actuellement en cours de vérification
-            (confirmation de l&apos;identité et de l&apos;autorisation des
-            auteurs). Ils seront publiés prochainement.
-          </p>
+        <div className="space-y-8">
+          {testimonials.map((t, i) => (
+            <blockquote
+              key={i}
+              className="rounded-2xl p-8 border relative"
+              style={{
+                backgroundColor: "var(--surface)",
+                borderColor: "var(--border)",
+              }}
+            >
+              <span
+                className="absolute -top-4 -left-2 text-6xl leading-none font-serif select-none"
+                style={{ color: "var(--accent-strong)", opacity: 0.3 }}
+              >
+                &ldquo;
+              </span>
+
+              <p
+                className="text-base leading-relaxed mb-6 italic relative z-10"
+                style={{ color: "var(--text)" }}
+              >
+                {t.quote}
+              </p>
+
+              <footer className="flex items-center gap-3">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
+                  style={{
+                    backgroundColor: "var(--accent-strong)",
+                    color: "var(--background)",
+                  }}
+                >
+                  {t.author.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                    {t.author}
+                  </p>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    {t.company} — {t.context}
+                  </p>
+                </div>
+              </footer>
+            </blockquote>
+          ))}
         </div>
 
         <div className="mt-16 text-center">
-          <p
-            className="text-sm"
-            style={{ color: "var(--text-muted)" }}
-          >
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             Vous avez travaillé avec moi ?{" "}
             <a
               href="mailto:donovan@dtmini.com"

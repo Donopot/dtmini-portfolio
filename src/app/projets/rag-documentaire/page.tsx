@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MetricGrid } from "@/components/projects/MetricGrid";
+import { projectMetrics } from "@/data/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets/rag-documentaire" },
@@ -44,6 +46,16 @@ export default function RagDocumentairePage() {
             recherche lexicale, recherche vectorielle et reranking.
           </p>
         </header>
+
+        <div className="mt-8">
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
+            style={{ color: "var(--accent-strong)" }}
+          >
+            Résultats clés
+          </span>
+          <MetricGrid metrics={projectMetrics["rag-documentaire"]} />
+        </div>
 
         {/* Contexte */}
         <Section title="Contexte">

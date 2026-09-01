@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MetricGrid } from "@/components/projects/MetricGrid";
+import { projectMetrics } from "@/data/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets/dnd-vtt" },
@@ -44,6 +46,16 @@ export default function DndVttPage() {
             multi-utilisateurs en temps réel.
           </p>
         </header>
+
+        <div className="mt-8">
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
+            style={{ color: "var(--accent-strong)" }}
+          >
+            Résultats clés
+          </span>
+          <MetricGrid metrics={projectMetrics["dnd-vtt"]} />
+        </div>
 
         {/* Contexte */}
         <Section title="Contexte">

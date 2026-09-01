@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MetricGrid } from "@/components/projects/MetricGrid";
+import { projectMetrics } from "@/data/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets/prevision-energetique" },
@@ -43,6 +45,16 @@ export default function PrevisionEnergetiquePage() {
             Projet d&apos;étude terminé, réalisé sous forme de notebooks Jupyter.
           </p>
         </header>
+
+        <div className="mt-8">
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.15em] mb-3 block"
+            style={{ color: "var(--accent-strong)" }}
+          >
+            Résultats clés
+          </span>
+          <MetricGrid metrics={projectMetrics["prevision-energetique"]} />
+        </div>
 
         {/* Contexte */}
         <Section title="Contexte">

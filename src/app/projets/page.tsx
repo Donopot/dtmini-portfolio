@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { projects } from "@/data/content";
+import { MetricGrid } from "@/components/projects/MetricGrid";
+import { projects, projectMetrics } from "@/data/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/projets" },
@@ -108,20 +109,11 @@ export default function ProjetsPage() {
                 {p.description}
               </p>
 
-              {/* Results */}
-              {p.results && p.results.length > 0 && (
-                <ul className="mb-4 space-y-1">
-                  {p.results.map((r, i) => (
-                    <li
-                      key={i}
-                      className="text-xs flex items-start gap-2"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      <span style={{ color: "var(--accent-strong)" }}>▸</span>
-                      {r}
-                    </li>
-                  ))}
-                </ul>
+              {/* Résultat (métriques) */}
+              {projectMetrics[p.id] && (
+                <div className="mb-4">
+                  <MetricGrid metrics={projectMetrics[p.id]} />
+                </div>
               )}
 
               {/* Tags */}
