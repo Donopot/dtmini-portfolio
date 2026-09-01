@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
   let sent = false;
   try {
     const resend = new Resend(apiKey);
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: `Portfolio DT Mini <${from}>`,
       to,
       replyTo: email as string,
@@ -160,7 +160,7 @@ export async function POST(request: NextRequest) {
         <p>${safeMessage}</p>
       `,
     });
-    sent = true;
+    sent = !error;
   } catch {
     sent = false;
   }
