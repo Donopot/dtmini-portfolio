@@ -13,7 +13,7 @@ export function Hero() {
   const { badge, name, headline, subtitle, cta } = heroData;
 
   return (
-    <section className="relative min-h-screen flex items-center pt-32 pb-16 px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-start md:items-center pt-32 pb-16 px-6 overflow-hidden">
       <div className="max-w-[72rem] mx-auto w-full relative z-10">
         {/* Badge */}
         <span
