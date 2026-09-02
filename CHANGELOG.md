@@ -2,7 +2,28 @@
 
 Historique reconstruit depuis `git log` (format AAAA-MM-JJ). Les entrées sont additives.
 
-## v11.x — Refonte offre client (branche `feat/refonte-offre-client`, en cours)
+## v1.0.0 — Clôture V1 (2026-09-01)
+
+Refonte complète finalisée et mise en production sur dtmini.com.
+
+### Added
+- Bloc « Résultat » (métriques) sur les projets : composant `MetricGrid` + `projectMetrics`
+- Page témoignages réactivée : 3 retours nominatifs (ChangeNOW, Projet SaaS DnD)
+- 3 études de cas ChangeNOW (qualification leads, assistant RAG, dashboard) dans `/projets/automatisation-operations`
+
+### Fixed
+- SEO : `/temoignages` indexable (retrait du `noindex`) + ajout au sitemap
+- Responsive mobile : stats hero empilées + police responsive, alignement hero (`items-start`), navbar collée en haut (`top-0`)
+
+### Removed
+- Pages legacy orphelines `/automation`, `/development`, `/cv/automation`, `/cv/development` (redirigées 308 vers expertise/projets/parcours)
+- Bloc « SYSTEM STATUS » (`MonitorPanel`) du dark mode
+
+### Infra
+- Resend vérifié (SPF/DKIM/MX) + DMARC posé (`p=none`)
+- Formulaire de contact E2E opérationnel
+
+## v11.x — Refonte offre client (branche `feat/refonte-offre-client`)
 
 ### P3B — Correctifs pré-déploiement (2026-08-22, non commité)
 - **Correction** : suppression de l'overflow horizontal de `/parcours` (mobile/tablette) via `overflow-x-clip` local sur la timeline — sans masquage global ni suppression d'animation.

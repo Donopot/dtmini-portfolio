@@ -2,7 +2,7 @@
 
 Portfolio professionnel de **Donovan Beaulavon** — [dtmini.com](https://dtmini.com)
 
-> **Statut** : refonte commerciale — P0 (thème unifié) · P1A (positionnement freelance) · P1B (routes/SEO) **commités** ; P2B (mise en conformité des projets) **en cours, non commité**.
+> **Statut** : V1 clôturée — en production sur [dtmini.com](https://dtmini.com).
 > État détaillé (Git, drifts, à faire) : [`docs/etat-actuel.md`](docs/etat-actuel.md).
 
 ## Stack
@@ -31,14 +31,12 @@ npm run lint       # next lint
 
 ```
 src/
-├── app/            # 16 pages + 9 redirections 308 + 1 API + sitemap/robots
+├── app/            # 12 pages + 13 redirections 308 + 1 API + sitemap/robots
 │   ├── layout.tsx  # Layout racine : fonts, metadata, ThemeProvider, Nav/Footer
 │   ├── page.tsx    # Accueil (/)
 │   ├── expertise/  parcours/  contact/  faq/  temoignages/
 │   ├── projets/    # 4 réalisations : dnd-vtt, automatisation-operations, rag-documentaire, prevision-energetique
-│   ├── automation/  development/  # profils partageables (noindex)
 │   ├── legal/      # privacy (noindex)
-│   ├── cv/         # automation, development (noindex)
 │   ├── api/contact/route.ts   # endpoint formulaire (Resend)
 │   └── robots.ts · sitemap.ts
 ├── components/
@@ -54,7 +52,7 @@ src/
 - Pas d'API exposée hors `/api/contact` (rate-limitée, validée)
 - Aucun secret dans le repo (`.env.example` uniquement)
 - Formulaire de contact : honeypot + rate limiting + envoi Resend
-- Aucun chiffre ni témoignage non vérifié (métriques ChangeNOW supprimées ; témoignages retirés)
+- Témoignages nominatifs vérifiés (3 retours) ; métriques projets sans chiffres non vérifiés
 
 ## Documentation
 
